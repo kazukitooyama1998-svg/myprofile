@@ -169,7 +169,7 @@
         <p class="font-heading text-accent font-semibold tracking-widest mb-2">SKILLS</p>
         <h2 class="font-heading text-3xl sm:text-4xl font-black">使用技術</h2>
         <p class="text-muted mt-4 max-w-xl mx-auto leading-relaxed">
-          これまで学習してきた技術をまとめています。現在はJavaScriptやTailwind CSSを学習しており、今後もさまざまな技術やプログラミング言語の知識を深めながら、継続的に更新していきます。
+          これまで学習してきた技術をまとめています。ITスクールではフロントエンドからバックエンドまで幅広い技術を学び、Web開発全体の基礎を身につけました。現在はJavaScriptやTailwind CSSを中心に学習を進めており、今後もさまざまな技術やプログラミング言語への理解を深めながら、継続的にスキルアップに取り組んでいきます。また、幅広い知識を土台としつつ、将来的にはフロントエンドやバックエンドなど、それぞれの分野で専門性を高め、より価値のあるサービスを開発できるエンジニアを目指しています。
         </p>
       </div>
 
