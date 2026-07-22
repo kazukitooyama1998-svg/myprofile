@@ -11,6 +11,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
 
+<script>
+  window.worksData = {
+    'coffee-shop': {
+      title: @js('Coffee Shop Website'),
+      description: @js('本作品は、ITスクールの授業の一環として、HTML・CSSの基礎を学習した後に制作した作品です。Webページ全体のレイアウト構成や各セクションの配置、余白・デザインの基本を意識し、HTML・CSSのみで実装しました。ページレイアウトの基礎を学ぶことを目的とした作品です。'),
+      tech: @js(['HTML', 'CSS']),
+      images: [
+        { src: @js(asset('images/works/coffee-shop/hero.png')), alt: @js('Coffee Shop Website のトップページ') },
+        { src: @js(asset('images/works/coffee-shop/merchandise.png')), alt: @js('Coffee Shop Website の商品一覧ページ') },
+        { src: @js(asset('images/works/coffee-shop/discount.png')), alt: @js('Coffee Shop Website の割引・セールページ') },
+        { src: @js(asset('images/works/coffee-shop/blog.png')), alt: @js('Coffee Shop Website のブログ記事一覧') },
+        { src: @js(asset('images/works/coffee-shop/reservation.png')), alt: @js('Coffee Shop Website の予約フォーム') },
+        { src: @js(asset('images/works/coffee-shop/footer.png')), alt: @js('Coffee Shop Website のフッター') },
+      ],
+    },
+  };
+</script>
+
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -254,7 +272,7 @@
         </p>
       </div>
 
-      <div class="reveal relative">
+      <div class="reveal relative md:px-10">
 
         <!-- 前へ / 次へ ボタン -->
         <button id="works-prev" aria-label="前の制作物へ" class="hidden md:flex absolute -left-5 top-[38%] -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white shadow-card items-center justify-center text-primary-dark hover:bg-primary-light transition-colors">
@@ -271,21 +289,23 @@
         <!-- スライドトラック -->
         <div id="works-track" class="works-track flex gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4">
 
-          <!-- Work Card ×5 (placeholder) -->
+          <!-- Work Card 01: Coffee Shop Website -->
           <article class="works-slide snap-start shrink-0 w-[85%] sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
-            <div class="aspect-[4/3] bg-gradient-to-br from-primary-light to-primary/30 flex items-center justify-center">
-              <span class="font-heading text-primary-dark/70 text-sm">Project Image</span>
+            <div class="aspect-[4/3] overflow-hidden bg-paper flex items-center justify-center">
+              <img src="{{ asset('images/works/coffee-shop/hero.png') }}" alt="Coffee Shop Website のトップページ" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div class="p-6">
-              <h3 class="font-heading font-bold text-lg mb-2">プロジェクト名 01</h3>
-              <p class="text-sm text-muted leading-relaxed mb-4">制作物の概要説明。使用技術や工夫した点を簡潔に。</p>
+              <h3 class="font-heading font-bold text-lg mb-2">Coffee Shop Website</h3>
+              <p class="text-sm text-muted leading-relaxed mb-1">ITスクールの課題として制作した、HTML・CSSのみのランディングページです。</p>
+              <button type="button" class="work-modal-trigger text-sm font-heading font-semibold text-primary-dark hover:text-accent transition-colors mb-4" data-work="coffee-shop">
+                詳しくはクリック →
+              </button>
               <div class="flex flex-wrap gap-2 mb-5">
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Laravel</span>
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">MySQL</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">HTML</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">CSS</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
-                <a href="#" class="text-primary-dark hover:text-accent transition-colors">Demo →</a>
-                <a href="#" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
+                <a href="https://github.com/kazukitooyama1998-svg/Coffee-bean" target="_blank" rel="noopener" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
               </div>
             </div>
           </article>
@@ -302,7 +322,6 @@
                 <span class="text-xs px-3 py-1 rounded-full bg-accent-light text-accent">Tailwind CSS</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
-                <a href="#" class="text-primary-dark hover:text-accent transition-colors">Demo →</a>
                 <a href="#" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
               </div>
             </div>
@@ -320,7 +339,6 @@
                 <span class="text-xs px-3 py-1 rounded-full bg-sub-light text-ink">SQL</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
-                <a href="#" class="text-primary-dark hover:text-accent transition-colors">Demo →</a>
                 <a href="#" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
               </div>
             </div>
@@ -338,7 +356,6 @@
                 <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Bootstrap</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
-                <a href="#" class="text-primary-dark hover:text-accent transition-colors">Demo →</a>
                 <a href="#" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
               </div>
             </div>
@@ -356,7 +373,6 @@
                 <span class="text-xs px-3 py-1 rounded-full bg-sub-light text-ink">Laravel</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
-                <a href="#" class="text-primary-dark hover:text-accent transition-colors">Demo →</a>
                 <a href="#" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
               </div>
             </div>
@@ -436,6 +452,51 @@
     </svg>
   </button>
 </footer>
+
+<!-- ==================== Work Detail Modal ==================== -->
+<div id="work-modal" class="hidden fixed inset-0 z-[70] items-center justify-center p-4 sm:p-6">
+  <div id="work-modal-backdrop" class="absolute inset-0 bg-ink/60 backdrop-blur-sm"></div>
+
+  <div class="relative bg-white rounded-4xl shadow-soft w-full max-w-6xl max-h-[95vh] overflow-y-auto p-6 sm:p-10 pt-16 sm:pt-20">
+    <button type="button" id="work-modal-close" aria-label="閉じる"
+      class="absolute top-5 right-5 sm:top-6 sm:right-6 w-10 h-10 rounded-full bg-primary hover:bg-primary-dark text-white flex items-center justify-center shadow-soft transition-colors z-20">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <div class="grid md:grid-cols-2 gap-10">
+      <div>
+        <h3 id="work-modal-title" class="font-heading text-2xl sm:text-3xl font-black text-center md:text-left pb-4 mb-6 border-b border-primary-light"></h3>
+        <p id="work-modal-description" class="text-sm sm:text-base leading-loose text-ink/90 whitespace-pre-line"></p>
+
+        <h4 class="font-heading text-lg font-bold text-center md:text-left mt-8 pb-3 mb-4 border-b border-primary-light">使用言語など</h4>
+        <div id="work-modal-tech" class="flex flex-wrap gap-2"></div>
+      </div>
+
+      <div>
+        <div class="relative mb-4">
+          <button type="button" id="work-modal-thumbs-prev" aria-label="前のサムネイルへ"
+            class="hidden absolute -left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white shadow-card items-center justify-center text-primary-dark hover:bg-primary-light transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <div id="work-modal-thumbs" class="flex gap-3 overflow-x-auto scroll-smooth"></div>
+          <button type="button" id="work-modal-thumbs-next" aria-label="次のサムネイルへ"
+            class="hidden absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white shadow-card items-center justify-center text-primary-dark hover:bg-primary-light transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+        <div class="rounded-3xl overflow-hidden shadow-card bg-paper flex items-center justify-center">
+          <img id="work-modal-main-image" src="" alt="" class="w-full h-auto max-h-[72vh] object-contain" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
