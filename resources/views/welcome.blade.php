@@ -26,6 +26,18 @@
         { src: @js(asset('images/works/coffee-shop/footer.png')), alt: @js('Coffee Shop Website のフッター') },
       ],
     },
+    'profile-site': {
+      title: @js('Profile Site'),
+      description: @js('本サイトは、私自身のポートフォリオサイトです。エンジニアとしての実務経験がまだないため、これまでの経歴やスキルを知っていただくことを目的に制作しました。バックエンドにはLaravel、フロントエンドはBladeテンプレートとTailwind CSS（Vite）で構築し、モーダルやカルーセルなどの動きはJavaScriptで実装しています。全体を通して優しい雰囲気とシンプルなテイストを意識したデザインに仕上げました。就職活動や学習の進捗に合わせて、今後も継続して使用・更新していく予定です。'),
+      tech: @js(['Laravel', 'Blade', 'Tailwind CSS', 'JavaScript', 'Vite']),
+      images: [
+        { src: @js(asset('images/works/profile-site/hero.png')), alt: @js('Profile Site のトップページ') },
+        { src: @js(asset('images/works/profile-site/about.png')), alt: @js('Profile Site の自己紹介セクション') },
+        { src: @js(asset('images/works/profile-site/skills.png')), alt: @js('Profile Site の使用技術セクション') },
+        { src: @js(asset('images/works/profile-site/works.png')), alt: @js('Profile Site の制作物セクション') },
+        { src: @js(asset('images/works/profile-site/contact.png')), alt: @js('Profile Site のお問い合わせセクション') },
+      ],
+    },
   };
 </script>
 
@@ -310,19 +322,24 @@
             </div>
           </article>
 
+          <!-- Work Card 02: Profile Site -->
+          {{-- 後で編集予定 --}}
           <article class="works-slide snap-start shrink-0 w-[85%] sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
-            <div class="aspect-[4/3] bg-gradient-to-br from-accent-light to-accent/30 flex items-center justify-center">
-              <span class="font-heading text-accent/80 text-sm">Project Image</span>
+            <div class="aspect-[4/3] overflow-hidden bg-paper flex items-center justify-center">
+              <img src="{{ asset('images/works/profile-site/hero.png') }}" alt="Profile Site のトップページ" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div class="p-6">
-              <h3 class="font-heading font-bold text-lg mb-2">プロジェクト名 02</h3>
-              <p class="text-sm text-muted leading-relaxed mb-4">制作物の概要説明。使用技術や工夫した点を簡潔に。</p>
+              <h3 class="font-heading font-bold text-lg mb-2">Profile Site</h3>
+              <p class="text-sm text-muted leading-relaxed mb-1">経歴やスキルを知っていただくために制作した、自分自身のポートフォリオサイトです。</p>
+              <button type="button" class="work-modal-trigger text-sm font-heading font-semibold text-primary-dark hover:text-accent transition-colors mb-4" data-work="profile-site">
+                詳しくはクリック →
+              </button>
               <div class="flex flex-wrap gap-2 mb-5">
-                <span class="text-xs px-3 py-1 rounded-full bg-accent-light text-accent">PHP</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-accent-light text-accent">Laravel</span>
                 <span class="text-xs px-3 py-1 rounded-full bg-accent-light text-accent">Tailwind CSS</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
-                <a href="#" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
+                <a href="https://github.com/kazukitooyama1998-svg/myprofile" target="_blank" rel="noopener" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
               </div>
             </div>
           </article>
