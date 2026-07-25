@@ -38,6 +38,34 @@
         { src: @js(asset('images/works/profile-site/contact.png')), alt: @js('Profile Site のお問い合わせセクション') },
       ],
     },
+    'learning-english': {
+      title: @js('Learning English Site'),
+      description: @js("とにかく「手を動かして」英語を身につける、タイピング機能を軸にした英語学習サイトです。\n\n私自身の英語学習の経験から、「口を動かす（シャドーイング・音読）」ような、手軽に始められて継続しやすい練習が、特に初心者にとって効果的だと感じてきました。質の高い授業を受け、予習・復習を続ける学習法は理想的である一方、初心者にはハードルが高く、挫折しやすいという課題があります。実際に私は、現地の人と数多く話す機会をつくり、AIからフィードバックを得ながらSpeaking練習を重ねることで、英語力を伸ばしてきました。\n\nしかし、Speaking機能を備えた英語学習アプリはすでに数多く存在します。そこで本サイトでは、その対をなす新しいアプローチとして、「とにかく手を動かす（タイピング）」ことを軸に英語を学べる仕組みを発案し、開発しました。\n\nタイピング機能を中心的なコンテンツとしながら、TOEIC形式のReading演習、英単語のフラッシュカード学習、スペルクイズなど、複数の学習モードも実装しています。さらに、学習の継続を後押しする要素として、フォロー機能によるユーザー同士のつながりや、学習記録に基づくランキング機能も取り入れました。\n\nなお、音声機能は無料での実装を検討しましたが、音質が十分でなかったため今回は見送りました。同様に、Speaking／WritingのAI自動採点機能も、コストをかけずに開発する方針としたため、今回は導入していません。これらは今後の拡張課題と位置づけています。"),
+      tech: @js(['Laravel', 'PHP', 'MySQL', 'Blade', 'Tailwind CSS', 'JavaScript', 'Vite']),
+      images: [
+        { src: @js(asset('images/works/learning-english/home-dashboard.png')), alt: @js('Learning English Site のホーム画面（学習ダッシュボード）') },
+        { src: @js(asset('images/works/learning-english/landing.png')), alt: @js('Learning English Site のランディングページ') },
+        { src: @js(asset('images/works/learning-english/register.png')), alt: @js('Learning English Site の会員登録画面') },
+        { src: @js(asset('images/works/learning-english/login.png')), alt: @js('Learning English Site のログイン画面') },
+        { src: @js(asset('images/works/learning-english/toeic-part5-explanation.png')), alt: @js('Learning English Site のTOEIC Part5解説スライド') },
+        { src: @js(asset('images/works/learning-english/toeic-part5-practice.png')), alt: @js('Learning English Site のTOEIC Part5練習問題') },
+        { src: @js(asset('images/works/learning-english/ielts-speaking-hub.png')), alt: @js('Learning English Site のIELTS Speaking一覧') },
+        { src: @js(asset('images/works/learning-english/ielts-topic-select.png')), alt: @js('Learning English Site のIELTSトピック選択画面') },
+        { src: @js(asset('images/works/learning-english/ielts-score-select.png')), alt: @js('Learning English Site のIELTS目標スコア選択画面') },
+        { src: @js(asset('images/works/learning-english/ielts-vocabulary-slide.png')), alt: @js('Learning English Site のIELTS関連語彙スライド') },
+        { src: @js(asset('images/works/learning-english/ielts-speaking-typing.png')), alt: @js('Learning English Site のSpeakingタイピング練習画面') },
+        { src: @js(asset('images/works/learning-english/vocabulary-hub.png')), alt: @js('Learning English Site の英単語学習一覧') },
+        { src: @js(asset('images/works/learning-english/vocabulary-flashcard.png')), alt: @js('Learning English Site の英単語フラッシュカード') },
+        { src: @js(asset('images/works/learning-english/vocabulary-favorites.png')), alt: @js('Learning English Site のお気に入り単語一覧') },
+        { src: @js(asset('images/works/learning-english/typing-hub.png')), alt: @js('Learning English Site のタイピング練習一覧') },
+        { src: @js(asset('images/works/learning-english/typing-business-english.png')), alt: @js('Learning English Site のBusiness Englishタイピング練習') },
+        { src: @js(asset('images/works/learning-english/quiz-hub.png')), alt: @js('Learning English Site のクイズ一覧') },
+        { src: @js(asset('images/works/learning-english/quiz-spelling.png')), alt: @js('Learning English Site のスペルクイズ') },
+        { src: @js(asset('images/works/learning-english/quiz-vocabulary.png')), alt: @js('Learning English Site の語彙クイズ') },
+        { src: @js(asset('images/works/learning-english/study-dashboard.png')), alt: @js('Learning English Site の学習管理画面') },
+        { src: @js(asset('images/works/learning-english/ranking.png')), alt: @js('Learning English Site のランキング画面') },
+      ],
+    },
   };
 </script>
 
@@ -279,9 +307,6 @@
       <div class="reveal text-center mb-16">
         <p class="font-heading text-accent font-semibold tracking-widest mb-2">WORKS</p>
         <h2 class="font-heading text-3xl sm:text-4xl font-black">制作物</h2>
-        <p class="text-muted mt-4 max-w-xl mx-auto leading-relaxed">
-          詳細は後ほど追加予定。
-        </p>
       </div>
 
       <div class="reveal relative md:px-10">
@@ -323,7 +348,6 @@
           </article>
 
           <!-- Work Card 02: Profile Site -->
-          {{-- 後で編集予定 --}}
           <article class="works-slide snap-start shrink-0 w-[85%] sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
             <div class="aspect-[4/3] overflow-hidden bg-paper flex items-center justify-center">
               <img src="{{ asset('images/works/profile-site/hero.png') }}" alt="Profile Site のトップページ" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
@@ -335,8 +359,9 @@
                 詳しくはクリック →
               </button>
               <div class="flex flex-wrap gap-2 mb-5">
-                <span class="text-xs px-3 py-1 rounded-full bg-accent-light text-accent">Laravel</span>
-                <span class="text-xs px-3 py-1 rounded-full bg-accent-light text-accent">Tailwind CSS</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Laravel</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Tailwind CSS</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">+3</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
                 <a href="https://github.com/kazukitooyama1998-svg/myprofile" target="_blank" rel="noopener" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
@@ -344,19 +369,24 @@
             </div>
           </article>
 
+          <!-- Work Card 03: Learning English Site -->
           <article class="works-slide snap-start shrink-0 w-[85%] sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
-            <div class="aspect-[4/3] bg-gradient-to-br from-sub-light to-sub/40 flex items-center justify-center">
-              <span class="font-heading text-ink/60 text-sm">Project Image</span>
+            <div class="aspect-[4/3] overflow-hidden bg-paper flex items-center justify-center">
+              <img src="{{ asset('images/works/learning-english/home-dashboard.png') }}" alt="Learning English Site のホーム画面（学習ダッシュボード）" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div class="p-6">
-              <h3 class="font-heading font-bold text-lg mb-2">プロジェクト名 03</h3>
-              <p class="text-sm text-muted leading-relaxed mb-4">制作物の概要説明。使用技術や工夫した点を簡潔に。</p>
+              <h3 class="font-heading font-bold text-lg mb-2">Learning English Site</h3>
+              <p class="text-sm text-muted leading-relaxed mb-1">「とにかく手を動かす」タイピング機能が特徴的な英語学習サイトです。</p>
+              <button type="button" class="work-modal-trigger text-sm font-heading font-semibold text-primary-dark hover:text-accent transition-colors mb-4" data-work="learning-english">
+                詳しくはクリック →
+              </button>
               <div class="flex flex-wrap gap-2 mb-5">
-                <span class="text-xs px-3 py-1 rounded-full bg-sub-light text-ink">HTML/CSS</span>
-                <span class="text-xs px-3 py-1 rounded-full bg-sub-light text-ink">SQL</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Laravel</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">MySQL</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">+5</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
-                <a href="#" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
+                <a href="https://github.com/kazukitooyama1998-svg/laravel-english-learning-site" target="_blank" rel="noopener" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
               </div>
             </div>
           </article>
@@ -386,8 +416,8 @@
               <h3 class="font-heading font-bold text-lg mb-2">プロジェクト名 05</h3>
               <p class="text-sm text-muted leading-relaxed mb-4">制作物の概要説明。使用技術や工夫した点を簡潔に。</p>
               <div class="flex flex-wrap gap-2 mb-5">
-                <span class="text-xs px-3 py-1 rounded-full bg-sub-light text-ink">PHP</span>
-                <span class="text-xs px-3 py-1 rounded-full bg-sub-light text-ink">Laravel</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">PHP</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Laravel</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
                 <a href="#" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
