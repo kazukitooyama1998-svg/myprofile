@@ -452,26 +452,52 @@
         </p>
       </div>
 
-      <form class="reveal bg-white rounded-4xl shadow-card p-8 sm:p-10 space-y-6" action="#" method="POST">
+      @if (session('contact_success'))
+        <div class="reveal bg-primary-light text-primary-dark rounded-3xl px-6 py-5 mb-6 text-center font-heading font-semibold leading-relaxed">
+          お問い合わせを受け付けました。ご連絡ありがとうございます。<br />
+          ご入力いただいたメールアドレス宛に確認メールをお送りしておりますので、ご確認ください。
+        </div>
+      @endif
+
+      @if (session('contact_error'))
+        <div class="reveal bg-accent-light text-accent rounded-3xl px-6 py-5 mb-6 text-center font-heading font-semibold leading-relaxed">
+          送信中にエラーが発生しました。お手数ですが、時間をおいて再度お試しください。
+        </div>
+      @endif
+
+      <form class="reveal bg-white rounded-4xl shadow-card p-8 sm:p-10 space-y-6" action="{{ route('contact.store') }}" method="POST">
+        @csrf
         <div>
           <label for="name" class="block font-heading text-sm font-semibold mb-2">お名前</label>
-          <input type="text" id="name" name="name" required
-            class="w-full px-5 py-3 rounded-2xl border border-primary-light bg-paper focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
+          <input type="text" id="name" name="name" value="{{ old('name') }}" required
+            class="w-full px-5 py-3 rounded-2xl border {{ $errors->has('name') ? 'border-accent' : 'border-primary-light' }} bg-paper focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
+          @error('name')
+            <p class="text-sm text-accent mt-2">{{ $message }}</p>
+          @enderror
         </div>
         <div>
           <label for="email" class="block font-heading text-sm font-semibold mb-2">メールアドレス</label>
-          <input type="email" id="email" name="email" required
-            class="w-full px-5 py-3 rounded-2xl border border-primary-light bg-paper focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
+          <input type="email" id="email" name="email" value="{{ old('email') }}" required
+            class="w-full px-5 py-3 rounded-2xl border {{ $errors->has('email') ? 'border-accent' : 'border-primary-light' }} bg-paper focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
+          @error('email')
+            <p class="text-sm text-accent mt-2">{{ $message }}</p>
+          @enderror
         </div>
         <div>
           <label for="subject" class="block font-heading text-sm font-semibold mb-2">件名</label>
-          <input type="text" id="subject" name="subject" required
-            class="w-full px-5 py-3 rounded-2xl border border-primary-light bg-paper focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
+          <input type="text" id="subject" name="subject" value="{{ old('subject') }}" required
+            class="w-full px-5 py-3 rounded-2xl border {{ $errors->has('subject') ? 'border-accent' : 'border-primary-light' }} bg-paper focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
+          @error('subject')
+            <p class="text-sm text-accent mt-2">{{ $message }}</p>
+          @enderror
         </div>
         <div>
           <label for="message" class="block font-heading text-sm font-semibold mb-2">メッセージ</label>
           <textarea id="message" name="message" rows="5" required
-            class="w-full px-5 py-3 rounded-2xl border border-primary-light bg-paper focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"></textarea>
+            class="w-full px-5 py-3 rounded-2xl border {{ $errors->has('message') ? 'border-accent' : 'border-primary-light' }} bg-paper focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none">{{ old('message') }}</textarea>
+          @error('message')
+            <p class="text-sm text-accent mt-2">{{ $message }}</p>
+          @enderror
         </div>
         <button type="submit"
           class="w-full bg-primary hover:bg-primary-dark text-white font-heading font-semibold py-3.5 rounded-full shadow-soft transition-all hover:-translate-y-0.5">
