@@ -4,6 +4,7 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -23,7 +24,7 @@ class ContactAdminNotification extends Mailable
     {
         return new Envelope(
             subject: '【ポートフォリオサイト】お問い合わせ: '.$this->data['subject'],
-            replyTo: [$this->data['email'] => $this->data['name']],
+            replyTo: [new Address($this->data['email'], $this->data['name'])],
         );
     }
 
