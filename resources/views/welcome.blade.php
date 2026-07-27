@@ -327,7 +327,7 @@
         <div id="works-track" class="works-track flex gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4">
 
           <!-- Work Card 01: Coffee Shop Website -->
-          <article class="works-slide snap-start shrink-0 w-[85%] sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
+          <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
             <div class="aspect-[4/3] overflow-hidden bg-paper flex items-center justify-center">
               <img src="{{ asset('images/works/coffee-shop/hero.png') }}" alt="Coffee Shop Website のトップページ" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
@@ -348,7 +348,7 @@
           </article>
 
           <!-- Work Card 02: Profile Site -->
-          <article class="works-slide snap-start shrink-0 w-[85%] sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
+          <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
             <div class="aspect-[4/3] overflow-hidden bg-paper flex items-center justify-center">
               <img src="{{ asset('images/works/profile-site/hero.png') }}" alt="Profile Site のトップページ" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
@@ -370,7 +370,7 @@
           </article>
 
           <!-- Work Card 03: Learning English Site -->
-          <article class="works-slide snap-start shrink-0 w-[85%] sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
+          <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
             <div class="aspect-[4/3] overflow-hidden bg-paper flex items-center justify-center">
               <img src="{{ asset('images/works/learning-english/home-dashboard.png') }}" alt="Learning English Site のホーム画面（学習ダッシュボード）" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
@@ -391,7 +391,7 @@
             </div>
           </article>
 
-          <article class="works-slide snap-start shrink-0 w-[85%] sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
+          <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
             <div class="aspect-[4/3] bg-gradient-to-br from-primary-light to-accent/30 flex items-center justify-center">
               <span class="font-heading text-primary-dark/70 text-sm">Project Image</span>
             </div>
@@ -408,7 +408,7 @@
             </div>
           </article>
 
-          <article class="works-slide snap-start shrink-0 w-[85%] sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
+          <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
             <div class="aspect-[4/3] bg-gradient-to-br from-accent-light to-sub/30 flex items-center justify-center">
               <span class="font-heading text-accent/80 text-sm">Project Image</span>
             </div>
@@ -510,10 +510,10 @@
 </main>
 
 <!-- ==================== Footer ==================== -->
-<footer id="site-footer" class="relative bg-primary-dark text-white/90 pt-16 pb-8">
+<footer id="site-footer" class="relative bg-primary-dark text-white/90 pt-16 pb-24 sm:pb-8">
   <div class="max-w-6xl mx-auto px-6">
     <div class="flex justify-center items-center pb-8 border-b border-white/15">
-      <p class="font-heading text-2xl sm:text-3xl font-black tracking-wide">Thank you for reading until the end<span class="text-sub">.</span></p>
+      <p class="font-heading text-2xl sm:text-3xl font-black tracking-wide text-center">Thank you for reading until the end<span class="text-sub">.</span></p>
     </div>
     <p class="text-center text-sm text-white/60 pt-6">&copy; 2026 Kazuki Toyama. All Rights Reserved.</p>
   </div>
@@ -530,7 +530,7 @@
 <div id="work-modal" class="hidden fixed inset-0 z-[70] items-center justify-center p-4 sm:p-6">
   <div id="work-modal-backdrop" class="absolute inset-0 bg-ink/60 backdrop-blur-sm"></div>
 
-  <div class="relative bg-white rounded-4xl shadow-soft w-full max-w-6xl max-h-[95vh] overflow-y-auto p-6 sm:p-10 pt-16 sm:pt-20">
+  <div class="relative bg-white rounded-4xl shadow-soft w-full max-w-6xl max-h-[95vh] overflow-y-auto overflow-x-hidden p-6 sm:p-10 pt-16 sm:pt-20">
     <button type="button" id="work-modal-close" aria-label="閉じる"
       class="absolute top-5 right-5 sm:top-6 sm:right-6 w-10 h-10 rounded-full bg-primary hover:bg-primary-dark text-white flex items-center justify-center shadow-soft transition-colors z-20">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -539,15 +539,15 @@
     </button>
 
     <div class="grid md:grid-cols-2 gap-10">
-      <div>
-        <h3 id="work-modal-title" class="font-heading text-2xl sm:text-3xl font-black text-center md:text-left pb-4 mb-6 border-b border-primary-light"></h3>
+      <div class="min-w-0">
+        <h3 id="work-modal-title" class="font-heading text-xl sm:text-3xl font-black text-center md:text-left pb-4 mb-6 border-b border-primary-light"></h3>
         <p id="work-modal-description" class="text-sm sm:text-base leading-loose text-ink/90 whitespace-pre-line"></p>
 
         <h4 class="font-heading text-lg font-bold text-center md:text-left mt-8 pb-3 mb-4 border-b border-primary-light">使用言語など</h4>
         <div id="work-modal-tech" class="flex flex-wrap gap-2"></div>
       </div>
 
-      <div>
+      <div class="min-w-0">
         <div class="relative mb-4">
           <button type="button" id="work-modal-thumbs-prev" aria-label="前のサムネイルへ"
             class="hidden absolute -left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white shadow-card items-center justify-center text-primary-dark hover:bg-primary-light transition-colors">
