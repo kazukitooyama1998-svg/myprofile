@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\ContactAdminNotification;
 use App\Mail\ContactAutoReply;
+use App\Models\Contact;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -38,14 +39,22 @@ class ContactController extends Controller
         $data = $validator->validated();
 
         try {
-            Mail::to(config('mail.from.address'))->send(new ContactAdminNotification($data));
-            Mail::to($data['email'])->send(new ContactAutoReply($data['name']));
+            Contact::create($data);
         } catch (\Throwable $e) {
             report($e);
 
             return redirect('/#contact')
                 ->with('contact_error', true)
                 ->withInput();
+        }
+
+        // メール通知はベストエフォート。失敗しても問い合わせ自体はDBに保存済みのため、
+        // 訪問者には成功として案内する（ログにのみ記録する）。
+        try {
+            Mail::to(config('mail.from.address'))->send(new ContactAdminNotification($data));
+            Mail::to($data['email'])->send(new ContactAutoReply($data['name']));
+        } catch (\Throwable $e) {
+            report($e);
         }
 
         return redirect('/#contact')->with('contact_success', true);
