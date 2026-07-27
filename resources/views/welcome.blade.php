@@ -396,11 +396,11 @@
               <span class="font-heading text-primary-dark/70 text-sm">Project Image</span>
             </div>
             <div class="p-6">
-              <h3 class="font-heading font-bold text-lg mb-2">プロジェクト名 04</h3>
-              <p class="text-sm text-muted leading-relaxed mb-4">制作物の概要説明。使用技術や工夫した点を簡潔に。</p>
+              <h3 class="font-heading font-bold text-lg mb-2">Commig soon</h3>
+              <p class="text-sm text-muted leading-relaxed mb-4">#</p>
               <div class="flex flex-wrap gap-2 mb-5">
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">HTML</span>
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Bootstrap</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">#</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">#</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
                 <a href="#" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
@@ -413,11 +413,11 @@
               <span class="font-heading text-accent/80 text-sm">Project Image</span>
             </div>
             <div class="p-6">
-              <h3 class="font-heading font-bold text-lg mb-2">プロジェクト名 05</h3>
-              <p class="text-sm text-muted leading-relaxed mb-4">制作物の概要説明。使用技術や工夫した点を簡潔に。</p>
+              <h3 class="font-heading font-bold text-lg mb-2">Commig soon</h3>
+              <p class="text-sm text-muted leading-relaxed mb-4">#</p>
               <div class="flex flex-wrap gap-2 mb-5">
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">PHP</span>
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Laravel</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">#</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">#</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
                 <a href="#" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
@@ -513,7 +513,7 @@
 <footer id="site-footer" class="relative bg-primary-dark text-white/90 pt-16 pb-8">
   <div class="max-w-6xl mx-auto px-6">
     <div class="flex justify-center items-center pb-8 border-b border-white/15">
-      <a href="#home" class="font-heading text-xl font-bold">Kazuki<span class="text-sub">.</span>Toyama</a>
+      <p class="font-heading text-2xl sm:text-3xl font-black tracking-wide">Thank you for reading until the end<span class="text-sub">.</span></p>
     </div>
     <p class="text-center text-sm text-white/60 pt-6">&copy; 2026 Kazuki Toyama. All Rights Reserved.</p>
   </div>
