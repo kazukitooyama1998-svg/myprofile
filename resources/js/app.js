@@ -23,19 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', closeMobileMenu);
     });
 
-    /* ---------- スクロール連動の演出（ヘッダー背景 / トップへ戻るボタン） ---------- */
-    const header = document.getElementById('site-header');
+    /* ---------- スクロール連動の演出（トップへ戻るボタン） ---------- */
     const backToTop = document.getElementById('back-to-top');
 
     const handleScroll = () => {
-        if (window.scrollY > 20) {
-            header.classList.add('bg-white/90', 'shadow-soft', 'backdrop-blur');
-            header.classList.remove('bg-transparent');
-        } else {
-            header.classList.remove('bg-white/90', 'shadow-soft', 'backdrop-blur');
-            header.classList.add('bg-transparent');
-        }
-
         if (window.scrollY > 400) {
             backToTop.classList.remove('opacity-0', 'pointer-events-none');
             backToTop.classList.add('opacity-100');

@@ -75,7 +75,7 @@
 <body class="bg-cream text-ink font-sans antialiased">
 
 <!-- ==================== Header ==================== -->
-<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-transparent">
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-white/90 shadow-soft backdrop-blur">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
     <a href="#home" class="font-heading text-xl font-bold text-primary-dark tracking-wide">
       Kazuki<span class="text-accent">.</span>Toyama
