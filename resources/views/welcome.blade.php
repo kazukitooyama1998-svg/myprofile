@@ -29,7 +29,7 @@
     'profile-site': {
       title: @js('Profile Site'),
       description: @js('本サイトは、私自身のポートフォリオサイトです。エンジニアとしての実務経験がまだないため、これまでの経歴やスキルを知っていただくことを目的に制作しました。バックエンドにはLaravel、フロントエンドはBladeテンプレートとTailwind CSS（Vite）で構築し、モーダルやカルーセルなどの動きはJavaScriptで実装しています。全体を通して優しい雰囲気とシンプルなテイストを意識したデザインに仕上げました。就職活動や学習の進捗に合わせて、今後も継続して使用・更新していく予定です。'),
-      tech: @js(['Laravel', 'Blade', 'Tailwind CSS', 'JavaScript', 'Vite']),
+      tech: @js(['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'PHP', 'Laravel', 'MySQL']),
       images: [
         { src: @js(asset('images/works/profile-site/hero.png')), alt: @js('Profile Site のトップページ') },
         { src: @js(asset('images/works/profile-site/about.png')), alt: @js('Profile Site の自己紹介セクション') },
@@ -40,8 +40,8 @@
     },
     'learning-english': {
       title: @js('Learning English Site'),
-      description: @js("とにかく「手を動かして」英語を身につける、タイピング機能を軸にした英語学習サイトです。\n\n私自身の英語学習の経験から、「口を動かす（シャドーイング・音読）」ような、手軽に始められて継続しやすい練習が、特に初心者にとって効果的だと感じてきました。質の高い授業を受け、予習・復習を続ける学習法は理想的である一方、初心者にはハードルが高く、挫折しやすいという課題があります。実際に私は、現地の人と数多く話す機会をつくり、AIからフィードバックを得ながらSpeaking練習を重ねることで、英語力を伸ばしてきました。\n\nしかし、Speaking機能を備えた英語学習アプリはすでに数多く存在します。そこで本サイトでは、その対をなす新しいアプローチとして、「とにかく手を動かす（タイピング）」ことを軸に英語を学べる仕組みを発案し、開発しました。\n\nタイピング機能を中心的なコンテンツとしながら、TOEIC形式のReading演習、英単語のフラッシュカード学習、スペルクイズなど、複数の学習モードも実装しています。さらに、学習の継続を後押しする要素として、フォロー機能によるユーザー同士のつながりや、学習記録に基づくランキング機能も取り入れました。\n\nなお、音声機能は無料での実装を検討しましたが、音質が十分でなかったため今回は見送りました。同様に、Speaking／WritingのAI自動採点機能も、コストをかけずに開発する方針としたため、今回は導入していません。これらは今後の拡張課題と位置づけています。"),
-      tech: @js(['Laravel', 'PHP', 'MySQL', 'Blade', 'Tailwind CSS', 'JavaScript', 'Vite']),
+      description: @js("とにかく「手を動かして」英語を身につける、タイピング機能が特徴的な英語学習サイトです。\n\n私自身の英語学習の経験から、「口を動かす（シャドーイング・音読）」ような、手軽に始められて継続しやすい練習が、特に初心者にとって効果的だと感じてきました。質の高い授業を受け、予習・復習を続ける学習法は理想的である一方、初心者にはハードルが高く、挫折しやすいという課題があります。実際に私は、現地の人と数多く話す機会をつくり、IELTS学習時にAIからフィードバックを得ながらSpeaking練習を重ねることで、英語力を伸ばしてきました。\n\nしかし、Speaking機能を備えた英語学習アプリはすでに数多く存在します。そこで本サイトでは、その対をなす新しいアプローチとして、「とにかく手を動かす」タイピング機能を取り入れた英語学習の仕組みを発案し、開発しました。\n\nタイピング機能を中心的なコンテンツとしながら、TOEIC形式のReading演習、英単語のフラッシュカード学習、スペルクイズなど、複数の学習モードも実装しています。さらに、学習の継続を後押しする要素として、フォロー機能によるユーザー同士のつながりや、学習記録に基づくランキング機能も取り入れました。\n\nなお、音声機能は無料での実装を検討しましたが、音質が十分でなかったため今回は見送りました。同様に、Speaking／WritingのAI自動採点機能も、コストをかけずに開発する方針としたため、今回は導入していません。これらは今後の拡張課題と位置づけています。"),
+      tech: @js(['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'PHP', 'Laravel', 'MySQL']),
       images: [
         { src: @js(asset('images/works/learning-english/home-dashboard.png')), alt: @js('Learning English Site のホーム画面（学習ダッシュボード）') },
         { src: @js(asset('images/works/learning-english/landing.png')), alt: @js('Learning English Site のランディングページ') },
@@ -361,7 +361,7 @@
               <div class="flex flex-wrap gap-2 mb-5">
                 <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Laravel</span>
                 <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Tailwind CSS</span>
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">+3</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">+5</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
                 <a href="https://github.com/kazukitooyama1998-svg/myprofile" target="_blank" rel="noopener" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
