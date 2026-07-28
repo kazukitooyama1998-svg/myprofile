@@ -51,12 +51,14 @@ class ContactController extends Controller
                 ->withInput();
         }
 
-        // DB保存は「使えるなら使う・使えなければ静かにスキップする」任意の機能。
-        // 本番でDBが未設定・接続不可でも、メール送信さえ成功すれば問い合わせは完了とする。
-        try {
-            Contact::create($data);
-        } catch (\Throwable $e) {
-            report($e);
+        // DB保存はローカル環境限定の補助機能。本番ではDBを持たない設計のため、
+        // 接続を試みることすらせず常にスキップする。
+        if (app()->environment('local', 'testing')) {
+            try {
+                Contact::create($data);
+            } catch (\Throwable $e) {
+                report($e);
+            }
         }
 
         return redirect('/#contact')->with('contact_success', true);

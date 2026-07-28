@@ -62,5 +62,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 <メモ>
 Render(Free)でDeployのため、deployのサーバー上はDB保存をしないでメッセージの受信設定になっている(MySQLが使用不可のため)。ローカル開発サーバーのURLからお問い合わせフォームを送った際にはDB保存される仕組みになっています。
+https://dashboard.render.com/
 ↓
-Laravel Cloudを使用した方法に変更
+Laravel Cloudを使用した方法に変更(１ヶ月目無料、２ヶ月目から5ドル)
+https://laravel.com/cloud
