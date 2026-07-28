@@ -38,8 +38,11 @@ class ContactController extends Controller
 
         $data = $validator->validated();
 
+        // メール送信を主役の処理とする。ここで失敗した場合のみ、
+        // 訪問者にエラーとして案内する。
         try {
-            Contact::create($data);
+            Mail::to(config('mail.from.address'))->send(new ContactAdminNotification($data));
+            Mail::to($data['email'])->send(new ContactAutoReply($data['name']));
         } catch (\Throwable $e) {
             report($e);
 
@@ -48,11 +51,10 @@ class ContactController extends Controller
                 ->withInput();
         }
 
-        // メール通知はベストエフォート。失敗しても問い合わせ自体はDBに保存済みのため、
-        // 訪問者には成功として案内する（ログにのみ記録する）。
+        // DB保存は「使えるなら使う・使えなければ静かにスキップする」任意の機能。
+        // 本番でDBが未設定・接続不可でも、メール送信さえ成功すれば問い合わせは完了とする。
         try {
-            Mail::to(config('mail.from.address'))->send(new ContactAdminNotification($data));
-            Mail::to($data['email'])->send(new ContactAutoReply($data['name']));
+            Contact::create($data);
         } catch (\Throwable $e) {
             report($e);
         }

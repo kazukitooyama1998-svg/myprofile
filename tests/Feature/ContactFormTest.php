@@ -7,6 +7,7 @@ use App\Mail\ContactAutoReply;
 use App\Models\Contact;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Schema;
 use Tests\TestCase;
 
 class ContactFormTest extends TestCase
@@ -53,7 +54,7 @@ class ContactFormTest extends TestCase
         });
     }
 
-    public function test_it_still_saves_the_inquiry_and_reports_success_even_if_mail_sending_fails(): void
+    public function test_it_reports_an_error_and_does_not_save_the_inquiry_if_mail_sending_fails(): void
     {
         Mail::shouldReceive('to')->andThrow(new \RuntimeException('SMTP unavailable'));
 
@@ -65,10 +66,31 @@ class ContactFormTest extends TestCase
         ]);
 
         $response->assertRedirect('/#contact');
-        $response->assertSessionHas('contact_success', true);
+        $response->assertSessionHas('contact_error', true);
 
-        $this->assertDatabaseHas('contacts', [
+        $this->assertDatabaseMissing('contacts', [
             'email' => 'hanako@example.com',
         ]);
+    }
+
+    public function test_it_still_sends_mail_and_reports_success_even_if_db_save_fails(): void
+    {
+        Mail::fake();
+
+        // 本番でDBが未設定・接続不可の状況を、テーブル欠如による保存失敗で再現する。
+        Schema::dropIfExists('contacts');
+
+        $response = $this->post('/contact', [
+            'name' => 'Jiro Suzuki',
+            'email' => 'jiro@example.com',
+            'subject' => 'テスト件名3',
+            'message' => 'テストメッセージ3です。',
+        ]);
+
+        $response->assertRedirect('/#contact');
+        $response->assertSessionHas('contact_success', true);
+
+        Mail::assertSent(ContactAdminNotification::class);
+        Mail::assertSent(ContactAutoReply::class);
     }
 }

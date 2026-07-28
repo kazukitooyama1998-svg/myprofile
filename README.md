@@ -57,3 +57,10 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+<メモ>
+Render(Free)でDeployのため、deployのサーバー上はDB保存をしないでメッセージの受信設定になっている(MySQLが使用不可のため)。ローカル開発サーバーのURLからお問い合わせフォームを送った際にはDB保存される仕組みになっています。
+↓
+Laravel Cloudを使用した方法に変更
