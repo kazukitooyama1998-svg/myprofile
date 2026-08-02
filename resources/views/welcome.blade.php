@@ -66,6 +66,16 @@
         { src: @js(asset('images/works/learning-english/ranking.png')), alt: @js('Learning English Site のランキング画面') },
       ],
     },
+    'voca-review': {
+      title: @js('VocaReview'),
+      description: @js("英単語や文法の自己学習には、これまでスプレッドシートを使ってきました。しかし利用する項目数が増えるにつれて動作が重くなり、単語や文法を追加・編集・検索するたびにストレスを感じるようになっていました。また、「覚えた項目」と「まだ覚えていない項目」を分けて見返す方法がなく、どれだけ復習を続けられているかを振り返る手段もありませんでした。\n\nこうした課題を解決するために、スプレッドシートで管理していた学習内容をWebアプリへ移行し、動作を軽快にすることを目的としてVocaReviewを開発しました。単語・フレーズ・文法を効率よく登録・管理・復習できる環境を整えることで、自分専用の英語学習ツールとして学習効率そのものを高めることを目指しています。\n\nログイン機能を持たない個人利用前提のアプリのため、画面遷移をできるだけ減らし、登録・検索・絞り込み・復習・学習記録の確認まで、すべてトップページ1枚で完結するように設計しています。"),
+      tech: @js(['HTML', 'JavaScript', 'Tailwind CSS', 'PHP', 'Laravel', 'MySQL']),
+      images: [
+        { src: @js(asset('images/works/voca-review/add-form.png')), alt: @js('VocaReview の検索・絞り込み・新規登録エリア') },
+        { src: @js(asset('images/works/voca-review/word-list-1.png')), alt: @js('VocaReview の登録一覧画面') },
+        { src: @js(asset('images/works/voca-review/word-list-2.png')), alt: @js('VocaReview の登録一覧とページネーション') },
+      ],
+    },
   };
 </script>
 
@@ -392,18 +402,22 @@
           </article>
 
           <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
-            <div class="aspect-[4/3] bg-gradient-to-br from-primary-light to-accent/30 flex items-center justify-center">
-              <span class="font-heading text-primary-dark/70 text-sm">Project Image</span>
+            <div class="aspect-[4/3] overflow-hidden bg-paper flex items-center justify-center">
+              <img src="{{ asset('images/works/voca-review/home-dashboard.png') }}" alt="VocaReview のトップ画面（学習ダッシュボード）" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div class="p-6">
-              <h3 class="font-heading font-bold text-lg mb-2">Commig soon</h3>
-              <p class="text-sm text-muted leading-relaxed mb-4">#</p>
+              <h3 class="font-heading font-bold text-lg mb-2">VocaReview</h3>
+              <p class="text-sm text-muted leading-relaxed mb-1">スプレッドシートでの英単語・文法学習をWebアプリ化した、個人用の英語自己学習ツールです。</p>
+              <button type="button" class="work-modal-trigger text-sm font-heading font-semibold text-primary-dark hover:text-accent transition-colors mb-4" data-work="voca-review">
+                詳しくはクリック →
+              </button>
               <div class="flex flex-wrap gap-2 mb-5">
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">#</span>
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">#</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Laravel</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">MySQL</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">+4</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
-                <a href="#" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
+                <a href="https://github.com/kazukitooyama1998-svg/voca-review" target="_blank" rel="noopener" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
               </div>
             </div>
           </article>

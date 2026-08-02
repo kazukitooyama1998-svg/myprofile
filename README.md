@@ -61,8 +61,12 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 
 <メモ>
-Render(Free)でDeployのため、deployのサーバー上はDB保存をしないでメッセージの受信設定になっている(MySQLが使用不可のため)。ローカル開発サーバーのURLからお問い合わせフォームを送った際にはDB保存される仕組みになっています。
+Render(Free)でDeployのため、deployサーバー上はDB保存をしないでメッセージの受信設定になっている(MySQLが使用不可のため)。ローカル開発サーバーのURLからお問い合わせフォームを送った際にはDB保存される仕組みになっています。
 https://dashboard.render.com/
 ↓
 Laravel Cloudを使用した方法に変更(１ヶ月目無料、２ヶ月目から5ドル)
+上記同様にMysqlの使用ができないため、deployサーバーからのお問い合わせはDB保存しない設計にしています。
 https://laravel.com/cloud
+
+Setting->General->Custom environment variables
+Setting->General->Preview environment->Custom environment variables
