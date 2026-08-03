@@ -207,12 +207,12 @@
                 現在、Kredoにて Web 開発と英語を学習しています。（2026年9月18日卒業見込み）
               </span>
             </li>
-            <li class="flex items-center gap-3 bg-paper rounded-2xl px-5 py-3 shadow-sm">
-              <span class="w-2.5 h-2.5 rounded-full bg-accent"></span>
-              <span class="text-sm text-muted">得意分野：Laravelを用いたWeb開発</span>
+            <li class="flex items-start gap-3 bg-paper rounded-2xl px-5 py-3 shadow-sm">
+              <span class="w-2.5 h-2.5 rounded-full bg-accent mt-1.5 shrink-0"></span>
+              <span class="text-sm text-muted">得意分野：Claude Codeを活用したLaravel開発</span>
             </li>
-            <li class="flex items-center gap-3 bg-paper rounded-2xl px-5 py-3 shadow-sm">
-              <span class="w-2.5 h-2.5 rounded-full bg-sub"></span>
+            <li class="flex items-start gap-3 bg-paper rounded-2xl px-5 py-3 shadow-sm">
+              <span class="w-2.5 h-2.5 rounded-full bg-sub mt-1.5 shrink-0"></span>
               <span class="text-sm text-muted">趣味：英語学習 / 美味しいものを食べること</span>
             </li>
             <li class="sm:col-span-2 flex items-center gap-3 bg-paper rounded-2xl px-5 py-3 shadow-sm">
@@ -236,12 +236,16 @@
       <div class="reveal text-center mb-16">
         <p class="font-heading text-accent font-semibold tracking-widest mb-2">SKILLS</p>
         <h2 class="font-heading text-3xl sm:text-4xl font-black">使用技術</h2>
-        <p class="text-muted mt-4 max-w-xl mx-auto leading-relaxed">
-          これまで学習してきた技術をまとめています。ITスクールではフロントエンドからバックエンドまで幅広い技術を学び、Web開発全体の基礎を身につけました。現在はJavaScriptやTailwind CSSを中心に学習を進めており、今後もさまざまな技術やプログラミング言語への理解を深めながら、継続的にスキルアップに取り組んでいきます。また、幅広い知識を土台としつつ、将来的にはフロントエンドやバックエンドなど、それぞれの分野で専門性を高め、より価値のあるサービスを開発できるエンジニアを目指しています。
+        <p class="text-muted mt-4 max-w-2xl mx-auto leading-relaxed">
+          これまで学習してきた技術をまとめています。ITスクールではフロントエンドからバックエンドまで幅広い技術を学び、Web開発全体の基礎を身につけました。現在はJavaScriptやTailwind CSSを中心に学習を進めるとともに、Laravelを用いたWebアプリケーション開発にも継続的に取り組んでいます。
+          <br /><br />
+          また、Claude Codeを活用したLaravel開発を実践しており、要件整理から実装までの開発工程を効率化しながら、より生産性の高い開発を意識しています。さらに、ChatGPTなどのAIツールについても、それぞれの特性を活かした活用方法を検証し、開発効率の向上やより良いアプリケーション開発につながるワークフローを日々模索しています。
+          <br /><br />
+          今後もさまざまな技術やプログラミング言語への理解を深めるとともに、AIを効果的に活用した開発手法についても継続的に学習し、スキルアップに取り組んでいきます。また、幅広い知識を土台としつつ、将来的にはフロントエンドやバックエンドなど、それぞれの分野で専門性を高め、ユーザーにとって価値のあるサービスを開発できるエンジニアを目指しています。
         </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
 
         <!-- Frontend -->
         <div class="reveal bg-white rounded-4xl p-8 shadow-card">
@@ -304,6 +308,20 @@
           <div class="flex flex-wrap gap-2">
             <span class="px-3.5 py-1.5 rounded-full bg-ink/10 text-ink text-sm font-medium">GitHub</span>
             <span class="px-3.5 py-1.5 rounded-full bg-ink/10 text-ink text-sm font-medium">GitHub Desktop</span>
+          </div>
+        </div>
+
+        <!-- AI tools -->
+        <div class="reveal bg-white rounded-4xl p-8 shadow-card" style="transition-delay: .4s">
+          <div class="w-12 h-12 rounded-2xl bg-primary-light flex items-center justify-center mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a4 4 0 115.657 0 4 4 0 01-5.657 0z" />
+            </svg>
+          </div>
+          <h3 class="font-heading font-bold text-lg mb-4">AI tools</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3.5 py-1.5 rounded-full bg-primary-light text-primary-dark text-sm font-medium">Claude Code</span>
+            <span class="px-3.5 py-1.5 rounded-full bg-primary-light text-primary-dark text-sm font-medium">ChatGPT</span>
           </div>
         </div>
 
