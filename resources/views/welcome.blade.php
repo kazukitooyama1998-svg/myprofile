@@ -74,6 +74,8 @@
         { src: @js(asset('images/works/voca-review/add-form.png')), alt: @js('VocaReview の検索・絞り込み・新規登録エリア') },
         { src: @js(asset('images/works/voca-review/word-list-1.png')), alt: @js('VocaReview の登録一覧画面') },
         { src: @js(asset('images/works/voca-review/word-list-2.png')), alt: @js('VocaReview の登録一覧とページネーション') },
+        { src: @js(asset('images/works/voca-review/edit-modal.png')), alt: @js('VocaReview の編集モーダル') },
+        { src: @js(asset('images/works/voca-review/delete-confirm.png')), alt: @js('VocaReview の削除確認モーダル') },
       ],
     },
   };
