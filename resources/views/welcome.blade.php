@@ -33,9 +33,12 @@
       images: [
         { src: @js(asset('images/works/profile-site/hero.png')), alt: @js('Profile Site のトップページ') },
         { src: @js(asset('images/works/profile-site/about.png')), alt: @js('Profile Site の自己紹介セクション') },
+        { src: @js(asset('images/works/profile-site/about-detail.png')), alt: @js('Profile Site の自己紹介セクション（プロフィール情報）') },
         { src: @js(asset('images/works/profile-site/skills.png')), alt: @js('Profile Site の使用技術セクション') },
+        { src: @js(asset('images/works/profile-site/skills-cards.png')), alt: @js('Profile Site の使用技術カード一覧') },
         { src: @js(asset('images/works/profile-site/works.png')), alt: @js('Profile Site の制作物セクション') },
         { src: @js(asset('images/works/profile-site/contact.png')), alt: @js('Profile Site のお問い合わせセクション') },
+        { src: @js(asset('images/works/profile-site/footer.png')), alt: @js('Profile Site のフッター（森のなかまのおみくじ）') },
       ],
     },
     'learning-english': {
