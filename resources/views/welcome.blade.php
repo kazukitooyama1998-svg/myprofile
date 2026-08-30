@@ -94,15 +94,15 @@
     </a>
 
     <!-- PC Nav -->
-    <nav class="hidden md:flex items-center gap-8 font-heading text-sm font-medium">
-      <a href="#home" class="nav-link transition-colors hover:text-primary">Home</a>
-      <a href="#about" class="nav-link transition-colors hover:text-primary">About</a>
-      <a href="#skills" class="nav-link transition-colors hover:text-primary">Skills</a>
-      <a href="#works" class="nav-link transition-colors hover:text-primary">Works</a>
-      <a href="#contact" class="nav-link transition-colors hover:text-primary">Contact</a>
+    <nav class="hidden md:flex items-center gap-3 lg:gap-5 font-heading text-sm font-medium">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#works" class="nav-link">Works</a>
+      <a href="#contact" class="nav-link">Contact</a>
     </nav>
 
-    <a href="#contact" class="hidden md:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-heading font-medium px-5 py-2.5 rounded-full shadow-soft transition-all hover:-translate-y-0.5">
+    <a href="#contact" class="btn-pop hidden md:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-heading font-medium px-5 py-2.5 rounded-full">
       お問い合わせ
     </a>
 
@@ -131,15 +131,31 @@
 
   <!-- ==================== Hero ==================== -->
   <section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-24">
+    <!-- 海と空を思わせる淡いグラデーション -->
+    <div class="absolute inset-0 bg-gradient-to-b from-sky-light/70 via-cream to-cream"></div>
+
     <!-- ふんわりブロブ背景 -->
     <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary-light rounded-full blur-3xl opacity-70 animate-blob"></div>
     <div class="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-accent-light rounded-full blur-3xl opacity-70 animate-blob animate-blob-delay"></div>
     <div class="absolute bottom-0 left-1/4 w-72 h-72 bg-sub-light rounded-full blur-3xl opacity-60 animate-blob animate-blob-delay2"></div>
 
-    <div class="relative max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center w-full">
+    <!-- 着想モチーフ：インク・きらめき・葉っぱ（スクロールで視差移動） -->
+    <div class="motif top-24 right-[8%] w-40 h-40 text-grape-light hidden sm:block" data-parallax="-0.06">
+      <svg class="motif-inner ink-splat anim-drift" viewBox="0 0 120 120" aria-hidden="true"><path d="M62 8c9-4 15 9 26 9s18 3 19 14-8 15-4 26 12 15 6 25-19 4-27 12-9 17-21 17-15-10-26-11-17 6-25-2-1-19-6-29S3 71 6 60s16-9 20-19S39 22 47 16 53 12 62 8z"/></svg>
+    </div>
+    <div class="motif bottom-16 left-[6%] w-24 h-24 text-primary-light hidden sm:block" data-parallax="0.1">
+      <svg class="motif-inner ink-splat anim-drift" style="animation-delay:-3s" viewBox="0 0 120 120" aria-hidden="true"><path d="M62 8c9-4 15 9 26 9s18 3 19 14-8 15-4 26 12 15 6 25-19 4-27 12-9 17-21 17-15-10-26-11-17 6-25-2-1-19-6-29S3 71 6 60s16-9 20-19S39 22 47 16 53 12 62 8z"/></svg>
+    </div>
+    <div class="motif top-[22%] left-[12%] w-9 h-9 text-sub" data-parallax="0.16">
+      <svg class="motif-inner anim-twinkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12C7 10 11 6 12 0z"/></svg>
+    </div>
+    <div class="motif top-[62%] right-[16%] w-6 h-6 text-accent" data-parallax="0.22">
+      <svg class="motif-inner anim-twinkle" style="animation-delay:-1.5s" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12C7 10 11 6 12 0z"/></svg>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center w-full">
       <div class="reveal">
-        <p class="font-heading text-primary-dark font-semibold tracking-widest mb-4 flex items-center gap-2">
-          <span class="inline-block w-8 h-[2px] bg-primary-dark"></span>
+        <p class="signboard signboard-swing font-heading font-bold tracking-widest mb-6 text-sm">
           WEB ENGINEER PORTFOLIO
         </p>
         <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
@@ -152,10 +168,10 @@
           少しでも私のことを知っていただければ幸いです。ぜひご覧ください。
         </p>
         <div class="flex flex-wrap gap-4">
-          <a href="#works" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-heading font-semibold px-7 py-3.5 rounded-full shadow-soft transition-all hover:-translate-y-0.5">
-            制作物を見る
+          <a href="#works" class="btn-pop group/link inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-heading font-semibold px-7 py-3.5 rounded-full">
+            制作物を見る <span class="arrow-nudge">→</span>
           </a>
-          <a href="#about" class="inline-flex items-center gap-2 bg-white hover:bg-primary-light/60 text-ink font-heading font-semibold px-7 py-3.5 rounded-full shadow-soft transition-all hover:-translate-y-0.5">
+          <a href="#about" class="btn-pop inline-flex items-center gap-2 bg-white hover:bg-primary-light/60 text-ink font-heading font-semibold px-7 py-3.5 rounded-full">
             プロフィールを見る
           </a>
         </div>
@@ -164,7 +180,7 @@
       <div class="reveal relative flex justify-center" style="transition-delay: .15s">
         <div class="relative w-80 h-80 sm:w-[26rem] sm:h-[26rem] lg:w-[30rem] lg:h-[30rem]">
           <div class="absolute inset-0 rounded-4xl bg-gradient-to-br from-primary-light via-accent-light to-sub-light rotate-6"></div>
-          <div class="absolute inset-0 rounded-4xl bg-white shadow-card -rotate-3 flex items-center justify-center overflow-hidden">
+          <div class="absolute inset-0 rounded-4xl bg-white sticker -rotate-3 flex items-center justify-center overflow-hidden">
             <img src="{{ asset('images/profile.jpeg') }}" alt="Kazuki Toyama" class="w-full h-full object-cover" />
           </div>
         </div>
@@ -173,10 +189,17 @@
   </section>
 
   <!-- ==================== About ==================== -->
-  <section id="about" class="relative py-28 scroll-mt-20">
-    <div class="max-w-6xl mx-auto px-6">
+  <section id="about" class="relative py-28 scroll-mt-20 overflow-hidden">
+    <div class="motif top-16 left-[4%] w-28 h-28 text-berry-light hidden lg:block" data-parallax="0.08">
+      <svg class="motif-inner ink-splat anim-drift" viewBox="0 0 120 120" aria-hidden="true"><path d="M62 8c9-4 15 9 26 9s18 3 19 14-8 15-4 26 12 15 6 25-19 4-27 12-9 17-21 17-15-10-26-11-17 6-25-2-1-19-6-29S3 71 6 60s16-9 20-19S39 22 47 16 53 12 62 8z"/></svg>
+    </div>
+    <div class="motif bottom-24 right-[5%] w-8 h-8 text-sub" data-parallax="0.18">
+      <svg class="motif-inner anim-twinkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12C7 10 11 6 12 0z"/></svg>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
       <div class="reveal text-center mb-16">
-        <p class="font-heading text-accent font-semibold tracking-widest mb-2">ABOUT ME</p>
+        <p class="signboard signboard-swing font-heading font-bold tracking-widest mb-4 text-sm">ABOUT ME</p>
         <h2 class="font-heading text-3xl sm:text-4xl font-black">自己紹介</h2>
       </div>
 
@@ -184,8 +207,11 @@
         <div class="reveal md:col-span-2 flex justify-center">
           <div class="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
             <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary-light to-accent-light rotate-6"></div>
-            <div class="absolute inset-2 rounded-full bg-white shadow-card overflow-hidden">
+            <div class="absolute inset-2 rounded-full bg-white sticker overflow-hidden">
               <img src="{{ asset('images/about-photo.png') }}" alt="Kazuki Toyama" class="w-full h-full object-cover" />
+            </div>
+            <div class="motif -top-2 -right-1 w-8 h-8 text-sub z-10">
+              <svg class="motif-inner anim-twinkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12C7 10 11 6 12 0z"/></svg>
             </div>
           </div>
         </div>
@@ -201,24 +227,24 @@
             将来は、これまでの海外経験や異業種での職務経験を活かし、ITを通じてさまざまな業界の課題解決や業務効率化に貢献できるエンジニアを目指しています。教育分野をはじめ、多様な分野で人々の生活や仕事をより便利にするWebサービスやシステムの開発に携わりたいと考えています。新しい技術を継続的に学びながら、利用者の視点を大切にし、価値あるサービスを提供できるエンジニアとして成長していきたいです。
           </p>
 
-          <ul class="grid sm:grid-cols-2 gap-3 pt-4">
-            <li class="sm:col-span-2 flex items-start gap-3 bg-paper rounded-2xl px-5 py-4 shadow-sm">
-              <span class="w-2.5 h-2.5 rounded-full bg-primary mt-1.5 shrink-0"></span>
+          <ul class="grid sm:grid-cols-2 gap-3.5 pt-4">
+            <li class="group sm:col-span-2 flex items-start gap-3 bg-paper rounded-2xl px-5 py-4 sticker-sm transition-transform hover:-translate-y-1 hover:rotate-[-1deg]">
+              <span class="group-jump w-2.5 h-2.5 rounded-full bg-primary mt-1.5 shrink-0"></span>
               <span class="text-sm text-muted leading-relaxed">
                 在住地：フィリピン・セブ島（留学中）<br />
                 現在、Kredoにて Web 開発と英語を学習しています。（2026年9月18日卒業見込み）
               </span>
             </li>
-            <li class="flex items-start gap-3 bg-paper rounded-2xl px-5 py-3 shadow-sm">
-              <span class="w-2.5 h-2.5 rounded-full bg-accent mt-1.5 shrink-0"></span>
+            <li class="group flex items-start gap-3 bg-paper rounded-2xl px-5 py-3 sticker-sm transition-transform hover:-translate-y-1 hover:rotate-[-1deg]">
+              <span class="group-jump w-2.5 h-2.5 rounded-full bg-accent mt-1.5 shrink-0"></span>
               <span class="text-sm text-muted">得意分野：Claude Codeを活用したLaravel開発</span>
             </li>
-            <li class="flex items-start gap-3 bg-paper rounded-2xl px-5 py-3 shadow-sm">
-              <span class="w-2.5 h-2.5 rounded-full bg-sub mt-1.5 shrink-0"></span>
+            <li class="group flex items-start gap-3 bg-paper rounded-2xl px-5 py-3 sticker-sm transition-transform hover:-translate-y-1 hover:rotate-[-1deg]">
+              <span class="group-jump w-2.5 h-2.5 rounded-full bg-sub mt-1.5 shrink-0"></span>
               <span class="text-sm text-muted">趣味：英語学習 / 美味しいものを食べること</span>
             </li>
-            <li class="sm:col-span-2 flex items-center gap-3 bg-paper rounded-2xl px-5 py-3 shadow-sm">
-              <span class="w-2.5 h-2.5 rounded-full bg-primary-dark shrink-0"></span>
+            <li class="group sm:col-span-2 flex items-center gap-3 bg-paper rounded-2xl px-5 py-3 sticker-sm transition-transform hover:-translate-y-1 hover:rotate-[-1deg]">
+              <span class="group-jump w-2.5 h-2.5 rounded-full bg-primary-dark shrink-0"></span>
               <span class="text-sm text-muted">
                 GitHub：
                 <a href="https://github.com/kazukitooyama1998-svg" target="_blank" rel="noopener" class="text-primary-dark hover:text-accent underline underline-offset-2 transition-colors">
@@ -233,10 +259,17 @@
   </section>
 
   <!-- ==================== Skills ==================== -->
-  <section id="skills" class="relative py-28 bg-paper scroll-mt-20">
-    <div class="max-w-6xl mx-auto px-6">
+  <section id="skills" class="relative py-28 bg-paper scroll-mt-20 overflow-hidden">
+    <div class="motif top-20 right-[6%] w-32 h-32 text-sky-light hidden lg:block" data-parallax="0.09">
+      <svg class="motif-inner ink-splat anim-drift" viewBox="0 0 120 120" aria-hidden="true"><path d="M62 8c9-4 15 9 26 9s18 3 19 14-8 15-4 26 12 15 6 25-19 4-27 12-9 17-21 17-15-10-26-11-17 6-25-2-1-19-6-29S3 71 6 60s16-9 20-19S39 22 47 16 53 12 62 8z"/></svg>
+    </div>
+    <div class="motif bottom-16 left-[7%] w-9 h-9 text-accent" data-parallax="0.2">
+      <svg class="motif-inner anim-twinkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12C7 10 11 6 12 0z"/></svg>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
       <div class="reveal text-center mb-16">
-        <p class="font-heading text-accent font-semibold tracking-widest mb-2">SKILLS</p>
+        <p class="signboard signboard-swing font-heading font-bold tracking-widest mb-4 text-sm">SKILLS</p>
         <h2 class="font-heading text-3xl sm:text-4xl font-black">使用技術</h2>
         <p class="text-muted mt-4 max-w-2xl mx-auto leading-relaxed">
           これまで学習してきた技術をまとめています。ITスクールではフロントエンドからバックエンドまで幅広い技術を学び、Web開発全体の基礎を身につけました。現在はJavaScriptやTailwind CSSを中心に学習を進めるとともに、Laravelを用いたWebアプリケーション開発にも継続的に取り組んでいます。
@@ -247,11 +280,11 @@
         </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 [perspective:1000px]">
 
         <!-- Frontend -->
-        <div class="reveal bg-white rounded-4xl p-8 shadow-card">
-          <div class="w-12 h-12 rounded-2xl bg-primary-light flex items-center justify-center mb-5">
+        <div class="reveal card-pop card-tilt group bg-white rounded-4xl p-8">
+          <div class="w-12 h-12 rounded-2xl bg-primary-light flex items-center justify-center mb-5 pop-icon sticker-sm">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
@@ -272,8 +305,8 @@
         </div>
 
         <!-- Backend -->
-        <div class="reveal bg-white rounded-4xl p-8 shadow-card" style="transition-delay: .1s">
-          <div class="w-12 h-12 rounded-2xl bg-accent-light flex items-center justify-center mb-5">
+        <div class="reveal card-pop card-tilt group bg-white rounded-4xl p-8" style="transition-delay: .1s">
+          <div class="w-12 h-12 rounded-2xl bg-accent-light flex items-center justify-center mb-5 pop-icon sticker-sm">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
             </svg>
@@ -286,8 +319,8 @@
         </div>
 
         <!-- Database -->
-        <div class="reveal bg-white rounded-4xl p-8 shadow-card" style="transition-delay: .2s">
-          <div class="w-12 h-12 rounded-2xl bg-sub-light flex items-center justify-center mb-5">
+        <div class="reveal card-pop card-tilt group bg-white rounded-4xl p-8" style="transition-delay: .2s">
+          <div class="w-12 h-12 rounded-2xl bg-sub-light flex items-center justify-center mb-5 pop-icon sticker-sm">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sub" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 7c0-1.657 3.582-3 8-3s8 1.343 8 3-3.582 3-8 3-8-1.343-8-3zm0 0v10c0 1.657 3.582 3 8 3s8-1.343 8-3V7m-16 5c0 1.657 3.582 3 8 3s8-1.343 8-3" />
             </svg>
@@ -300,8 +333,8 @@
         </div>
 
         <!-- Tools -->
-        <div class="reveal bg-white rounded-4xl p-8 shadow-card" style="transition-delay: .3s">
-          <div class="w-12 h-12 rounded-2xl bg-ink/10 flex items-center justify-center mb-5">
+        <div class="reveal card-pop card-tilt group bg-white rounded-4xl p-8" style="transition-delay: .3s">
+          <div class="w-12 h-12 rounded-2xl bg-ink/10 flex items-center justify-center mb-5 pop-icon sticker-sm">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 3v12m12-9a3 3 0 11-6 0 3 3 0 016 0zM9 18a3 3 0 11-6 0 3 3 0 016 0zm9-9a9 9 0 01-9 9" />
             </svg>
@@ -314,8 +347,8 @@
         </div>
 
         <!-- AI tools -->
-        <div class="reveal bg-white rounded-4xl p-8 shadow-card" style="transition-delay: .4s">
-          <div class="w-12 h-12 rounded-2xl bg-primary-light flex items-center justify-center mb-5">
+        <div class="reveal card-pop card-tilt group bg-white rounded-4xl p-8" style="transition-delay: .4s">
+          <div class="w-12 h-12 rounded-2xl bg-primary-light flex items-center justify-center mb-5 pop-icon sticker-sm">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a4 4 0 115.657 0 4 4 0 01-5.657 0z" />
             </svg>
@@ -332,22 +365,29 @@
   </section>
 
   <!-- ==================== Works ==================== -->
-  <section id="works" class="relative py-28 scroll-mt-20">
-    <div class="max-w-6xl mx-auto px-6">
+  <section id="works" class="relative py-28 scroll-mt-20 overflow-hidden">
+    <div class="motif top-16 left-[3%] w-36 h-36 text-grape-light hidden lg:block" data-parallax="0.07">
+      <svg class="motif-inner ink-splat anim-drift" viewBox="0 0 120 120" aria-hidden="true"><path d="M62 8c9-4 15 9 26 9s18 3 19 14-8 15-4 26 12 15 6 25-19 4-27 12-9 17-21 17-15-10-26-11-17 6-25-2-1-19-6-29S3 71 6 60s16-9 20-19S39 22 47 16 53 12 62 8z"/></svg>
+    </div>
+    <div class="motif bottom-28 right-[4%] w-10 h-10 text-sub" data-parallax="0.19">
+      <svg class="motif-inner anim-twinkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12C7 10 11 6 12 0z"/></svg>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
       <div class="reveal text-center mb-16">
-        <p class="font-heading text-accent font-semibold tracking-widest mb-2">WORKS</p>
+        <p class="signboard signboard-swing font-heading font-bold tracking-widest mb-4 text-sm">WORKS</p>
         <h2 class="font-heading text-3xl sm:text-4xl font-black">制作物</h2>
       </div>
 
       <div class="reveal relative md:px-10">
 
         <!-- 前へ / 次へ ボタン -->
-        <button id="works-prev" aria-label="前の制作物へ" class="hidden md:flex absolute -left-5 top-[38%] -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white shadow-card items-center justify-center text-primary-dark hover:bg-primary-light transition-colors">
+        <button id="works-prev" aria-label="前の制作物へ" class="hidden md:flex absolute -left-5 top-[38%] -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white btn-pop items-center justify-center text-primary-dark hover:bg-primary-light">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        <button id="works-next" aria-label="次の制作物へ" class="hidden md:flex absolute -right-5 top-[38%] -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white shadow-card items-center justify-center text-primary-dark hover:bg-primary-light transition-colors">
+        <button id="works-next" aria-label="次の制作物へ" class="hidden md:flex absolute -right-5 top-[38%] -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white btn-pop items-center justify-center text-primary-dark hover:bg-primary-light">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>
@@ -357,7 +397,7 @@
         <div id="works-track" class="works-track flex gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4">
 
           <!-- Work Card 01: Coffee Shop Website -->
-          <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
+          <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group card-pop bg-white rounded-4xl overflow-hidden">
             <div class="aspect-[4/3] overflow-hidden bg-paper flex items-center justify-center">
               <img src="{{ asset('images/works/coffee-shop/hero.png') }}" alt="Coffee Shop Website のトップページ" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
@@ -365,7 +405,7 @@
               <h3 class="font-heading font-bold text-lg mb-2">Coffee Shop Website</h3>
               <p class="text-sm text-muted leading-relaxed mb-1">ITスクールの課題として制作した、HTML・CSSのみのランディングページです。</p>
               <button type="button" class="work-modal-trigger text-sm font-heading font-semibold text-primary-dark hover:text-accent transition-colors mb-4" data-work="coffee-shop">
-                詳しくはクリック →
+                詳しくはクリック <span class="arrow-nudge">→</span>
               </button>
               <div class="flex flex-wrap gap-2 mb-5">
                 <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">HTML</span>
@@ -378,7 +418,7 @@
           </article>
 
           <!-- Work Card 02: Profile Site -->
-          <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
+          <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group card-pop bg-white rounded-4xl overflow-hidden">
             <div class="aspect-[4/3] overflow-hidden bg-paper flex items-center justify-center">
               <img src="{{ asset('images/works/profile-site/hero.png') }}" alt="Profile Site のトップページ" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
@@ -386,7 +426,7 @@
               <h3 class="font-heading font-bold text-lg mb-2">Profile Site</h3>
               <p class="text-sm text-muted leading-relaxed mb-1">経歴やスキルを知っていただくために制作した、自分自身のポートフォリオサイトです。</p>
               <button type="button" class="work-modal-trigger text-sm font-heading font-semibold text-primary-dark hover:text-accent transition-colors mb-4" data-work="profile-site">
-                詳しくはクリック →
+                詳しくはクリック <span class="arrow-nudge">→</span>
               </button>
               <div class="flex flex-wrap gap-2 mb-5">
                 <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Laravel</span>
@@ -400,7 +440,7 @@
           </article>
 
           <!-- Work Card 03: Learning English Site -->
-          <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
+          <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group card-pop bg-white rounded-4xl overflow-hidden">
             <div class="aspect-[4/3] overflow-hidden bg-paper flex items-center justify-center">
               <img src="{{ asset('images/works/learning-english/home-dashboard.png') }}" alt="Learning English Site のホーム画面（学習ダッシュボード）" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
@@ -408,7 +448,7 @@
               <h3 class="font-heading font-bold text-lg mb-2">Learning English Site</h3>
               <p class="text-sm text-muted leading-relaxed mb-1">「とにかく手を動かす」タイピング機能が特徴的な英語学習サイトです。</p>
               <button type="button" class="work-modal-trigger text-sm font-heading font-semibold text-primary-dark hover:text-accent transition-colors mb-4" data-work="learning-english">
-                詳しくはクリック →
+                詳しくはクリック <span class="arrow-nudge">→</span>
               </button>
               <div class="flex flex-wrap gap-2 mb-5">
                 <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Laravel</span>
@@ -421,7 +461,7 @@
             </div>
           </article>
 
-          <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
+          <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group card-pop bg-white rounded-4xl overflow-hidden">
             <div class="aspect-[4/3] overflow-hidden bg-paper flex items-center justify-center">
               <img src="{{ asset('images/works/voca-review/home-dashboard.png') }}" alt="VocaReview のトップ画面（学習ダッシュボード）" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
@@ -429,7 +469,7 @@
               <h3 class="font-heading font-bold text-lg mb-2">VocaReview</h3>
               <p class="text-sm text-muted leading-relaxed mb-1">スプレッドシートでの英単語・文法学習をWebアプリ化した、個人用の英語自己学習ツールです。</p>
               <button type="button" class="work-modal-trigger text-sm font-heading font-semibold text-primary-dark hover:text-accent transition-colors mb-4" data-work="voca-review">
-                詳しくはクリック →
+                詳しくはクリック <span class="arrow-nudge">→</span>
               </button>
               <div class="flex flex-wrap gap-2 mb-5">
                 <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Laravel</span>
@@ -442,7 +482,7 @@
             </div>
           </article>
 
-          <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group bg-white rounded-4xl overflow-hidden shadow-card transition-all hover:-translate-y-1.5 hover:shadow-soft">
+          <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group card-pop bg-white rounded-4xl overflow-hidden">
             <div class="aspect-[4/3] bg-gradient-to-br from-accent-light to-sub/30 flex items-center justify-center">
               <span class="font-heading text-accent/80 text-sm">Project Image</span>
             </div>
@@ -477,9 +517,16 @@
   <section id="contact" class="relative py-28 bg-paper scroll-mt-20 overflow-hidden">
     <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary-light rounded-full blur-3xl opacity-60"></div>
 
-    <div class="relative max-w-2xl mx-auto px-6">
+    <!-- 海モチーフ：下からゆらゆら昇る泡（JSで生成） -->
+    <div id="contact-bubbles" class="absolute inset-0 overflow-hidden" aria-hidden="true"></div>
+
+    <div class="motif top-14 left-[6%] w-10 h-10 text-sky-dark" data-parallax="0.15">
+      <svg class="motif-inner anim-twinkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12C7 10 11 6 12 0z"/></svg>
+    </div>
+
+    <div class="relative z-10 max-w-2xl mx-auto px-6">
       <div class="reveal text-center mb-14">
-        <p class="font-heading text-accent font-semibold tracking-widest mb-2">CONTACT</p>
+        <p class="signboard signboard-swing font-heading font-bold tracking-widest mb-4 text-sm">CONTACT</p>
         <h2 class="font-heading text-3xl sm:text-4xl font-black mb-4">お問い合わせ</h2>
         <p class="text-muted leading-relaxed">
           ご質問等、お気軽にご連絡ください。
@@ -499,7 +546,7 @@
         </div>
       @endif
 
-      <form class="reveal bg-white rounded-4xl shadow-card p-8 sm:p-10 space-y-6" action="{{ route('contact.store') }}" method="POST">
+      <form class="reveal sticker bg-white rounded-4xl p-8 sm:p-10 space-y-6" action="{{ route('contact.store') }}" method="POST">
         @csrf
         <div>
           <label for="name" class="block font-heading text-sm font-semibold mb-2">お名前</label>
@@ -534,8 +581,8 @@
           @enderror
         </div>
         <button type="submit"
-          class="w-full bg-primary hover:bg-primary-dark text-white font-heading font-semibold py-3.5 rounded-full shadow-soft transition-all hover:-translate-y-0.5">
-          送信する
+          class="btn-pop group/link w-full bg-primary hover:bg-primary-dark text-white font-heading font-semibold py-3.5 rounded-full">
+          送信する <span class="arrow-nudge">→</span>
         </button>
       </form>
     </div>
@@ -553,8 +600,8 @@
   </div>
 
   <button id="back-to-top" aria-label="ページ上部へ戻る"
-    class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-accent hover:bg-accent/90 text-white shadow-soft flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 z-40">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    class="group sticker-sm fixed bottom-8 right-8 w-12 h-12 rounded-full bg-accent hover:bg-accent/90 text-white flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 z-40">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
       <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
     </svg>
   </button>
@@ -566,7 +613,7 @@
 
   <div class="relative bg-white rounded-4xl shadow-soft w-full max-w-6xl max-h-[95vh] overflow-y-auto overflow-x-hidden p-6 sm:p-10 pt-16 sm:pt-20">
     <button type="button" id="work-modal-close" aria-label="閉じる"
-      class="absolute top-5 right-5 sm:top-6 sm:right-6 w-10 h-10 rounded-full bg-primary hover:bg-primary-dark text-white flex items-center justify-center shadow-soft transition-colors z-20">
+      class="btn-pop absolute top-5 right-5 sm:top-6 sm:right-6 w-10 h-10 rounded-full bg-primary hover:bg-primary-dark text-white flex items-center justify-center z-20">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
       </svg>
@@ -584,20 +631,20 @@
       <div class="min-w-0">
         <div class="relative mb-4">
           <button type="button" id="work-modal-thumbs-prev" aria-label="前のサムネイルへ"
-            class="hidden absolute -left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white shadow-card items-center justify-center text-primary-dark hover:bg-primary-light transition-colors">
+            class="hidden absolute -left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white sticker-sm items-center justify-center text-primary-dark hover:bg-primary-light">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           <div id="work-modal-thumbs" class="flex gap-3 overflow-x-auto scroll-smooth"></div>
           <button type="button" id="work-modal-thumbs-next" aria-label="次のサムネイルへ"
-            class="hidden absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white shadow-card items-center justify-center text-primary-dark hover:bg-primary-light transition-colors">
+            class="hidden absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white sticker-sm items-center justify-center text-primary-dark hover:bg-primary-light">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </button>
         </div>
-        <div class="rounded-3xl overflow-hidden shadow-card bg-paper flex items-center justify-center">
+        <div class="rounded-3xl overflow-hidden sticker bg-paper flex items-center justify-center">
           <img id="work-modal-main-image" src="" alt="" class="w-full h-auto max-h-[72vh] object-contain" />
         </div>
       </div>

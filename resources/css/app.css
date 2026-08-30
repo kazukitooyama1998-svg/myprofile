@@ -22,11 +22,30 @@
     --color-ink: #4A4038;
     --color-muted: #8C8178;
 
+    /* --------------------------------------------------------------
+       着想アクセント（そのまま流用はしない、再構成した配色）
+       - sky  : どうぶつの森の空・海の抜けるような水色
+       - berry: たべっ子どうぶつのポップな赤みピンク
+       - grape: スプラトゥーンのインクを思わせる紫
+       - line : 3作品に共通する「太い縁取り」用の濃い焦茶
+       -------------------------------------------------------------- */
+    --color-sky: #7EC8E3;
+    --color-sky-light: #D8EEF7;
+    --color-sky-dark: #4FA6C9;
+    --color-berry: #EF7BA1;
+    --color-berry-light: #FBDCE7;
+    --color-grape: #9B8CE0;
+    --color-grape-light: #E7E1FA;
+    --color-line: #3C332B;
+
     --font-heading: 'Zen Maru Gothic', 'Quicksand', sans-serif;
     --font-sans: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
 
     --shadow-soft: 0 10px 30px -10px rgba(74, 64, 56, 0.15);
     --shadow-card: 0 8px 24px -8px rgba(74, 64, 56, 0.18);
+    /* ステッカー風のかっちりした落ち影（たべっ子／スプラの厚み） */
+    --shadow-pop: 6px 7px 0 0 rgba(60, 51, 43, 0.9);
+    --shadow-pop-sm: 3px 4px 0 0 rgba(60, 51, 43, 0.85);
 
     --radius-4xl: 2rem;
 }
@@ -39,7 +58,10 @@ body {
     font-feature-settings: "palt";
 }
 
-/* ふんわりブロブのゆっくりとした浮遊アニメーション */
+/* ===================================================================
+   1. 既存アニメーション（ふんわりブロブ・スクロール表示）
+   =================================================================== */
+
 @keyframes blob-float {
     0%,
     100% {
@@ -77,7 +99,22 @@ body {
     transform: translateY(0);
 }
 
-/* 優しい印象のスクロールバー */
+/* モチーフが「ポンッ」と跳ねながら現れる登場演出 */
+.reveal-pop {
+    opacity: 0;
+    transform: scale(0.3) rotate(-25deg);
+    transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.18, 0.9, 0.32, 1.5);
+}
+
+.reveal-pop.is-visible {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+}
+
+/* ===================================================================
+   2. スクロールバー・ナビ（既存）
+   =================================================================== */
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -95,13 +132,50 @@ body {
     background: #6fa88f;
 }
 
-/* ナビゲーションの現在地表示 */
+.nav-link {
+    position: relative;
+    display: inline-block;
+    padding: 5px 12px 9px;
+    border-radius: 9999px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ホバー：やわらかい丸角の背景色 ＋ まっすぐな下線 */
+.nav-link:hover,
+.nav-link:focus-visible {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 3px;
+    height: 2.5px;
+    border-radius: 9999px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link.is-active::after {
+    transform: scaleX(1);
+}
+
 .nav-link.is-active {
     color: #4f8570;
     font-weight: 700;
 }
 
-/* Works: 横スライドカルーセル */
+/* ===================================================================
+   3. Works 横スライドカルーセル（既存 + ポップ化）
+   =================================================================== */
+
 .works-track,
 #work-modal-thumbs {
     scrollbar-width: none;
@@ -113,19 +187,228 @@ body {
     display: none;
 }
 
+.works-track {
+    perspective: 1200px;
+}
+
 .works-dot {
     background-color: #fff8ef;
     color: #8c8178;
-    border: 1px solid #dcede6;
+    border: 2px solid var(--color-line);
+    box-shadow: var(--shadow-pop-sm);
+    transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
 }
 
 .works-dot:hover {
     background-color: #dcede6;
     color: #4f8570;
+    transform: translate(-1px, -1px) rotate(-4deg);
 }
 
 .works-dot.is-active {
-    background-color: #6fa88f;
-    border-color: #6fa88f;
+    background-color: var(--color-primary);
+    border-color: var(--color-line);
     color: #fff;
+    transform: rotate(-6deg) scale(1.08);
+}
+
+/* ===================================================================
+   4. 着想モチーフの共通スタイル
+   =================================================================== */
+
+/* 背景に散らす装飾レイヤー。中身のUIより下に敷く */
+.motif {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform;
+}
+
+.motif-inner {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- どうぶつの森風「木の看板」プレート ------------------------------ */
+.signboard {
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 1.35rem;
+    border-radius: 0.95rem;
+    color: var(--color-line);
+    background-color: #F3DDBE;
+    background-image:
+        radial-gradient(circle at 11px 11px, #C99A67 0 3px, transparent 3.7px),
+        radial-gradient(circle at calc(100% - 11px) 11px, #C99A67 0 3px, transparent 3.7px),
+        radial-gradient(circle at 11px calc(100% - 11px), #C99A67 0 3px, transparent 3.7px),
+        radial-gradient(circle at calc(100% - 11px) calc(100% - 11px), #C99A67 0 3px, transparent 3.7px),
+        repeating-linear-gradient(90deg, rgba(150, 106, 62, 0.10) 0 2px, transparent 2px 26px),
+        linear-gradient(180deg, #F7E4C8, #E9C99E);
+    background-repeat: no-repeat;
+    border: 2.5px solid var(--color-line);
+    box-shadow: var(--shadow-pop-sm);
+}
+
+.signboard-swing {
+    transform-origin: top center;
+    animation: sway 4.8s ease-in-out infinite;
+}
+
+/* --- たべっ子どうぶつ風「ステッカー縁取り」 -------------------------- */
+.sticker {
+    border: 2.5px solid var(--color-line);
+    box-shadow: var(--shadow-pop);
+}
+
+.sticker-sm {
+    border: 2px solid var(--color-line);
+    box-shadow: var(--shadow-pop-sm);
+}
+
+/* --- 押して楽しいポップボタン -------------------------------------- */
+.btn-pop {
+    border: 2.5px solid var(--color-line);
+    box-shadow: var(--shadow-pop-sm);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.btn-pop:hover {
+    transform: translate(-1px, -2px) rotate(-1.5deg);
+    box-shadow: 6px 8px 0 0 rgba(60, 51, 43, 0.9);
+}
+
+.btn-pop:active {
+    transform: translate(3px, 4px) rotate(0);
+    box-shadow: 1px 1px 0 0 rgba(60, 51, 43, 0.9);
+}
+
+/* --- カード（ホバーで浮いて傾く） -------------------------------- */
+.card-pop {
+    border: 2.5px solid var(--color-line);
+    box-shadow: var(--shadow-pop);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.3, 1.15), box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.card-pop:hover {
+    transform: translateY(-8px) rotate(-1.4deg);
+    box-shadow: 10px 14px 0 0 rgba(60, 51, 43, 0.82);
+}
+
+/* JS のマウス追従による傾きが入っている間はホバー変形を無効化 */
+.card-pop.is-tilting {
+    transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+}
+
+.card-pop:hover .pop-icon {
+    animation: wobble 0.55s ease;
+}
+
+/* --- スプラトゥーン風インク（SVG の色を受け取るだけ） -------------- */
+.ink-splat path,
+.ink-splat circle,
+.ink-splat ellipse {
+    fill: currentColor;
+}
+
+/* --- 泡（Contact の海モチーフ） -------------------------------- */
+.bubble {
+    position: absolute;
+    bottom: -48px;
+    border-radius: 50%;
+    background: rgba(126, 200, 227, 0.30);
+    border: 2px solid rgba(60, 51, 43, 0.16);
+    animation: bubble-rise linear infinite;
+}
+
+/* ===================================================================
+   5. キーフレーム
+   =================================================================== */
+
+@keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+}
+
+@keyframes wobble {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+@keyframes sway {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+}
+
+@keyframes spin-slow {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes twinkle {
+    0%, 100% { transform: scale(0.65) rotate(0deg); opacity: 0.45; }
+    50% { transform: scale(1.1) rotate(45deg); opacity: 1; }
+}
+
+@keyframes drift {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(0, -22px) rotate(8deg); }
+}
+
+@keyframes bubble-rise {
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    12% { opacity: 1; }
+    100% { transform: translateY(-380px) scale(1); opacity: 0; }
+}
+
+.anim-bob { animation: bob 5s ease-in-out infinite; }
+.anim-sway { animation: sway 5s ease-in-out infinite; transform-origin: top center; }
+.anim-twinkle { animation: twinkle 3.4s ease-in-out infinite; }
+.anim-drift { animation: drift 9s ease-in-out infinite; }
+.anim-spin-slow { animation: spin-slow 20s linear infinite; }
+
+/* ホバーで跳ねる／回る（触って楽しむための小演出） */
+.hover-jump {
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.3, 1.4);
+}
+.hover-jump:hover {
+    transform: translateY(-6px) rotate(-6deg) scale(1.08);
+}
+
+.group:hover .group-jump {
+    animation: bob 0.6s ease;
+}
+.group:hover .group-spin {
+    animation: spin-slow 0.9s ease;
+}
+
+/* Works カードの「詳しくはクリック →」の矢印を弾ませる */
+.arrow-nudge {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+.group\/link:hover .arrow-nudge,
+.work-modal-trigger:hover .arrow-nudge {
+    transform: translateX(5px);
+}
+
+/* ===================================================================
+   6. モーション削減の配慮
+   =================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reveal,
+    .reveal-pop {
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }

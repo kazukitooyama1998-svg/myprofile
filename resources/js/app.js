@@ -241,4 +241,82 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeWorkModal();
     });
+
+    /* ---------- モーション削減の設定を尊重 ---------- */
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---------- 着想モチーフをスクロールで視差移動させる ---------- */
+    const parallaxEls = Array.from(document.querySelectorAll('[data-parallax]'));
+
+    if (parallaxEls.length && !prefersReducedMotion) {
+        let ticking = false;
+
+        const applyParallax = () => {
+            const viewportCenter = window.scrollY + window.innerHeight / 2;
+
+            parallaxEls.forEach((el) => {
+                const speed = parseFloat(el.dataset.parallax) || 0.1;
+                const rect = el.getBoundingClientRect();
+                const elCenter = window.scrollY + rect.top + rect.height / 2;
+                const offset = (elCenter - viewportCenter) * speed * -1;
+                el.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
+            });
+
+            ticking = false;
+        };
+
+        const requestParallax = () => {
+            if (ticking) return;
+            ticking = true;
+            window.requestAnimationFrame(applyParallax);
+        };
+
+        window.addEventListener('scroll', requestParallax, { passive: true });
+        window.addEventListener('resize', requestParallax);
+        applyParallax();
+    }
+
+    /* ---------- カードをマウスに合わせて少し傾ける（触って楽しむ演出） ---------- */
+    const tiltCards = document.querySelectorAll('.card-tilt');
+
+    if (!prefersReducedMotion) {
+        tiltCards.forEach((card) => {
+            card.addEventListener('pointermove', (e) => {
+                if (e.pointerType === 'touch') return;
+                const rect = card.getBoundingClientRect();
+                const px = (e.clientX - rect.left) / rect.width - 0.5;
+                const py = (e.clientY - rect.top) / rect.height - 0.5;
+                card.classList.add('is-tilting');
+                card.style.transform =
+                    `translateY(-8px) rotateX(${(-py * 8).toFixed(2)}deg) rotateY(${(px * 8).toFixed(2)}deg)`;
+            });
+
+            const resetTilt = () => {
+                card.classList.remove('is-tilting');
+                card.style.transform = '';
+            };
+
+            card.addEventListener('pointerleave', resetTilt);
+            card.addEventListener('pointercancel', resetTilt);
+        });
+    }
+
+    /* ---------- Contact: 下からゆらゆら昇る泡を生成 ---------- */
+    const bubbleWrap = document.getElementById('contact-bubbles');
+
+    if (bubbleWrap && !prefersReducedMotion) {
+        const bubbleCount = 14;
+
+        for (let i = 0; i < bubbleCount; i += 1) {
+            const bubble = document.createElement('span');
+            const size = 8 + Math.random() * 26;
+            bubble.className = 'bubble';
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            bubble.style.left = `${Math.random() * 100}%`;
+            bubble.style.animationDuration = `${7 + Math.random() * 9}s`;
+            bubble.style.animationDelay = `${-Math.random() * 12}s`;
+            bubbleWrap.appendChild(bubble);
+        }
+    }
 });
