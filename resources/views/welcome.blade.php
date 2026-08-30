@@ -222,7 +222,7 @@
         ['topic' => 'challenge',   'label' => '今挑戦していること',         'face' => '<path d="M13 23c2.5 4 11.5 4 14 0"/><path d="M13.5 18.5l2.6 1.6M26.5 18.5l-2.6 1.6"/>'],
       ];
       $aboutCritterBody = '<circle cx="11" cy="12" r="6"/><circle cx="29" cy="12" r="6"/><path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z"/>';
-      $floatPos = ['top:4%;left:19%', 'top:5%;right:17%', 'top:33%;left:11%', 'top:83%;left:14%', 'top:96%;left:44%'];
+      $floatPos = ['top:17%;left:22%', 'top:18%;right:18%', 'top:45%;left:5%', 'top:70%;left:7%', 'top:93%;left:45%'];
     @endphp
 
     @foreach ($aboutCritters as $i => $c)

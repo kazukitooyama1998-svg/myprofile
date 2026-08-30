@@ -408,10 +408,12 @@ body {
     box-shadow: var(--shadow-pop-sm), 0 0 0 3px var(--color-primary-light);
 }
 
-/* PC：セクションの余白へ均等に散らす（絶対配置） */
+/* PC：セクションの余白へ均等に散らす（絶対配置）。
+   本文ラッパー（z-10）より前面に出さないとクリックが拾えない
+   （ただし固定ヘッダー z-50 より下） */
 .about-critter--float {
     position: absolute;
-    z-index: 5;
+    z-index: 30;
 }
 
 /* 狭い画面：見出し下に散らした風の行で */
