@@ -210,10 +210,67 @@
       <svg class="motif-inner anim-twinkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12C7 10 11 6 12 0z"/></svg>
     </div>
 
+    {{-- コアラのマーチ風：自己紹介セクションの余白に散りばめた「森のなかま」。
+         タップすると吹き出しで追加の自己紹介が開く（PCはSection余白へ絶対配置、
+         狭い画面では見出し下の行で表示） --}}
+    @php
+      $aboutCritters = [
+        ['topic' => 'personality', 'label' => 'どんな性格か',            'face' => '<ellipse cx="20" cy="24" rx="3" ry="2.2" fill="currentColor" stroke="none"/><circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/>'],
+        ['topic' => 'engineer',    'label' => 'どんなエンジニアになりたいか', 'face' => '<path d="M13 24c2.5 3 11.5 3 14 0"/><circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/>'],
+        ['topic' => 'learning',    'label' => '最近学んだ新しい技術',       'face' => '<path d="M14 19.5c.6-1 2-1 2.6 0M23.4 19.5c.6-1 2-1 2.6 0"/><path d="M16.5 25c1.4 1.4 5.6 1.4 7 0"/>'],
+        ['topic' => 'stress',      'label' => 'ストレスとの向き合い方',      'face' => '<circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="20" cy="25" r="2"/>'],
+        ['topic' => 'challenge',   'label' => '今挑戦していること',         'face' => '<path d="M13 23c2.5 4 11.5 4 14 0"/><path d="M13.5 18.5l2.6 1.6M26.5 18.5l-2.6 1.6"/>'],
+      ];
+      $aboutCritterBody = '<circle cx="11" cy="12" r="6"/><circle cx="29" cy="12" r="6"/><path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z"/>';
+      $floatPos = ['top:4%;left:19%', 'top:5%;right:17%', 'top:33%;left:11%', 'top:83%;left:14%', 'top:96%;left:44%'];
+    @endphp
+
+    @foreach ($aboutCritters as $i => $c)
+      <button type="button" class="about-critter about-critter--float hidden xl:block" style="{{ $floatPos[$i] }}" data-topic="{{ $c['topic'] }}" aria-label="{{ $c['label'] }}：タップで表示">
+        <span class="tap-bubble" aria-hidden="true">Tap</span>
+        <span class="biscuit">
+          <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{!! $aboutCritterBody !!}{!! $c['face'] !!}</svg>
+        </span>
+      </button>
+    @endforeach
+
     <div class="relative z-10 max-w-6xl mx-auto px-6">
-      <div class="reveal text-center mb-16">
+      <div class="reveal text-center mb-10">
         <p class="mb-4"><span class="signboard signboard-swing font-heading font-bold tracking-widest text-sm">ABOUT ME</span></p>
         <h2 class="font-heading text-3xl sm:text-4xl font-black heading-pop">自己紹介</h2>
+        <p class="mt-5 text-sm text-muted leading-loose">
+          <span class="about-hint-critter" aria-hidden="true">
+            <span class="biscuit">
+              <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="12" r="6"/><circle cx="29" cy="12" r="6"/><path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z"/><path d="M13 24c2.5 3 11.5 3 14 0"/><circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/></svg>
+            </span>
+          </span>
+          をタップすると、私のことをもう少しお話しします
+        </p>
+      </div>
+
+      {{-- 狭い画面用：見出し下に散らした風の行で表示 --}}
+      <div class="reveal about-critter-row flex flex-wrap justify-center items-end gap-5 sm:gap-8 mb-10 xl:hidden">
+        @foreach ($aboutCritters as $c)
+          <button type="button" class="about-critter" data-topic="{{ $c['topic'] }}" aria-label="{{ $c['label'] }}：タップで表示">
+            <span class="tap-bubble" aria-hidden="true">Tap</span>
+            <span class="biscuit">
+              <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{!! $aboutCritterBody !!}{!! $c['face'] !!}</svg>
+            </span>
+          </button>
+        @endforeach
+      </div>
+
+      {{-- タップで開く吹き出し --}}
+      <div id="about-note" class="about-note" hidden>
+        <button type="button" id="about-note-close" class="about-note-close" aria-label="とじる">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+        <h3 class="about-note-title" id="about-note-title"></h3>
+        <p class="about-note-text" id="about-note-text"></p>
+        <a id="about-note-link" class="about-note-link" href="#" target="_blank" rel="noopener noreferrer" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.15" fill="currentColor" stroke="none"/></svg>
+          <span id="about-note-link-label"></span>
+        </a>
       </div>
 
       <div class="grid md:grid-cols-5 gap-12 items-center">
@@ -241,22 +298,22 @@
           </p>
 
           <ul class="grid sm:grid-cols-2 gap-3.5 pt-4">
-            <li class="group sm:col-span-2 flex items-start gap-3 bg-paper rounded-2xl px-5 py-4 sticker-sm transition-transform hover:-translate-y-1 hover:rotate-[-1deg]">
+            <li class="group sm:col-span-2 flex items-start gap-3 bg-paper rounded-2xl px-5 py-4 sticker-sm transition-transform hover:-translate-y-1">
               <span class="group-jump w-2.5 h-2.5 rounded-full bg-primary mt-1.5 shrink-0"></span>
               <span class="text-sm text-muted leading-relaxed">
                 在住地：フィリピン・セブ島（留学中）<br />
                 現在、Kredoにて Web 開発と英語を学習しています。（2026年9月18日卒業見込み）
               </span>
             </li>
-            <li class="group flex items-start gap-3 bg-paper rounded-2xl px-5 py-3 sticker-sm transition-transform hover:-translate-y-1 hover:rotate-[-1deg]">
+            <li class="group flex items-start gap-3 bg-paper rounded-2xl px-5 py-3 sticker-sm transition-transform hover:-translate-y-1">
               <span class="group-jump w-2.5 h-2.5 rounded-full bg-accent mt-1.5 shrink-0"></span>
               <span class="text-sm text-muted">得意分野：Claude Codeを活用したLaravel開発</span>
             </li>
-            <li class="group flex items-start gap-3 bg-paper rounded-2xl px-5 py-3 sticker-sm transition-transform hover:-translate-y-1 hover:rotate-[-1deg]">
+            <li class="group flex items-start gap-3 bg-paper rounded-2xl px-5 py-3 sticker-sm transition-transform hover:-translate-y-1">
               <span class="group-jump w-2.5 h-2.5 rounded-full bg-sub mt-1.5 shrink-0"></span>
               <span class="text-sm text-muted">趣味：英語学習 / 美味しいものを食べること</span>
             </li>
-            <li class="group sm:col-span-2 flex items-center gap-3 bg-paper rounded-2xl px-5 py-3 sticker-sm transition-transform hover:-translate-y-1 hover:rotate-[-1deg]">
+            <li class="group sm:col-span-2 flex items-center gap-3 bg-paper rounded-2xl px-5 py-3 sticker-sm transition-transform hover:-translate-y-1">
               <span class="group-jump w-2.5 h-2.5 rounded-full bg-primary-dark shrink-0"></span>
               <span class="text-sm text-muted">
                 GitHub：
@@ -268,6 +325,15 @@
           </ul>
         </div>
       </div>
+    </div>
+
+    {{-- 森のなかまタップで表示する、自己紹介の話題データ（JSが参照） --}}
+    <div id="about-notes-data" hidden>
+      <article data-topic="personality" data-title="どんな性格か">人からは「落ち着いている」と言われることが多いです。これまで出会った人の中で「素敵だな」と感じた方の気遣いや行動を参考にし、自分自身も相手の立場を考えて行動することを心がけています。そのため、周囲から「気が利く」と言っていただくことも多いです。また、「やってみたい」と思ったことには、まず挑戦してみることを大切にしています。</article>
+      <article data-topic="engineer" data-title="どんなエンジニアになりたいか">AI時代においても必要とされるエンジニアであり続けるために、新しい技術や面白いと感じた技術を積極的に学び続けたいと考えています。また、AIを避けるのではなく、うまく活用・共存しながら、効率的かつスピード感を持って仕事ができるエンジニアを目指しています。将来的には、自分の英語力を活かしながら、開発した英語学習アプリをより多くの方に利用していただくことが目標です。</article>
+      <article data-topic="learning" data-title="最近学んだ新しい技術">Instagramで、実際のお菓子のパッケージデザインを参考に、プロンプトによる指示でWebサイトのデザインへ取り入れている投稿を見かけ、面白いと感じたことがきっかけで、自分のサイトでも試してみました。既存のデザインをベースにしながら、コアラのマーチの世界観を一部取り入れ、AIを活用したデザイン表現に挑戦しています。</article>
+      <article data-topic="stress" data-title="ストレスとの向き合い方">疲れを感じたときは、温泉やサウナでリフレッシュしたり、運動で汗を流したりすることを大切にしています。適度に身体を動かして気持ちを切り替えることで、リフレッシュした状態で物事に取り組めるよう心がけています。</article>
+      <article data-topic="challenge" data-title="今挑戦していること" data-link="https://www.instagram.com/lazy_english_toeic_jp/" data-link-label="@lazy_english_toeic_jp">自分で開発したアプリをより多くの方に知ってもらうためには、SNSを活用した情報発信も重要だと考えています。現在はTOEICに関する情報発信を継続し、投稿内容やユーザーの反応・閲覧数などを観察しながら、より多くの方に興味を持ってもらえる発信方法を試行錯誤しています。今後、成果につながる方法を見つけることができれば、他のテーマでのアカウント運用にも挑戦していきたいと考えています。</article>
     </div>
   </section>
 
@@ -627,53 +693,9 @@
 </main>
 
 <!-- ==================== Footer ==================== -->
-<footer id="site-footer" class="relative bg-primary-dark text-white/90 pt-14 pb-24 sm:pb-8">
-
-  {{-- コアラのマーチ風：フッターの上辺から覗く「森のなかまたち」。
-       タップすると、おみくじのように「きょうの運勢」が出ます（色は統一） --}}
-  <div class="forest-friends" id="forest-friends">
-    <button type="button" class="ff-critter hidden sm:block" aria-label="森のなかまをタップして今日の運勢を見る">
-      <span class="biscuit block w-full h-full">
-        <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="12" r="6"/><circle cx="29" cy="12" r="6"/><path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z"/><ellipse cx="20" cy="24" rx="3" ry="2.2" fill="currentColor" stroke="none"/><circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/></svg>
-      </span>
-    </button>
-    <button type="button" class="ff-critter" aria-label="森のなかまをタップして今日の運勢を見る">
-      <span class="biscuit block w-full h-full">
-        <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="12" r="6"/><circle cx="29" cy="12" r="6"/><path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z"/><path d="M13 24c2.5 3 11.5 3 14 0"/><circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/></svg>
-      </span>
-    </button>
-    <button type="button" class="ff-critter" aria-label="森のなかまをタップして今日の運勢を見る">
-      <span class="biscuit block w-full h-full">
-        <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="12" r="6"/><circle cx="29" cy="12" r="6"/><path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z"/><path d="M14 19.5c.6-1 2-1 2.6 0M23.4 19.5c.6-1 2-1 2.6 0"/><path d="M16.5 25c1.4 1.4 5.6 1.4 7 0"/></svg>
-      </span>
-    </button>
-    <button type="button" class="ff-critter" aria-label="森のなかまをタップして今日の運勢を見る">
-      <span class="biscuit block w-full h-full">
-        <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="12" r="6"/><circle cx="29" cy="12" r="6"/><path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z"/><ellipse cx="20" cy="24" rx="3" ry="2.2" fill="currentColor" stroke="none"/><circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/></svg>
-      </span>
-    </button>
-    <button type="button" class="ff-critter hidden sm:block" aria-label="森のなかまをタップして今日の運勢を見る">
-      <span class="biscuit block w-full h-full">
-        <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="12" r="6"/><circle cx="29" cy="12" r="6"/><path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z"/><path d="M13 24c2.5 3 11.5 3 14 0"/><circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/></svg>
-      </span>
-    </button>
-  </div>
-
+<footer id="site-footer" class="relative bg-primary-dark text-white/90 pt-16 pb-24 sm:pb-8">
   <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center pb-8 border-b border-white/15">
-      <p class="font-heading text-sm text-white/75">
-        森のなかまをタップして、<span class="text-sub font-bold">きょうの運勢</span>をどうぞ<span class="text-white/50">（何度でも引けます）</span>
-      </p>
-      <div id="omikuji" class="omikuji" hidden>
-        <button type="button" id="omikuji-close" class="omikuji-close" aria-label="とじる">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
-        </button>
-        <p class="omikuji-rank" id="omikuji-rank"></p>
-        <p class="omikuji-text" id="omikuji-text"></p>
-        <p class="omikuji-again">とじて、もう一度なかまをタップ</p>
-      </div>
-    </div>
-    <div class="flex justify-center items-center py-8 border-b border-white/15">
+    <div class="flex justify-center items-center pb-8 border-b border-white/15">
       <p class="font-heading text-2xl sm:text-3xl font-black tracking-wide text-center">Thank you for reading until the end<span class="text-sub">.</span></p>
     </div>
     <p class="text-center text-sm text-white/60 pt-6">&copy; 2026 Kazuki Toyama. All Rights Reserved.</p>

@@ -274,16 +274,16 @@ body {
 }
 
 .btn-pop:hover {
-    transform: translate(-1px, -2px) rotate(-1.5deg);
-    box-shadow: 6px 8px 0 0 rgba(60, 51, 43, 0.9);
+    transform: translateY(-3px);
+    box-shadow: 5px 9px 0 0 rgba(60, 51, 43, 0.9);
 }
 
 .btn-pop:active {
-    transform: translate(3px, 4px) rotate(0);
+    transform: translateY(4px);
     box-shadow: 1px 1px 0 0 rgba(60, 51, 43, 0.9);
 }
 
-/* --- カード（ホバーで浮いて傾く） -------------------------------- */
+/* --- カード（ホバーで縦にふわっと浮く） ------------------------- */
 .card-pop {
     border: 2.5px solid var(--color-line);
     box-shadow: var(--shadow-pop);
@@ -292,8 +292,8 @@ body {
 }
 
 .card-pop:hover {
-    transform: translateY(-8px) rotate(-1.4deg);
-    box-shadow: 10px 14px 0 0 rgba(60, 51, 43, 0.82);
+    transform: translateY(-8px);
+    box-shadow: 8px 16px 0 0 rgba(60, 51, 43, 0.82);
 }
 
 /* JS のマウス追従による傾きが入っている間はホバー変形を無効化 */
@@ -358,67 +358,173 @@ body {
     height: 62%;
 }
 
-/* フッターの上辺からちょこんと覗く「森のなかまたち」 */
-.forest-friends {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -1.9rem;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 0.75rem;
+/* 説明文に添える小さな森のなかまイラスト（初見でもわかりやすく） */
+.about-hint-critter {
+    display: inline-grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-right: 0.25rem;
+    vertical-align: middle;
+    position: relative;
+    top: -0.06em;
 }
 
-.ff-critter {
-    width: 3rem;
-    height: 3rem;
+.about-hint-critter .biscuit {
+    width: 100%;
+    height: 100%;
+}
+
+/* 自己紹介に散りばめた「森のなかま」。タップで吹き出しが開く */
+.about-critter {
+    position: relative;
+    width: 2.6rem;
+    height: 2.6rem;
     padding: 0;
     background: transparent;
     border: 0;
     cursor: pointer;
+    animation: bob 4.6s ease-in-out infinite;
     transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.3, 1.5);
-    animation: bob 4.5s ease-in-out infinite;
 }
 
-.ff-critter:nth-child(2) { animation-delay: -0.6s; }
-.ff-critter:nth-child(3) { animation-delay: -1.2s; }
-.ff-critter:nth-child(4) { animation-delay: -1.8s; }
-.ff-critter:nth-child(5) { animation-delay: -2.4s; }
+.about-critter .biscuit {
+    width: 100%;
+    height: 100%;
+}
 
-.ff-critter:hover,
-.ff-critter:focus-visible {
-    transform: translateY(-10px) rotate(-6deg) scale(1.12);
+.about-critter:hover,
+.about-critter:focus-visible {
+    transform: translateY(-7px) rotate(-6deg) scale(1.1);
     outline: none;
 }
 
-.ff-critter:hover .biscuit,
-.ff-critter:focus-visible .biscuit {
+.about-critter:hover .biscuit,
+.about-critter:focus-visible .biscuit {
     animation: wiggle 0.5s ease;
 }
 
-/* フッターのおみくじ（今日の運勢） */
-.omikuji {
-    position: relative;
-    margin: 1rem auto 0;
-    max-width: 22rem;
-    padding: 1rem 1.25rem 0.95rem;
-    background: var(--color-cream);
-    color: var(--color-ink);
-    border: 2.5px solid var(--color-line);
-    border-radius: 1.25rem;
-    box-shadow: var(--shadow-pop-sm);
-    text-align: center;
+.about-critter.is-active .biscuit {
+    box-shadow: var(--shadow-pop-sm), 0 0 0 3px var(--color-primary-light);
 }
 
-.omikuji-close {
+/* PC：セクションの余白へ均等に散らす（絶対配置） */
+.about-critter--float {
     position: absolute;
-    top: 0.45rem;
-    right: 0.55rem;
+    z-index: 5;
+}
+
+/* 狭い画面：見出し下に散らした風の行で */
+.about-critter-row .about-critter:nth-child(2) { margin-bottom: 1.4rem; animation-delay: -0.8s; }
+.about-critter-row .about-critter:nth-child(3) { margin-bottom: 0.3rem; animation-delay: -1.6s; }
+.about-critter-row .about-critter:nth-child(4) { margin-bottom: 1.7rem; animation-delay: -2.4s; }
+.about-critter-row .about-critter:nth-child(5) { margin-bottom: 0.7rem; animation-delay: -3.2s; }
+
+/* 「Tap」シャボン玉テイストのラベル */
+.tap-bubble {
+    position: absolute;
+    left: 50%;
+    top: -0.9rem;
+    padding: 0.08rem 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-sky-dark);
+    background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.95), rgba(216, 238, 247, 0.5));
+    border: 1.5px solid rgba(126, 200, 227, 0.7);
+    border-radius: 9999px;
+    box-shadow: 0 2px 7px rgba(79, 166, 201, 0.22), inset 0 0 6px rgba(255, 255, 255, 0.85);
+    white-space: nowrap;
+    pointer-events: none;
+    animation: tap-float 3.2s ease-in-out infinite;
+}
+
+@keyframes tap-float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-4px); }
+}
+
+/* タップで開く吹き出し（追加の自己紹介） */
+.about-note {
+    position: relative;
+    max-width: 40rem;
+    margin: 0 auto 2.5rem;
+    padding: 1.5rem 1.6rem 1.6rem;
+    background: #fff;
+    border: 2.5px solid var(--color-line);
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-pop);
+    text-align: left;
+}
+
+.about-note::before {
+    content: "";
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-top: 2.5px solid var(--color-line);
+    border-left: 2.5px solid var(--color-line);
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.about-note-title {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 1.15rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.6rem;
+    padding-right: 1.5rem;
+}
+
+.about-note-text {
+    font-size: 0.9rem;
+    line-height: 1.95;
+    color: var(--color-ink);
+    opacity: 0.9;
+}
+
+/* 吹き出し内のリンク（Instagram など） */
+.about-note-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 1.1rem;
+    padding: 0.4rem 0.95rem 0.4rem 0.75rem;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-berry);
+    background: var(--color-berry-light);
+    border: 2px solid var(--color-line);
+    border-radius: 9999px;
+    box-shadow: var(--shadow-pop-sm);
+    text-decoration: none;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.about-note-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 7px 0 0 rgba(60, 51, 43, 0.85);
+}
+
+.about-note-link svg {
+    width: 1.05rem;
+    height: 1.05rem;
+    flex-shrink: 0;
+}
+
+.about-note-close {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.8rem;
     display: grid;
     place-items: center;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.75rem;
+    height: 1.75rem;
     padding: 0;
     color: var(--color-muted);
     background: transparent;
@@ -428,36 +534,14 @@ body {
     transition: color 0.15s ease, transform 0.2s ease;
 }
 
-.omikuji-close:hover {
+.about-note-close:hover {
     color: var(--color-line);
     transform: rotate(90deg);
 }
 
-.omikuji-close svg {
-    width: 0.8rem;
-    height: 0.8rem;
-}
-
-.omikuji-again {
-    margin-top: 0.55rem;
-    font-size: 0.68rem;
-    color: var(--color-muted);
-    opacity: 0.8;
-}
-
-.omikuji-rank {
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: 1.5rem;
-    letter-spacing: 0.12em;
-    color: var(--color-primary-dark);
-}
-
-.omikuji-text {
-    margin-top: 0.2rem;
-    font-size: 0.8rem;
-    line-height: 1.75;
-    color: var(--color-muted);
+.about-note-close svg {
+    width: 0.9rem;
+    height: 0.9rem;
 }
 
 

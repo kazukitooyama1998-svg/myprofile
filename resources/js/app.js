@@ -301,51 +301,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ---------- フッターの「森のなかま」：タップで今日の運勢（おみくじ） ---------- */
-    const forestFriends = document.getElementById('forest-friends');
-    const omikuji = document.getElementById('omikuji');
+    /* ---------- 自己紹介の「森のなかま」：タップで吹き出し（追加の自己紹介） ---------- */
+    const aboutCritters = Array.from(document.querySelectorAll('.about-critter'));
+    const aboutNote = document.getElementById('about-note');
+    const aboutNotesData = document.getElementById('about-notes-data');
 
-    if (forestFriends && omikuji) {
-        const fortunes = [
-            { rank: '大吉', text: '今日はコードが一発で通る日。新しい技術に触れてみると吉。' },
-            { rank: '中吉', text: '小さなバグに早めに気づけそう。こまめなコミットが幸運のカギ。' },
-            { rank: '小吉', text: '読み返したドキュメントに、ちいさな発見がある一日。' },
-            { rank: '吉', text: 'レビューでうれしいフィードバックがもらえるかも。' },
-            { rank: '末吉', text: 'まずは深呼吸。あたたかい飲みものを一杯いれてから始めよう。' },
-            { rank: '半吉', text: '手が止まったら、いちど席を立って歩いてみると答えが見つかるかも。' },
-        ];
+    if (aboutCritters.length && aboutNote && aboutNotesData) {
+        const noteTitle = document.getElementById('about-note-title');
+        const noteText = document.getElementById('about-note-text');
+        const noteClose = document.getElementById('about-note-close');
+        const noteLink = document.getElementById('about-note-link');
+        const noteLinkLabel = document.getElementById('about-note-link-label');
 
-        const critters = Array.from(forestFriends.querySelectorAll('.ff-critter'));
-        const rankEl = document.getElementById('omikuji-rank');
-        const textEl = document.getElementById('omikuji-text');
-        const closeBtn = document.getElementById('omikuji-close');
+        const showNote = (topic, critter) => {
+            const src = aboutNotesData.querySelector(`[data-topic="${topic}"]`);
+            if (!src) return;
 
-        const shuffle = (arr) => {
-            const a = arr.slice();
-            for (let i = a.length - 1; i > 0; i -= 1) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [a[i], a[j]] = [a[j], a[i]];
+            aboutCritters.forEach((c) => c.classList.toggle('is-active', c === critter));
+
+            noteTitle.textContent = src.dataset.title || '';
+            noteText.textContent = src.textContent.trim();
+
+            // 話題にリンク（例：Instagram）があれば添える
+            if (noteLink && noteLinkLabel) {
+                if (src.dataset.link) {
+                    noteLink.href = src.dataset.link;
+                    noteLinkLabel.textContent = src.dataset.linkLabel || 'Instagram';
+                    noteLink.hidden = false;
+                } else {
+                    noteLink.hidden = true;
+                }
             }
-            return a;
-        };
 
-        // 各なかまに運勢を1つずつ割り当てる。再挑戦のたびにシャッフルし直す
-        let assignments = shuffle(fortunes);
-
-        const revealFortune = (fortune) => {
-            rankEl.textContent = fortune.rank;
-            textEl.textContent = fortune.text;
-            omikuji.hidden = false;
-            omikuji.animate(
+            aboutNote.hidden = false;
+            aboutNote.getAnimations().forEach((a) => a.cancel());
+            aboutNote.animate(
                 [
-                    { opacity: 0, transform: 'translateY(10px) scale(0.9) rotate(-2deg)' },
+                    { opacity: 0, transform: 'translateY(10px) scale(0.94)' },
                     { opacity: 1, transform: 'none' },
                 ],
-                { duration: 450, easing: 'cubic-bezier(0.18, 0.9, 0.32, 1.5)' }
+                { duration: 420, easing: 'cubic-bezier(0.18, 0.9, 0.32, 1.5)' }
             );
+            aboutNote.scrollIntoView({ behavior: 'smooth', block: 'center' });
         };
 
-        critters.forEach((critter, i) => {
+        aboutCritters.forEach((critter) => {
             critter.addEventListener('click', () => {
                 critter.animate(
                     [
@@ -355,24 +355,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     ],
                     { duration: 420, easing: 'cubic-bezier(0.2, 0.8, 0.3, 1.5)' }
                 );
-                revealFortune(assignments[i % assignments.length]);
+                showNote(critter.dataset.topic, critter);
             });
         });
 
-        // とじると配置をシャッフルし直し、もう一度なかまをタップして引ける
-        closeBtn?.addEventListener('click', () => {
-            assignments = shuffle(fortunes);
-            omikuji.getAnimations().forEach((a) => a.cancel());
-            omikuji.animate(
+        noteClose?.addEventListener('click', () => {
+            aboutCritters.forEach((c) => c.classList.remove('is-active'));
+            aboutNote.getAnimations().forEach((a) => a.cancel());
+            aboutNote.animate(
                 [
                     { opacity: 1, transform: 'none' },
-                    { opacity: 0, transform: 'translateY(8px) scale(0.92)' },
+                    { opacity: 0, transform: 'translateY(8px) scale(0.94)' },
                 ],
-                { duration: 220, easing: 'ease-in' }
+                { duration: 200, easing: 'ease-in' }
             );
             window.setTimeout(() => {
-                omikuji.hidden = true;
-            }, 210);
+                aboutNote.hidden = true;
+            }, 190);
         });
     }
 
