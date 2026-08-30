@@ -149,20 +149,21 @@
     <div class="motif top-[62%] right-[16%] w-6 h-6 text-accent" data-parallax="0.22">
       <svg class="motif-inner anim-twinkle" style="animation-delay:-1.5s" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12C7 10 11 6 12 0z"/></svg>
     </div>
-    {{-- コアラのマーチ風：森のなかまがのった、ふっくらビスケット --}}
-    <div class="motif top-[19%] left-[9%] w-14 h-14 sm:w-16 sm:h-16" data-parallax="0.14">
-      <div class="biscuit anim-bob w-full h-full">
-        <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="11" cy="12" r="6" /><circle cx="29" cy="12" r="6" />
-          <path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z" />
-          <ellipse cx="20" cy="24" rx="3" ry="2.2" fill="currentColor" stroke="none" />
-          <circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none" />
-          <circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none" />
-        </svg>
-      </div>
-    </div>
-
     <div class="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center w-full">
+      {{-- コアラのマーチ風：森のなかまがのったビスケット。
+           コンテンツ幅の外側に固定するので、どの画面幅・縮尺でも本文と重ならない --}}
+      <div class="motif top-[34%] left-[-3.25rem] w-12 h-12 hidden xl:block" data-parallax="0.06">
+        <div class="biscuit anim-bob w-full h-full">
+          <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="12" r="6" /><circle cx="29" cy="12" r="6" />
+            <path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z" />
+            <ellipse cx="20" cy="24" rx="3" ry="2.2" fill="currentColor" stroke="none" />
+            <circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none" />
+            <circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none" />
+          </svg>
+        </div>
+      </div>
+
       <div class="reveal">
         <p class="signboard signboard-swing font-heading font-bold tracking-widest mb-6 text-sm">
           WEB ENGINEER PORTFOLIO
