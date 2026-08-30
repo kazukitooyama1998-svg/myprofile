@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         workModalTech.innerHTML = '';
         work.tech.forEach((tech) => {
             const span = document.createElement('span');
-            span.className = 'px-3.5 py-1.5 rounded-full bg-primary-light text-primary-dark text-sm font-medium';
+            span.className = 'px-3.5 py-1.5 rounded-full tag-pop bg-primary-light text-primary-dark text-sm font-medium';
             span.textContent = tech;
             workModalTech.appendChild(span);
         });
@@ -298,6 +298,81 @@ document.addEventListener('DOMContentLoaded', () => {
 
             card.addEventListener('pointerleave', resetTilt);
             card.addEventListener('pointercancel', resetTilt);
+        });
+    }
+
+    /* ---------- フッターの「森のなかま」：タップで今日の運勢（おみくじ） ---------- */
+    const forestFriends = document.getElementById('forest-friends');
+    const omikuji = document.getElementById('omikuji');
+
+    if (forestFriends && omikuji) {
+        const fortunes = [
+            { rank: '大吉', text: '今日はコードが一発で通る日。新しい技術に触れてみると吉。' },
+            { rank: '中吉', text: '小さなバグに早めに気づけそう。こまめなコミットが幸運のカギ。' },
+            { rank: '小吉', text: '読み返したドキュメントに、ちいさな発見がある一日。' },
+            { rank: '吉', text: 'レビューでうれしいフィードバックがもらえるかも。' },
+            { rank: '末吉', text: 'まずは深呼吸。あたたかい飲みものを一杯いれてから始めよう。' },
+            { rank: '半吉', text: '手が止まったら、いちど席を立って歩いてみると答えが見つかるかも。' },
+        ];
+
+        const critters = Array.from(forestFriends.querySelectorAll('.ff-critter'));
+        const rankEl = document.getElementById('omikuji-rank');
+        const textEl = document.getElementById('omikuji-text');
+        const closeBtn = document.getElementById('omikuji-close');
+
+        const shuffle = (arr) => {
+            const a = arr.slice();
+            for (let i = a.length - 1; i > 0; i -= 1) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        };
+
+        // 各なかまに運勢を1つずつ割り当てる。再挑戦のたびにシャッフルし直す
+        let assignments = shuffle(fortunes);
+
+        const revealFortune = (fortune) => {
+            rankEl.textContent = fortune.rank;
+            textEl.textContent = fortune.text;
+            omikuji.hidden = false;
+            omikuji.animate(
+                [
+                    { opacity: 0, transform: 'translateY(10px) scale(0.9) rotate(-2deg)' },
+                    { opacity: 1, transform: 'none' },
+                ],
+                { duration: 450, easing: 'cubic-bezier(0.18, 0.9, 0.32, 1.5)' }
+            );
+        };
+
+        critters.forEach((critter, i) => {
+            critter.addEventListener('click', () => {
+                critter.animate(
+                    [
+                        { transform: 'translateY(0) rotate(0)' },
+                        { transform: 'translateY(-12px) rotate(-8deg)' },
+                        { transform: 'translateY(0) rotate(0)' },
+                    ],
+                    { duration: 420, easing: 'cubic-bezier(0.2, 0.8, 0.3, 1.5)' }
+                );
+                revealFortune(assignments[i % assignments.length]);
+            });
+        });
+
+        // とじると配置をシャッフルし直し、もう一度なかまをタップして引ける
+        closeBtn?.addEventListener('click', () => {
+            assignments = shuffle(fortunes);
+            omikuji.getAnimations().forEach((a) => a.cancel());
+            omikuji.animate(
+                [
+                    { opacity: 1, transform: 'none' },
+                    { opacity: 0, transform: 'translateY(8px) scale(0.92)' },
+                ],
+                { duration: 220, easing: 'ease-in' }
+            );
+            window.setTimeout(() => {
+                omikuji.hidden = true;
+            }, 210);
         });
     }
 

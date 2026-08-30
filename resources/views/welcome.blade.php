@@ -28,7 +28,7 @@
     },
     'profile-site': {
       title: @js('Profile Site'),
-      description: @js('本サイトは、私自身のポートフォリオサイトです。エンジニアとしての実務経験がまだないため、これまでの経歴やスキルを知っていただくことを目的に制作しました。バックエンドにはLaravel、フロントエンドはBladeテンプレートとTailwind CSS（Vite）で構築し、モーダルやカルーセルなどの動きはJavaScriptで実装しています。全体を通して優しい雰囲気とシンプルなテイストを意識したデザインに仕上げました。就職活動や学習の進捗に合わせて、今後も継続して使用・更新していく予定です。'),
+      description: @js('本サイトは、私自身のポートフォリオサイトです。これまでの経歴や身につけてきたスキル、学習を通して取り組んできたことを知っていただくことを目的に制作しました。バックエンドにはLaravel、フロントエンドはBladeテンプレートとTailwind CSS（Vite）で構築し、モーダルやカルーセルなどの動きはJavaScriptで実装しています。全体を通して、優しい雰囲気とシンプルなテイストをベースにしながら、ところどころに遊び心を加えたデザインに仕上げました。今後も、これまで学んできたことや新しく身につけた技術を継続的にアップデートしていくとともに、学習の中で面白いと感じた技術や、本サイトに活用できそうな技術があれば積極的に取り入れ、自分自身の成長とともに進化していくサイトを目指していきます。'),
       tech: @js(['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'PHP', 'Laravel', 'MySQL']),
       images: [
         { src: @js(asset('images/works/profile-site/hero.png')), alt: @js('Profile Site のトップページ') },
@@ -89,12 +89,12 @@
 <!-- ==================== Header ==================== -->
 <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-white/90 shadow-soft backdrop-blur">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="#home" class="font-heading text-xl font-bold text-primary-dark tracking-wide">
+    <a href="#home" class="logo-3d font-heading text-2xl sm:text-[1.6rem] font-bold text-primary-dark tracking-wide leading-none">
       Kazuki<span class="text-accent">.</span>Toyama
     </a>
 
     <!-- PC Nav -->
-    <nav class="hidden md:flex items-center gap-3 lg:gap-5 font-heading text-sm font-medium">
+    <nav class="hidden md:flex items-center gap-2 lg:gap-4 font-heading text-base font-medium">
       <a href="#home" class="nav-link">Home</a>
       <a href="#about" class="nav-link">About</a>
       <a href="#skills" class="nav-link">Skills</a>
@@ -102,7 +102,7 @@
       <a href="#contact" class="nav-link">Contact</a>
     </nav>
 
-    <a href="#contact" class="btn-pop hidden md:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-heading font-medium px-5 py-2.5 rounded-full">
+    <a href="#contact" class="btn-pop hidden md:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-base font-heading font-medium px-5 py-2.5 rounded-full">
       お問い合わせ
     </a>
 
@@ -146,11 +146,20 @@
     <div class="motif bottom-16 left-[6%] w-24 h-24 text-primary-light hidden sm:block" data-parallax="0.1">
       <svg class="motif-inner ink-splat anim-drift" style="animation-delay:-3s" viewBox="0 0 120 120" aria-hidden="true"><path d="M62 8c9-4 15 9 26 9s18 3 19 14-8 15-4 26 12 15 6 25-19 4-27 12-9 17-21 17-15-10-26-11-17 6-25-2-1-19-6-29S3 71 6 60s16-9 20-19S39 22 47 16 53 12 62 8z"/></svg>
     </div>
-    <div class="motif top-[22%] left-[12%] w-9 h-9 text-sub" data-parallax="0.16">
-      <svg class="motif-inner anim-twinkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12C7 10 11 6 12 0z"/></svg>
-    </div>
     <div class="motif top-[62%] right-[16%] w-6 h-6 text-accent" data-parallax="0.22">
       <svg class="motif-inner anim-twinkle" style="animation-delay:-1.5s" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12C7 10 11 6 12 0z"/></svg>
+    </div>
+    {{-- コアラのマーチ風：森のなかまがのった、ふっくらビスケット --}}
+    <div class="motif top-[19%] left-[9%] w-14 h-14 sm:w-16 sm:h-16" data-parallax="0.14">
+      <div class="biscuit anim-bob w-full h-full">
+        <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="12" r="6" /><circle cx="29" cy="12" r="6" />
+          <path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z" />
+          <ellipse cx="20" cy="24" rx="3" ry="2.2" fill="currentColor" stroke="none" />
+          <circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none" />
+          <circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none" />
+        </svg>
+      </div>
     </div>
 
     <div class="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center w-full">
@@ -189,7 +198,7 @@
   </section>
 
   <!-- ==================== About ==================== -->
-  <section id="about" class="relative py-28 scroll-mt-20 overflow-hidden">
+  <section id="about" class="relative py-28 scroll-mt-20 overflow-hidden dot-grid">
     <div class="motif top-16 left-[4%] w-28 h-28 text-berry-light hidden lg:block" data-parallax="0.08">
       <svg class="motif-inner ink-splat anim-drift" viewBox="0 0 120 120" aria-hidden="true"><path d="M62 8c9-4 15 9 26 9s18 3 19 14-8 15-4 26 12 15 6 25-19 4-27 12-9 17-21 17-15-10-26-11-17 6-25-2-1-19-6-29S3 71 6 60s16-9 20-19S39 22 47 16 53 12 62 8z"/></svg>
     </div>
@@ -199,8 +208,8 @@
 
     <div class="relative z-10 max-w-6xl mx-auto px-6">
       <div class="reveal text-center mb-16">
-        <p class="signboard signboard-swing font-heading font-bold tracking-widest mb-4 text-sm">ABOUT ME</p>
-        <h2 class="font-heading text-3xl sm:text-4xl font-black">自己紹介</h2>
+        <p class="mb-4"><span class="signboard signboard-swing font-heading font-bold tracking-widest text-sm">ABOUT ME</span></p>
+        <h2 class="font-heading text-3xl sm:text-4xl font-black heading-pop">自己紹介</h2>
       </div>
 
       <div class="grid md:grid-cols-5 gap-12 items-center">
@@ -259,7 +268,7 @@
   </section>
 
   <!-- ==================== Skills ==================== -->
-  <section id="skills" class="relative py-28 bg-paper scroll-mt-20 overflow-hidden">
+  <section id="skills" class="relative py-28 bg-paper scroll-mt-20 overflow-hidden dot-grid scallop-top">
     <div class="motif top-20 right-[6%] w-32 h-32 text-sky-light hidden lg:block" data-parallax="0.09">
       <svg class="motif-inner ink-splat anim-drift" viewBox="0 0 120 120" aria-hidden="true"><path d="M62 8c9-4 15 9 26 9s18 3 19 14-8 15-4 26 12 15 6 25-19 4-27 12-9 17-21 17-15-10-26-11-17 6-25-2-1-19-6-29S3 71 6 60s16-9 20-19S39 22 47 16 53 12 62 8z"/></svg>
     </div>
@@ -269,8 +278,8 @@
 
     <div class="relative z-10 max-w-6xl mx-auto px-6">
       <div class="reveal text-center mb-16">
-        <p class="signboard signboard-swing font-heading font-bold tracking-widest mb-4 text-sm">SKILLS</p>
-        <h2 class="font-heading text-3xl sm:text-4xl font-black">使用技術</h2>
+        <p class="mb-4"><span class="signboard signboard-swing font-heading font-bold tracking-widest text-sm">SKILLS</span></p>
+        <h2 class="font-heading text-3xl sm:text-4xl font-black heading-pop">使用技術</h2>
         <p class="text-muted mt-4 max-w-2xl mx-auto leading-relaxed">
           これまで学習してきた技術をまとめています。ITスクールではフロントエンドからバックエンドまで幅広い技術を学び、Web開発全体の基礎を身につけました。現在はJavaScriptやTailwind CSSを中心に学習を進めるとともに、Laravelを用いたWebアプリケーション開発にも継続的に取り組んでいます。
           <br /><br />
@@ -291,9 +300,9 @@
           </div>
           <h3 class="font-heading font-bold text-lg mb-4">Frontend</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3.5 py-1.5 rounded-full bg-primary-light text-primary-dark text-sm font-medium">HTML</span>
-            <span class="px-3.5 py-1.5 rounded-full bg-primary-light text-primary-dark text-sm font-medium">CSS</span>
-            <span class="px-3.5 py-1.5 rounded-full bg-primary-light text-primary-dark text-sm font-medium">Bootstrap</span>
+            <span class="px-3.5 py-1.5 rounded-full tag-pop bg-primary-light text-primary-dark text-sm font-medium">HTML</span>
+            <span class="px-3.5 py-1.5 rounded-full tag-pop bg-primary-light text-primary-dark text-sm font-medium">CSS</span>
+            <span class="px-3.5 py-1.5 rounded-full tag-pop bg-primary-light text-primary-dark text-sm font-medium">Bootstrap</span>
           </div>
           <div class="mt-4 pt-4 border-t border-primary-light">
             <p class="text-xs text-muted font-heading font-semibold mb-2">学習中</p>
@@ -313,8 +322,8 @@
           </div>
           <h3 class="font-heading font-bold text-lg mb-4">Backend</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3.5 py-1.5 rounded-full bg-accent-light text-accent text-sm font-medium">PHP</span>
-            <span class="px-3.5 py-1.5 rounded-full bg-accent-light text-accent text-sm font-medium">Laravel</span>
+            <span class="px-3.5 py-1.5 rounded-full tag-pop bg-accent-light text-accent text-sm font-medium">PHP</span>
+            <span class="px-3.5 py-1.5 rounded-full tag-pop bg-accent-light text-accent text-sm font-medium">Laravel</span>
           </div>
         </div>
 
@@ -327,8 +336,8 @@
           </div>
           <h3 class="font-heading font-bold text-lg mb-4">Database</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3.5 py-1.5 rounded-full bg-sub-light text-ink text-sm font-medium">SQL</span>
-            <span class="px-3.5 py-1.5 rounded-full bg-sub-light text-ink text-sm font-medium">MySQL</span>
+            <span class="px-3.5 py-1.5 rounded-full tag-pop bg-sub-light text-ink text-sm font-medium">SQL</span>
+            <span class="px-3.5 py-1.5 rounded-full tag-pop bg-sub-light text-ink text-sm font-medium">MySQL</span>
           </div>
         </div>
 
@@ -341,8 +350,8 @@
           </div>
           <h3 class="font-heading font-bold text-lg mb-4">Tools</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3.5 py-1.5 rounded-full bg-ink/10 text-ink text-sm font-medium">GitHub</span>
-            <span class="px-3.5 py-1.5 rounded-full bg-ink/10 text-ink text-sm font-medium">GitHub Desktop</span>
+            <span class="px-3.5 py-1.5 rounded-full tag-pop bg-ink/10 text-ink text-sm font-medium">GitHub</span>
+            <span class="px-3.5 py-1.5 rounded-full tag-pop bg-ink/10 text-ink text-sm font-medium">GitHub Desktop</span>
           </div>
         </div>
 
@@ -355,8 +364,8 @@
           </div>
           <h3 class="font-heading font-bold text-lg mb-4">AI tools</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3.5 py-1.5 rounded-full bg-primary-light text-primary-dark text-sm font-medium">Claude Code</span>
-            <span class="px-3.5 py-1.5 rounded-full bg-primary-light text-primary-dark text-sm font-medium">ChatGPT</span>
+            <span class="px-3.5 py-1.5 rounded-full tag-pop bg-primary-light text-primary-dark text-sm font-medium">Claude Code</span>
+            <span class="px-3.5 py-1.5 rounded-full tag-pop bg-primary-light text-primary-dark text-sm font-medium">ChatGPT</span>
           </div>
         </div>
 
@@ -365,18 +374,30 @@
   </section>
 
   <!-- ==================== Works ==================== -->
-  <section id="works" class="relative py-28 scroll-mt-20 overflow-hidden">
+  <section id="works" class="relative py-28 scroll-mt-20 overflow-hidden dot-grid">
     <div class="motif top-16 left-[3%] w-36 h-36 text-grape-light hidden lg:block" data-parallax="0.07">
       <svg class="motif-inner ink-splat anim-drift" viewBox="0 0 120 120" aria-hidden="true"><path d="M62 8c9-4 15 9 26 9s18 3 19 14-8 15-4 26 12 15 6 25-19 4-27 12-9 17-21 17-15-10-26-11-17 6-25-2-1-19-6-29S3 71 6 60s16-9 20-19S39 22 47 16 53 12 62 8z"/></svg>
     </div>
     <div class="motif bottom-28 right-[4%] w-10 h-10 text-sub" data-parallax="0.19">
       <svg class="motif-inner anim-twinkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12C7 10 11 6 12 0z"/></svg>
     </div>
+    {{-- コアラのマーチ風：味ちがい（いちご）のビスケット --}}
+    <div class="motif top-[16%] right-[7%] w-14 h-14 hidden sm:block" data-parallax="0.12">
+      <div class="biscuit biscuit-berry anim-bob w-full h-full" style="animation-delay:-2s">
+        <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="12" r="6" /><circle cx="29" cy="12" r="6" />
+          <path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z" />
+          <path d="M13 25c2.5 3 11.5 3 14 0" />
+          <circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none" />
+          <circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none" />
+        </svg>
+      </div>
+    </div>
 
     <div class="relative z-10 max-w-6xl mx-auto px-6">
       <div class="reveal text-center mb-16">
-        <p class="signboard signboard-swing font-heading font-bold tracking-widest mb-4 text-sm">WORKS</p>
-        <h2 class="font-heading text-3xl sm:text-4xl font-black">制作物</h2>
+        <p class="mb-4"><span class="signboard signboard-swing font-heading font-bold tracking-widest text-sm">WORKS</span></p>
+        <h2 class="font-heading text-3xl sm:text-4xl font-black heading-pop">制作物</h2>
       </div>
 
       <div class="reveal relative md:px-10">
@@ -408,8 +429,8 @@
                 詳しくはクリック <span class="arrow-nudge">→</span>
               </button>
               <div class="flex flex-wrap gap-2 mb-5">
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">HTML</span>
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">CSS</span>
+                <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">HTML</span>
+                <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">CSS</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
                 <a href="https://github.com/kazukitooyama1998-svg/Coffee-bean" target="_blank" rel="noopener" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
@@ -429,9 +450,9 @@
                 詳しくはクリック <span class="arrow-nudge">→</span>
               </button>
               <div class="flex flex-wrap gap-2 mb-5">
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Laravel</span>
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Tailwind CSS</span>
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">+5</span>
+                <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">Laravel</span>
+                <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">Tailwind CSS</span>
+                <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">+5</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
                 <a href="https://github.com/kazukitooyama1998-svg/myprofile" target="_blank" rel="noopener" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
@@ -451,9 +472,9 @@
                 詳しくはクリック <span class="arrow-nudge">→</span>
               </button>
               <div class="flex flex-wrap gap-2 mb-5">
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Laravel</span>
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">MySQL</span>
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">+5</span>
+                <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">Laravel</span>
+                <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">MySQL</span>
+                <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">+5</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
                 <a href="https://github.com/kazukitooyama1998-svg/laravel-english-learning-site" target="_blank" rel="noopener" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
@@ -472,9 +493,9 @@
                 詳しくはクリック <span class="arrow-nudge">→</span>
               </button>
               <div class="flex flex-wrap gap-2 mb-5">
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">Laravel</span>
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">MySQL</span>
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">+4</span>
+                <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">Laravel</span>
+                <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">MySQL</span>
+                <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">+4</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
                 <a href="https://github.com/kazukitooyama1998-svg/voca-review" target="_blank" rel="noopener" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
@@ -490,8 +511,8 @@
               <h3 class="font-heading font-bold text-lg mb-2">Commig soon</h3>
               <p class="text-sm text-muted leading-relaxed mb-4">#</p>
               <div class="flex flex-wrap gap-2 mb-5">
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">#</span>
-                <span class="text-xs px-3 py-1 rounded-full bg-primary-light text-primary-dark">#</span>
+                <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">#</span>
+                <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">#</span>
               </div>
               <div class="flex gap-4 text-sm font-heading font-semibold">
                 <a href="#" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
@@ -514,7 +535,7 @@
   </section>
 
   <!-- ==================== Contact ==================== -->
-  <section id="contact" class="relative py-28 bg-paper scroll-mt-20 overflow-hidden">
+  <section id="contact" class="relative py-28 bg-paper scroll-mt-20 overflow-hidden dot-grid scallop-top">
     <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary-light rounded-full blur-3xl opacity-60"></div>
 
     <!-- 海モチーフ：下からゆらゆら昇る泡（JSで生成） -->
@@ -523,11 +544,22 @@
     <div class="motif top-14 left-[6%] w-10 h-10 text-sky-dark" data-parallax="0.15">
       <svg class="motif-inner anim-twinkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12C7 10 11 6 12 0z"/></svg>
     </div>
+    {{-- ちいかわ風：フォームのそばにちょこんといる森のなかま --}}
+    <div class="motif bottom-24 right-[8%] w-16 h-16 hidden lg:block" data-parallax="0.1">
+      <div class="biscuit biscuit-matcha anim-bob w-full h-full" style="animation-delay:-1s">
+        <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="12" r="6" /><circle cx="29" cy="12" r="6" />
+          <path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z" />
+          <path d="M14 19.5c.6-1 2-1 2.6 0M23.4 19.5c.6-1 2-1 2.6 0" />
+          <path d="M16.5 25c1.4 1.4 5.6 1.4 7 0" />
+        </svg>
+      </div>
+    </div>
 
     <div class="relative z-10 max-w-2xl mx-auto px-6">
       <div class="reveal text-center mb-14">
-        <p class="signboard signboard-swing font-heading font-bold tracking-widest mb-4 text-sm">CONTACT</p>
-        <h2 class="font-heading text-3xl sm:text-4xl font-black mb-4">お問い合わせ</h2>
+        <p class="mb-4"><span class="signboard signboard-swing font-heading font-bold tracking-widest text-sm">CONTACT</span></p>
+        <h2 class="font-heading text-3xl sm:text-4xl font-black heading-pop mb-4">お問い合わせ</h2>
         <p class="text-muted leading-relaxed">
           ご質問等、お気軽にご連絡ください。
         </p>
@@ -591,9 +623,53 @@
 </main>
 
 <!-- ==================== Footer ==================== -->
-<footer id="site-footer" class="relative bg-primary-dark text-white/90 pt-16 pb-24 sm:pb-8">
+<footer id="site-footer" class="relative bg-primary-dark text-white/90 pt-14 pb-24 sm:pb-8">
+
+  {{-- コアラのマーチ風：フッターの上辺から覗く「森のなかまたち」。
+       タップすると、おみくじのように「きょうの運勢」が出ます（色は統一） --}}
+  <div class="forest-friends" id="forest-friends">
+    <button type="button" class="ff-critter hidden sm:block" aria-label="森のなかまをタップして今日の運勢を見る">
+      <span class="biscuit block w-full h-full">
+        <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="12" r="6"/><circle cx="29" cy="12" r="6"/><path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z"/><ellipse cx="20" cy="24" rx="3" ry="2.2" fill="currentColor" stroke="none"/><circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/></svg>
+      </span>
+    </button>
+    <button type="button" class="ff-critter" aria-label="森のなかまをタップして今日の運勢を見る">
+      <span class="biscuit block w-full h-full">
+        <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="12" r="6"/><circle cx="29" cy="12" r="6"/><path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z"/><path d="M13 24c2.5 3 11.5 3 14 0"/><circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/></svg>
+      </span>
+    </button>
+    <button type="button" class="ff-critter" aria-label="森のなかまをタップして今日の運勢を見る">
+      <span class="biscuit block w-full h-full">
+        <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="12" r="6"/><circle cx="29" cy="12" r="6"/><path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z"/><path d="M14 19.5c.6-1 2-1 2.6 0M23.4 19.5c.6-1 2-1 2.6 0"/><path d="M16.5 25c1.4 1.4 5.6 1.4 7 0"/></svg>
+      </span>
+    </button>
+    <button type="button" class="ff-critter" aria-label="森のなかまをタップして今日の運勢を見る">
+      <span class="biscuit block w-full h-full">
+        <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="12" r="6"/><circle cx="29" cy="12" r="6"/><path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z"/><ellipse cx="20" cy="24" rx="3" ry="2.2" fill="currentColor" stroke="none"/><circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/></svg>
+      </span>
+    </button>
+    <button type="button" class="ff-critter hidden sm:block" aria-label="森のなかまをタップして今日の運勢を見る">
+      <span class="biscuit block w-full h-full">
+        <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="12" r="6"/><circle cx="29" cy="12" r="6"/><path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z"/><path d="M13 24c2.5 3 11.5 3 14 0"/><circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/></svg>
+      </span>
+    </button>
+  </div>
+
   <div class="max-w-6xl mx-auto px-6">
-    <div class="flex justify-center items-center pb-8 border-b border-white/15">
+    <div class="text-center pb-8 border-b border-white/15">
+      <p class="font-heading text-sm text-white/75">
+        森のなかまをタップして、<span class="text-sub font-bold">きょうの運勢</span>をどうぞ<span class="text-white/50">（何度でも引けます）</span>
+      </p>
+      <div id="omikuji" class="omikuji" hidden>
+        <button type="button" id="omikuji-close" class="omikuji-close" aria-label="とじる">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+        <p class="omikuji-rank" id="omikuji-rank"></p>
+        <p class="omikuji-text" id="omikuji-text"></p>
+        <p class="omikuji-again">とじて、もう一度なかまをタップ</p>
+      </div>
+    </div>
+    <div class="flex justify-center items-center py-8 border-b border-white/15">
       <p class="font-heading text-2xl sm:text-3xl font-black tracking-wide text-center">Thank you for reading until the end<span class="text-sub">.</span></p>
     </div>
     <p class="text-center text-sm text-white/60 pt-6">&copy; 2026 Kazuki Toyama. All Rights Reserved.</p>

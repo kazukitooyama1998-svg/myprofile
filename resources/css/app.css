@@ -322,6 +322,145 @@ body {
     animation: bubble-rise linear infinite;
 }
 
+/* --- コアラのマーチ風「ふっくらビスケット＋森のなかま」 --------------
+   ロッテのキャラクターは流用せず、丸耳の素朴な生きものを新規に描き起こし。
+   ぷっくりしたビスケットの面に小さな顔がのっている見立て。            */
+.biscuit {
+    display: grid;
+    place-items: center;
+    border-radius: 46% 46% 44% 44% / 48% 48% 42% 42%;
+    background:
+        radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.75), transparent 46%),
+        linear-gradient(158deg, #F6E4C4, #E6C596);
+    border: 2.5px solid var(--color-line);
+    box-shadow: var(--shadow-pop-sm), inset 0 -5px 9px rgba(150, 106, 62, 0.28);
+    color: #6b4a2b;
+}
+
+/* 味ちがい（いちご・抹茶）の「見つけたらラッキー」なビスケット */
+.biscuit-berry {
+    background:
+        radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.8), transparent 46%),
+        linear-gradient(158deg, #FBD8E4, #F3A9C1);
+    color: #9c3f60;
+}
+
+.biscuit-matcha {
+    background:
+        radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.8), transparent 46%),
+        linear-gradient(158deg, #DCEBC7, #A9CE86);
+    color: #4f6b34;
+}
+
+.critter {
+    display: block;
+    width: 62%;
+    height: 62%;
+}
+
+/* フッターの上辺からちょこんと覗く「森のなかまたち」 */
+.forest-friends {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -1.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 0.75rem;
+}
+
+.ff-critter {
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.3, 1.5);
+    animation: bob 4.5s ease-in-out infinite;
+}
+
+.ff-critter:nth-child(2) { animation-delay: -0.6s; }
+.ff-critter:nth-child(3) { animation-delay: -1.2s; }
+.ff-critter:nth-child(4) { animation-delay: -1.8s; }
+.ff-critter:nth-child(5) { animation-delay: -2.4s; }
+
+.ff-critter:hover,
+.ff-critter:focus-visible {
+    transform: translateY(-10px) rotate(-6deg) scale(1.12);
+    outline: none;
+}
+
+.ff-critter:hover .biscuit,
+.ff-critter:focus-visible .biscuit {
+    animation: wiggle 0.5s ease;
+}
+
+/* フッターのおみくじ（今日の運勢） */
+.omikuji {
+    position: relative;
+    margin: 1rem auto 0;
+    max-width: 22rem;
+    padding: 1rem 1.25rem 0.95rem;
+    background: var(--color-cream);
+    color: var(--color-ink);
+    border: 2.5px solid var(--color-line);
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow-pop-sm);
+    text-align: center;
+}
+
+.omikuji-close {
+    position: absolute;
+    top: 0.45rem;
+    right: 0.55rem;
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    color: var(--color-muted);
+    background: transparent;
+    border: 0;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: color 0.15s ease, transform 0.2s ease;
+}
+
+.omikuji-close:hover {
+    color: var(--color-line);
+    transform: rotate(90deg);
+}
+
+.omikuji-close svg {
+    width: 0.8rem;
+    height: 0.8rem;
+}
+
+.omikuji-again {
+    margin-top: 0.55rem;
+    font-size: 0.68rem;
+    color: var(--color-muted);
+    opacity: 0.8;
+}
+
+.omikuji-rank {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: 0.12em;
+    color: var(--color-primary-dark);
+}
+
+.omikuji-text {
+    margin-top: 0.2rem;
+    font-size: 0.8rem;
+    line-height: 1.75;
+    color: var(--color-muted);
+}
+
+
 /* ===================================================================
    5. キーフレーム
    =================================================================== */
@@ -353,6 +492,12 @@ body {
 @keyframes drift {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
     50% { transform: translate(0, -22px) rotate(8deg); }
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-13deg); }
+    75% { transform: rotate(13deg); }
 }
 
 @keyframes bubble-rise {
@@ -393,7 +538,60 @@ body {
 }
 
 /* ===================================================================
-   6. モーション削減の配慮
+   6. さらにポップに：見出し・地紋・スカラップ・ステッカータグ
+      （たべっ子どうぶつ／ちいかわ／キョロちゃん／どうぶつの森 を再構成）
+   =================================================================== */
+
+/* ヘッダーのロゴ：ほんのり立体感を出すだけの控えめな陰影 */
+.logo-3d {
+    text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.85),
+        1px 2px 2px rgba(60, 51, 43, 0.16);
+}
+
+/* ぽってり見出し：色つきドロップ＋クリームの縁取り＋わずかな傾き
+   （たべっ子どうぶつ・キョロちゃんの、太くて丸い装飾文字から） */
+.heading-pop {
+    display: inline-block;
+    color: var(--color-line);
+    text-shadow:
+        -1.5px -1.5px 0 var(--color-cream),
+        1.5px -1.5px 0 var(--color-cream),
+        -1.5px 1.5px 0 var(--color-cream),
+        1.5px 1.5px 0 var(--color-cream),
+        4px 5px 0 var(--color-sub);
+    transform: rotate(-1.2deg);
+}
+
+/* ひかえめな水玉の地紋（ちいかわ・たべっ子どうぶつの箱の質感） */
+.dot-grid {
+    background-image: radial-gradient(rgba(111, 168, 143, 0.14) 1.6px, transparent 1.7px);
+    background-size: 24px 24px;
+}
+
+/* セクション上辺のスカラップ帯（どうぶつの森の砂浜／お菓子の箱のフチ） */
+.scallop-top::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 15px;
+    background: var(--color-primary-light);
+    -webkit-mask: radial-gradient(circle at 11px 15px, #0000 10.5px, #000 11px) 0 0 / 22px 15px repeat-x;
+            mask: radial-gradient(circle at 11px 15px, #0000 10.5px, #000 11px) 0 0 / 22px 15px repeat-x;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* たべっ子どうぶつ風「シールのタグ」：細い縁取り＋小さな影 */
+.tag-pop {
+    border: 2px solid var(--color-line);
+    box-shadow: 2px 2px 0 0 rgba(60, 51, 43, 0.22);
+}
+
+/* ===================================================================
+   7. モーション削減の配慮
    =================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
