@@ -571,23 +571,6 @@
             </div>
           </article>
 
-          <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group card-pop bg-white rounded-4xl overflow-hidden">
-            <div class="aspect-[4/3] bg-gradient-to-br from-accent-light to-sub/30 flex items-center justify-center">
-              <span class="font-heading text-accent/80 text-sm">Project Image</span>
-            </div>
-            <div class="p-6">
-              <h3 class="font-heading font-bold text-lg mb-2">Commig soon</h3>
-              <p class="text-sm text-muted leading-relaxed mb-4">#</p>
-              <div class="flex flex-wrap gap-2 mb-5">
-                <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">#</span>
-                <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">#</span>
-              </div>
-              <div class="flex gap-4 text-sm font-heading font-semibold">
-                <a href="#" class="text-primary-dark hover:text-accent transition-colors">GitHub →</a>
-              </div>
-            </div>
-          </article>
-
         </div>
 
         <!-- 番号ページネーション -->
@@ -596,7 +579,6 @@
           <button type="button" data-index="1" class="works-dot w-9 h-9 rounded-full font-heading text-sm font-semibold transition-colors" aria-label="2番目の制作物へ">02</button>
           <button type="button" data-index="2" class="works-dot w-9 h-9 rounded-full font-heading text-sm font-semibold transition-colors" aria-label="3番目の制作物へ">03</button>
           <button type="button" data-index="3" class="works-dot w-9 h-9 rounded-full font-heading text-sm font-semibold transition-colors" aria-label="4番目の制作物へ">04</button>
-          <button type="button" data-index="4" class="works-dot w-9 h-9 rounded-full font-heading text-sm font-semibold transition-colors" aria-label="5番目の制作物へ">05</button>
         </div>
       </div>
     </div>
