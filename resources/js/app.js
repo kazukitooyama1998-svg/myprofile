@@ -393,4 +393,12 @@ document.addEventListener('DOMContentLoaded', () => {
             bubbleWrap.appendChild(bubble);
         }
     }
+
+    /* ---------- タップでめくれる写真（フリップカード） ---------- */
+    document.querySelectorAll('[data-flip]').forEach((card) => {
+        card.addEventListener('click', () => {
+            const flipped = card.classList.toggle('is-flipped');
+            card.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+        });
+    });
 });

@@ -677,6 +677,63 @@ body {
 }
 
 /* ===================================================================
+   6.5 タップでめくれる写真（フリップカード）
+   =================================================================== */
+
+.flip-card {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    perspective: 1400px;
+}
+
+.flip-card__inner {
+    position: absolute;
+    inset: 0;
+    display: block;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.34, 1.3, 0.4, 1);
+}
+
+.flip-card.is-flipped .flip-card__inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card__face {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card__face--back {
+    transform: rotateY(180deg);
+}
+
+/* めくれることを知らせる小さなヒント（既存の .tap-bubble を流用） */
+.flip-card .tap-bubble {
+    left: auto;
+    right: 0.6rem;
+    top: -0.7rem;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+}
+
+.flip-card.is-flipped .tap-bubble {
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .flip-card__inner {
+        transition-duration: 0.001ms;
+    }
+}
+
+/* ===================================================================
    7. モーション削減の配慮
    =================================================================== */
 

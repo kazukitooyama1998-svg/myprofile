@@ -191,9 +191,17 @@
       <div class="reveal relative flex justify-center" style="transition-delay: .15s">
         <div class="relative w-80 h-80 sm:w-[26rem] sm:h-[26rem] lg:w-[30rem] lg:h-[30rem]">
           <div class="absolute inset-0 rounded-4xl bg-gradient-to-br from-primary-light via-accent-light to-sub-light rotate-6"></div>
-          <div class="absolute inset-0 rounded-4xl bg-white sticker -rotate-3 flex items-center justify-center overflow-hidden">
-            <img src="{{ asset('images/profile.jpeg') }}" alt="Kazuki Toyama" class="w-full h-full object-cover" />
-          </div>
+          <button type="button" class="flip-card absolute inset-0 -rotate-3" data-flip aria-pressed="false" aria-label="写真をタップすると切り替わります">
+            <span class="tap-bubble" aria-hidden="true">Tap</span>
+            <span class="flip-card__inner">
+              <span class="flip-card__face rounded-4xl bg-white sticker">
+                <img src="{{ asset('images/profile.jpeg') }}" alt="Kazuki Toyama" class="w-full h-full object-cover" />
+              </span>
+              <span class="flip-card__face flip-card__face--back rounded-4xl bg-white sticker">
+                <img src="{{ asset('images/profile-anime.png') }}" alt="Kazuki Toyama とパートナー（どうぶつの森風イラスト）" class="w-full h-full object-cover" />
+              </span>
+            </span>
+          </button>
         </div>
       </div>
     </div>
@@ -275,9 +283,17 @@
         <div class="reveal md:col-span-2 flex justify-center">
           <div class="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
             <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary-light to-accent-light rotate-6"></div>
-            <div class="absolute inset-2 rounded-full bg-white sticker overflow-hidden">
-              <img src="{{ asset('images/about-photo.png') }}" alt="Kazuki Toyama" class="w-full h-full object-cover" />
-            </div>
+            <button type="button" class="flip-card absolute inset-2" data-flip aria-pressed="false" aria-label="写真をタップすると切り替わります">
+              <span class="tap-bubble" aria-hidden="true">Tap</span>
+              <span class="flip-card__inner">
+                <span class="flip-card__face rounded-full bg-white sticker">
+                  <img src="{{ asset('images/about-photo.png') }}" alt="Kazuki Toyama" class="w-full h-full object-cover" />
+                </span>
+                <span class="flip-card__face flip-card__face--back rounded-full bg-white sticker">
+                  <img src="{{ asset('images/about-photo-anime.png') }}" alt="Kazuki Toyama（どうぶつの森風アバター）" class="w-full h-full object-cover" />
+                </span>
+              </span>
+            </button>
             <div class="motif -top-2 -right-1 w-8 h-8 text-sub z-10">
               <svg class="motif-inner anim-twinkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12C7 10 11 6 12 0z"/></svg>
             </div>
