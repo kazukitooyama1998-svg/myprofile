@@ -1,86 +1,58 @@
 <!DOCTYPE html>
-<html lang="ja" class="scroll-smooth">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kazuki Toyama | Portfolio</title>
-<meta name="description" content="Web エンジニア ○○○○ のポートフォリオサイトです。制作物やスキルをまとめています。" />
+<title>{{ __('site.meta.title') }}</title>
+<meta name="description" content="{{ __('site.meta.description') }}" />
 
 <!-- Google Fonts: 丸みのあるやさしい雰囲気のフォント -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
 
+@php
+    $worksMeta = [
+        'coffee-shop' => [
+            'key' => 'coffee_shop',
+            'title' => 'Coffee Shop Website',
+            'tech' => ['HTML', 'CSS'],
+            'images' => ['hero', 'merchandise', 'discount', 'blog', 'reservation', 'footer'],
+        ],
+        'profile-site' => [
+            'key' => 'profile_site',
+            'title' => 'Profile Site',
+            'tech' => ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'PHP', 'Laravel', 'MySQL'],
+            'images' => ['hero', 'about', 'about-popup', 'about-detail', 'skills', 'skills-cards', 'works', 'works-modal', 'contact', 'footer'],
+        ],
+        'learning-english' => [
+            'key' => 'learning_english',
+            'title' => 'Learning English Site',
+            'tech' => ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'PHP', 'Laravel', 'MySQL'],
+            'images' => ['home-dashboard', 'landing-hero', 'landing-why-english', 'landing-cta', 'register', 'login', 'study-menu', 'toeic-part1-explanation', 'toeic-part1-practice', 'toeic-part5-practice', 'vocabulary-hub', 'vocabulary-flashcard', 'typing-hub', 'typing-business-english', 'quiz-hub', 'quiz-vocabulary', 'study-dashboard', 'ranking', 'connections'],
+        ],
+        'voca-review' => [
+            'key' => 'voca_review',
+            'title' => 'VocaReview',
+            'tech' => ['HTML', 'JavaScript', 'Tailwind CSS', 'PHP', 'Laravel', 'MySQL'],
+            'images' => ['add-form', 'word-list-1', 'word-list-2', 'edit-modal', 'delete-confirm'],
+        ],
+    ];
+@endphp
 <script>
   window.worksData = {
-    'coffee-shop': {
-      title: @js('Coffee Shop Website'),
-      description: @js('本作品は、ITスクールの授業の一環として、HTML・CSSの基礎を学習した後に制作した作品です。Webページ全体のレイアウト構成や各セクションの配置、余白・デザインの基本を意識し、HTML・CSSのみで実装しました。ページレイアウトの基礎を学ぶことを目的とした作品です。'),
-      tech: @js(['HTML', 'CSS']),
+@foreach ($worksMeta as $slug => $meta)
+    @js($slug): {
+      title: @js($meta['title']),
+      description: @js(__("site.works.{$meta['key']}.description")),
+      tech: @js($meta['tech']),
       images: [
-        { src: @js(asset('images/works/coffee-shop/hero.png')), alt: @js('Coffee Shop Website のトップページ') },
-        { src: @js(asset('images/works/coffee-shop/merchandise.png')), alt: @js('Coffee Shop Website の商品一覧ページ') },
-        { src: @js(asset('images/works/coffee-shop/discount.png')), alt: @js('Coffee Shop Website の割引・セールページ') },
-        { src: @js(asset('images/works/coffee-shop/blog.png')), alt: @js('Coffee Shop Website のブログ記事一覧') },
-        { src: @js(asset('images/works/coffee-shop/reservation.png')), alt: @js('Coffee Shop Website の予約フォーム') },
-        { src: @js(asset('images/works/coffee-shop/footer.png')), alt: @js('Coffee Shop Website のフッター') },
+@foreach ($meta['images'] as $img)
+        { src: @js(asset("images/works/{$slug}/{$img}.png")), alt: @js(__("site.alts.{$slug}.{$img}")) },
+@endforeach
       ],
     },
-    'profile-site': {
-      title: @js('Profile Site'),
-      description: @js('本サイトは、私自身のポートフォリオサイトです。これまでの経歴や身につけてきたスキル、学習を通して取り組んできたことを知っていただくことを目的に制作しました。バックエンドにはLaravel、フロントエンドはBladeテンプレートとTailwind CSS（Vite）で構築し、モーダルやカルーセルなどの動きはJavaScriptで実装しています。全体を通して、優しい雰囲気とシンプルなテイストをベースにしながら、ところどころに遊び心を加えたデザインに仕上げました。今後も、これまで学んできたことや新しく身につけた技術を継続的にアップデートしていくとともに、学習の中で面白いと感じた技術や、本サイトに活用できそうな技術があれば積極的に取り入れ、自分自身の成長とともに進化していくサイトを目指していきます。'),
-      tech: @js(['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'PHP', 'Laravel', 'MySQL']),
-      images: [
-        { src: @js(asset('images/works/profile-site/hero.png')), alt: @js('Profile Site のトップページ') },
-        { src: @js(asset('images/works/profile-site/about.png')), alt: @js('Profile Site の自己紹介セクション') },
-        { src: @js(asset('images/works/profile-site/about-popup.png')), alt: @js('Profile Site の自己紹介セクション（性格の吹き出し）') },
-        { src: @js(asset('images/works/profile-site/about-detail.png')), alt: @js('Profile Site の自己紹介セクション（プロフィール情報）') },
-        { src: @js(asset('images/works/profile-site/skills.png')), alt: @js('Profile Site の使用技術セクション') },
-        { src: @js(asset('images/works/profile-site/skills-cards.png')), alt: @js('Profile Site の使用技術カード一覧') },
-        { src: @js(asset('images/works/profile-site/works.png')), alt: @js('Profile Site の制作物セクション') },
-        { src: @js(asset('images/works/profile-site/works-modal.png')), alt: @js('Profile Site の制作物モーダル') },
-        { src: @js(asset('images/works/profile-site/contact.png')), alt: @js('Profile Site のお問い合わせセクション') },
-        { src: @js(asset('images/works/profile-site/footer.png')), alt: @js('Profile Site のフッター') },
-      ],
-    },
-    'learning-english': {
-      title: @js('Learning English Site'),
-      description: @js("とにかく「手を動かして」英語を身につける、タイピング機能が特徴的な英語学習サイトです。\n\n私自身の英語学習の経験から、「口を動かす（シャドーイング・音読）」ような、手軽に始められて継続しやすい練習が、特に初心者にとって効果的だと感じてきました。質の高い授業を受け、予習・復習を続ける学習法は理想的である一方、初心者にはハードルが高く、挫折しやすいという課題があります。実際に私は、現地の人と数多く話す機会をつくり、IELTS学習時にAIからフィードバックを得ながらSpeaking練習を重ねることで、英語力を伸ばしてきました。\n\nしかし、Speaking機能を備えた英語学習アプリはすでに数多く存在します。そこで本サイトでは、その対をなす新しいアプローチとして、「とにかく手を動かす」タイピング機能を取り入れた英語学習の仕組みを発案し、開発しました。\n\nタイピング機能が特徴的なコンテンツとしながら、TOEIC形式の演習（Part 1〜7のリスニング・リーディング）、IELTS Speakingの模範解答タイピング、英単語のフラッシュカード学習、スペル・語彙クイズなど、複数の学習モードも実装しています。さらに、学習の継続を後押しする要素として、フォロー機能によるユーザー同士のつながりや、獲得XPに基づくランキング機能も取り入れました。\n\n音声については、TOEICリスニング（Part 1〜4）で、ブラウザ標準のWeb Speech API（音声合成）を用いて設問の選択肢や会話・トークを読み上げる仕組みを実装しました。外部サービスを使わずに無料で動作し、読み上げ速度も本番のリスニングに近づけて調整しています。一方で、Speaking／WritingのAIによる自動採点は、コストをかけずに開発する方針としたため今回は見送り、IELTS Speakingはタイピングの精度で評価する練習としています。AIを活用した採点機能は、今後の拡張課題と位置づけています。"),
-      tech: @js(['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'PHP', 'Laravel', 'MySQL']),
-      images: [
-        { src: @js(asset('images/works/learning-english/home-dashboard.png')), alt: @js('Learning English Site のホーム画面（学習ダッシュボード）') },
-        { src: @js(asset('images/works/learning-english/landing-hero.png')), alt: @js('Learning English Site のランディングページ（ヒーロー）') },
-        { src: @js(asset('images/works/learning-english/landing-why-english.png')), alt: @js('Learning English Site のランディングページ（英語を学ぶ理由）') },
-        { src: @js(asset('images/works/learning-english/landing-cta.png')), alt: @js('Learning English Site のランディングページ（CTA・フッター）') },
-        { src: @js(asset('images/works/learning-english/register.png')), alt: @js('Learning English Site の会員登録画面') },
-        { src: @js(asset('images/works/learning-english/login.png')), alt: @js('Learning English Site のログイン画面') },
-        { src: @js(asset('images/works/learning-english/study-menu.png')), alt: @js('Learning English Site の学習メニュー画面') },
-        { src: @js(asset('images/works/learning-english/toeic-part1-explanation.png')), alt: @js('Learning English Site のTOEIC Part1解説スライド') },
-        { src: @js(asset('images/works/learning-english/toeic-part1-practice.png')), alt: @js('Learning English Site のTOEIC Part1練習問題') },
-        { src: @js(asset('images/works/learning-english/toeic-part5-practice.png')), alt: @js('Learning English Site のTOEIC Part5練習問題') },
-        { src: @js(asset('images/works/learning-english/vocabulary-hub.png')), alt: @js('Learning English Site の英単語学習一覧') },
-        { src: @js(asset('images/works/learning-english/vocabulary-flashcard.png')), alt: @js('Learning English Site の英単語フラッシュカード') },
-        { src: @js(asset('images/works/learning-english/typing-hub.png')), alt: @js('Learning English Site のタイピング練習一覧') },
-        { src: @js(asset('images/works/learning-english/typing-business-english.png')), alt: @js('Learning English Site のBusiness Englishタイピング練習') },
-        { src: @js(asset('images/works/learning-english/quiz-hub.png')), alt: @js('Learning English Site のクイズ一覧') },
-        { src: @js(asset('images/works/learning-english/quiz-vocabulary.png')), alt: @js('Learning English Site の語彙クイズ') },
-        { src: @js(asset('images/works/learning-english/study-dashboard.png')), alt: @js('Learning English Site の学習管理画面') },
-        { src: @js(asset('images/works/learning-english/ranking.png')), alt: @js('Learning English Site のランキング画面') },
-        { src: @js(asset('images/works/learning-english/connections.png')), alt: @js('Learning English Site のフォロー（Connections）画面') },
-      ],
-    },
-    'voca-review': {
-      title: @js('VocaReview'),
-      description: @js("英単語や文法の自己学習には、これまでスプレッドシートを使ってきました。しかし利用する項目数が増えるにつれて動作が重くなり、単語や文法を追加・編集・検索するたびにストレスを感じるようになっていました。また、「覚えた項目」と「まだ覚えていない項目」を分けて見返す方法がなく、どれだけ復習を続けられているかを振り返る手段もありませんでした。さらに、単語の発音を確認したいときはその都度Google 翻訳を別タブで開く必要があり、スプレッドシートとの行き来で復習のテンポが途切れてしまうことも課題でした。\n\nこうした課題を解決するために、スプレッドシートで管理していた学習内容をWebアプリへ移行し、動作を軽快にすることを目的としてVocaReviewを開発しました。単語・フレーズ・文法を効率よく登録・管理・復習できる環境を整えることで、自分専用の英語学習ツールとして学習効率そのものを高めることを目指しています。発音確認についてもWeb Speech APIを組み込むことでアプリ内で単語をそのまま読み上げられるようにし、Google 翻訳を都度開かなくても復習が進められるようにしています。\n\nログイン機能を持たない個人利用前提のアプリのため、画面遷移をできるだけ減らし、登録・検索・絞り込み・復習・学習記録の確認まで、すべてトップページ1枚で完結するように設計しています。"),
-      tech: @js(['HTML', 'JavaScript', 'Tailwind CSS', 'PHP', 'Laravel', 'MySQL']),
-      images: [
-        { src: @js(asset('images/works/voca-review/add-form.png')), alt: @js('VocaReview の検索・絞り込み・新規登録エリア') },
-        { src: @js(asset('images/works/voca-review/word-list-1.png')), alt: @js('VocaReview の登録一覧画面') },
-        { src: @js(asset('images/works/voca-review/word-list-2.png')), alt: @js('VocaReview の登録一覧とページネーション') },
-        { src: @js(asset('images/works/voca-review/edit-modal.png')), alt: @js('VocaReview の編集モーダル') },
-        { src: @js(asset('images/works/voca-review/delete-confirm.png')), alt: @js('VocaReview の削除確認モーダル') },
-      ],
-    },
+@endforeach
   };
 </script>
 
@@ -105,12 +77,16 @@
       <a href="#contact" class="nav-link">Contact</a>
     </nav>
 
-    <a href="#contact" class="btn-pop hidden md:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-base font-heading font-medium px-5 py-2.5 rounded-full">
-      お問い合わせ
-    </a>
+    <div class="hidden md:flex items-center gap-3 lg:gap-4">
+      @include('partials.language-switcher')
+
+      <a href="#contact" class="btn-pop inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-base font-heading font-medium px-5 py-2.5 rounded-full">
+        {{ __('site.nav.contact_button') }}
+      </a>
+    </div>
 
     <!-- Mobile menu button -->
-    <button id="menu-btn" aria-label="メニューを開く" class="md:hidden p-2 rounded-full hover:bg-primary-light/60 transition-colors">
+    <button id="menu-btn" aria-label="{{ __('site.nav.menu_open') }}" class="md:hidden p-2 rounded-full hover:bg-primary-light/60 transition-colors">
       <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
@@ -127,6 +103,10 @@
     <a href="#skills" class="block px-6 py-3 font-heading text-sm hover:bg-primary-light/50">Skills</a>
     <a href="#works" class="block px-6 py-3 font-heading text-sm hover:bg-primary-light/50">Works</a>
     <a href="#contact" class="block px-6 py-3 font-heading text-sm hover:bg-primary-light/50">Contact</a>
+    <div class="flex items-center gap-2 px-6 py-3 border-t border-primary-light/60">
+      <span class="text-xs font-heading font-semibold text-muted">{{ __('site.nav.lang_switch') }}</span>
+      @include('partials.language-switcher')
+    </div>
   </nav>
 </header>
 
@@ -169,23 +149,22 @@
 
       <div class="reveal">
         <p class="signboard signboard-swing font-heading font-bold tracking-widest mb-6 text-sm">
-          WEB ENGINEER PORTFOLIO
+          {{ __('site.hero.eyebrow') }}
         </p>
         <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
-          はじめまして、<br />
-          <span class="text-primary-dark">Kazuki Toyama</span> です。
+          {!! __('site.hero.h1_before') !!}<span class="text-primary-dark">Kazuki Toyama</span>{{ __('site.hero.h1_after') }}
         </h1>
         <p class="text-muted leading-loose mb-8">
-          ポートフォリオサイトへアクセスいただき、ありがとうございます。<br class="hidden sm:block" />
-          これまで取り組んできた制作物や学習内容、プロフィールを掲載しています。<br class="hidden sm:block" />
-          少しでも私のことを知っていただければ幸いです。ぜひご覧ください。
+          {{ __('site.hero.lead_1') }}<br class="hidden sm:block" />
+          {{ __('site.hero.lead_2') }}<br class="hidden sm:block" />
+          {{ __('site.hero.lead_3') }}
         </p>
         <div class="flex flex-wrap gap-4">
           <a href="#works" class="btn-pop group/link inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-heading font-semibold px-7 py-3.5 rounded-full">
-            制作物を見る <span class="arrow-nudge">→</span>
+            {{ __('site.hero.cta_works') }} <span class="arrow-nudge">→</span>
           </a>
           <a href="#about" class="btn-pop inline-flex items-center gap-2 bg-white hover:bg-primary-light/60 text-ink font-heading font-semibold px-7 py-3.5 rounded-full">
-            プロフィールを見る
+            {{ __('site.hero.cta_about') }}
           </a>
         </div>
       </div>
@@ -193,14 +172,14 @@
       <div class="reveal relative flex justify-center" style="transition-delay: .15s">
         <div class="relative w-80 h-80 sm:w-[26rem] sm:h-[26rem] lg:w-[30rem] lg:h-[30rem]">
           <div class="absolute inset-0 rounded-4xl bg-gradient-to-br from-primary-light via-accent-light to-sub-light rotate-6"></div>
-          <button type="button" class="flip-card absolute inset-0 -rotate-3" data-flip aria-pressed="false" aria-label="写真をタップすると切り替わります">
+          <button type="button" class="flip-card absolute inset-0 -rotate-3" data-flip aria-pressed="false" aria-label="{{ __('site.hero.flip_aria') }}">
             <span class="tap-bubble" aria-hidden="true">Tap</span>
             <span class="flip-card__inner">
               <span class="flip-card__face rounded-4xl bg-white sticker">
-                <img src="{{ asset('images/profile.jpeg') }}" alt="Kazuki Toyama" class="w-full h-full object-cover" />
+                <img src="{{ asset('images/profile.jpeg') }}" alt="{{ __('site.hero.photo_alt') }}" class="w-full h-full object-cover" />
               </span>
               <span class="flip-card__face flip-card__face--back rounded-4xl bg-white sticker">
-                <img src="{{ asset('images/profile-anime.png') }}" alt="Kazuki Toyama とパートナー（どうぶつの森風イラスト）" class="w-full h-full object-cover" />
+                <img src="{{ asset('images/profile-anime.png') }}" alt="{{ __('site.hero.photo_alt_back') }}" class="w-full h-full object-cover" />
               </span>
             </span>
           </button>
@@ -223,18 +202,18 @@
          狭い画面では見出し下の行で表示） --}}
     @php
       $aboutCritters = [
-        ['topic' => 'personality', 'label' => 'どんな性格か',            'face' => '<ellipse cx="20" cy="24" rx="3" ry="2.2" fill="currentColor" stroke="none"/><circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/>'],
-        ['topic' => 'engineer',    'label' => 'どんなエンジニアになりたいか', 'face' => '<path d="M13 24c2.5 3 11.5 3 14 0"/><circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/>'],
-        ['topic' => 'learning',    'label' => '最近学んだ新しい技術',       'face' => '<path d="M14 19.5c.6-1 2-1 2.6 0M23.4 19.5c.6-1 2-1 2.6 0"/><path d="M16.5 25c1.4 1.4 5.6 1.4 7 0"/>'],
-        ['topic' => 'stress',      'label' => 'ストレスとの向き合い方',      'face' => '<circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="20" cy="25" r="2"/>'],
-        ['topic' => 'challenge',   'label' => '今挑戦していること',         'face' => '<path d="M13 23c2.5 4 11.5 4 14 0"/><path d="M13.5 18.5l2.6 1.6M26.5 18.5l-2.6 1.6"/>'],
+        ['topic' => 'personality', 'face' => '<ellipse cx="20" cy="24" rx="3" ry="2.2" fill="currentColor" stroke="none"/><circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/>'],
+        ['topic' => 'engineer',    'face' => '<path d="M13 24c2.5 3 11.5 3 14 0"/><circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/>'],
+        ['topic' => 'learning',    'face' => '<path d="M14 19.5c.6-1 2-1 2.6 0M23.4 19.5c.6-1 2-1 2.6 0"/><path d="M16.5 25c1.4 1.4 5.6 1.4 7 0"/>'],
+        ['topic' => 'stress',      'face' => '<circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="20" cy="25" r="2"/>'],
+        ['topic' => 'challenge',   'face' => '<path d="M13 23c2.5 4 11.5 4 14 0"/><path d="M13.5 18.5l2.6 1.6M26.5 18.5l-2.6 1.6"/>'],
       ];
       $aboutCritterBody = '<circle cx="11" cy="12" r="6"/><circle cx="29" cy="12" r="6"/><path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z"/>';
       $floatPos = ['top:17%;left:22%', 'top:18%;right:18%', 'top:45%;left:5%', 'top:70%;left:7%', 'top:93%;left:45%'];
     @endphp
 
     @foreach ($aboutCritters as $i => $c)
-      <button type="button" class="about-critter about-critter--float hidden xl:block" style="{{ $floatPos[$i] }}" data-topic="{{ $c['topic'] }}" aria-label="{{ $c['label'] }}：タップで表示">
+      <button type="button" class="about-critter about-critter--float hidden xl:block" style="{{ $floatPos[$i] }}" data-topic="{{ $c['topic'] }}" aria-label="{{ __('site.about.critters.'.$c['topic'].'.label') }}{{ __('site.about.tap_to_view') }}">
         <span class="tap-bubble" aria-hidden="true">Tap</span>
         <span class="biscuit">
           <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{!! $aboutCritterBody !!}{!! $c['face'] !!}</svg>
@@ -244,22 +223,22 @@
 
     <div class="relative z-10 max-w-6xl mx-auto px-6">
       <div class="reveal text-center mb-10">
-        <p class="mb-4"><span class="signboard signboard-swing font-heading font-bold tracking-widest text-sm">ABOUT ME</span></p>
-        <h2 class="font-heading text-3xl sm:text-4xl font-black heading-pop">自己紹介</h2>
+        <p class="mb-4"><span class="signboard signboard-swing font-heading font-bold tracking-widest text-sm">{{ __('site.about.eyebrow') }}</span></p>
+        <h2 class="font-heading text-3xl sm:text-4xl font-black heading-pop">{{ __('site.about.heading') }}</h2>
         <p class="mt-5 text-sm text-muted leading-loose">
           <span class="about-hint-critter" aria-hidden="true">
             <span class="biscuit">
               <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="12" r="6"/><circle cx="29" cy="12" r="6"/><path d="M20 8c7.5 0 12.5 5.5 12.5 13.5S27 34 20 34 7.5 29 7.5 21.5 12.5 8 20 8Z"/><path d="M13 24c2.5 3 11.5 3 14 0"/><circle cx="14.8" cy="19" r="1.3" fill="currentColor" stroke="none"/><circle cx="25.2" cy="19" r="1.3" fill="currentColor" stroke="none"/></svg>
             </span>
           </span>
-          をタップすると、私のことをもう少しお話しします
+          {!! __('site.about.hint_suffix') !!}
         </p>
       </div>
 
       {{-- 狭い画面用：見出し下に散らした風の行で表示 --}}
       <div class="reveal about-critter-row flex flex-wrap justify-center items-end gap-5 sm:gap-8 mb-10 xl:hidden">
         @foreach ($aboutCritters as $c)
-          <button type="button" class="about-critter" data-topic="{{ $c['topic'] }}" aria-label="{{ $c['label'] }}：タップで表示">
+          <button type="button" class="about-critter" data-topic="{{ $c['topic'] }}" aria-label="{{ __('site.about.critters.'.$c['topic'].'.label') }}{{ __('site.about.tap_to_view') }}">
             <span class="tap-bubble" aria-hidden="true">Tap</span>
             <span class="biscuit">
               <svg class="critter" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{!! $aboutCritterBody !!}{!! $c['face'] !!}</svg>
@@ -270,7 +249,7 @@
 
       {{-- タップで開く吹き出し --}}
       <div id="about-note" class="about-note" hidden>
-        <button type="button" id="about-note-close" class="about-note-close" aria-label="とじる">
+        <button type="button" id="about-note-close" class="about-note-close" aria-label="{{ __('site.about.note_close') }}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
         </button>
         <h3 class="about-note-title" id="about-note-title"></h3>
@@ -285,14 +264,14 @@
         <div class="reveal md:col-span-2 flex justify-center">
           <div class="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
             <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary-light to-accent-light rotate-6"></div>
-            <button type="button" class="flip-card absolute inset-2" data-flip aria-pressed="false" aria-label="写真をタップすると切り替わります">
+            <button type="button" class="flip-card absolute inset-2" data-flip aria-pressed="false" aria-label="{{ __('site.hero.flip_aria') }}">
               <span class="tap-bubble" aria-hidden="true">Tap</span>
               <span class="flip-card__inner">
                 <span class="flip-card__face rounded-full bg-white sticker">
-                  <img src="{{ asset('images/about-photo.png') }}" alt="Kazuki Toyama" class="w-full h-full object-cover" />
+                  <img src="{{ asset('images/about-photo.png') }}" alt="{{ __('site.about.photo_alt') }}" class="w-full h-full object-cover" />
                 </span>
                 <span class="flip-card__face flip-card__face--back rounded-full bg-white sticker">
-                  <img src="{{ asset('images/about-photo-anime.png') }}" alt="Kazuki Toyama（どうぶつの森風アバター）" class="w-full h-full object-cover" />
+                  <img src="{{ asset('images/about-photo-anime.png') }}" alt="{{ __('site.about.photo_alt_back') }}" class="w-full h-full object-cover" />
                 </span>
               </span>
             </button>
@@ -304,35 +283,34 @@
 
         <div class="reveal md:col-span-3 space-y-5" style="transition-delay: .1s">
           <p class="leading-loose text-ink/90">
-            大学卒業後は、マレーシアのBPO企業や日本の大手マンション管理会社にて勤務し、多様な環境の中でコミュニケーション力や課題解決力を培ってきました。その後、海外での挑戦を決意し、フィリピンでの語学留学・IT留学、さらにオーストラリアで約2年間のワーキングホリデーを経験しました。英語はもともと苦手でしたが、留学や海外生活を通して継続的に学習を続けた結果、IELTS Academic Speakingで6.5を取得することができました。また、2026年2月にフィリピン人の妻と結婚し、現在は日常的に英語でコミュニケーションを取りながら生活しています。
+            {{ __('site.about.bio_1') }}
           </p>
           <p class="leading-loose text-ink/90">
-            海外での生活を通して、手に職をつけ、国や環境に左右されることなく活躍できるスキルを身につけたいという思いが強くなり、Webエンジニアを志すようになりました。また、英語を話せることで仕事や人との出会いなど、多くの可能性が広がることを実感しました。現在も英語学習には苦戦することがありますが、学習環境や勉強方法を工夫しながら継続して取り組み、英語力の向上を目指しています。
+            {{ __('site.about.bio_2') }}
           </p>
           <p class="leading-loose text-ink/90">
-            将来は、これまでの海外経験や異業種での職務経験を活かし、ITを通じてさまざまな業界の課題解決や業務効率化に貢献できるエンジニアを目指しています。教育分野をはじめ、多様な分野で人々の生活や仕事をより便利にするWebサービスやシステムの開発に携わりたいと考えています。新しい技術を継続的に学びながら、利用者の視点を大切にし、価値あるサービスを提供できるエンジニアとして成長していきたいです。
+            {{ __('site.about.bio_3') }}
           </p>
 
           <ul class="grid sm:grid-cols-2 gap-3.5 pt-4">
             <li class="group sm:col-span-2 flex items-start gap-3 bg-paper rounded-2xl px-5 py-4 sticker-sm transition-transform hover:-translate-y-1">
               <span class="group-jump w-2.5 h-2.5 rounded-full bg-primary mt-1.5 shrink-0"></span>
               <span class="text-sm text-muted leading-relaxed">
-                在住地：フィリピン・セブ島（留学中）<br />
-                現在、Kredoにて Web 開発と英語を学習しています。（2026年9月18日卒業見込み）
+                {!! __('site.about.fact_location') !!}
               </span>
             </li>
             <li class="group flex items-start gap-3 bg-paper rounded-2xl px-5 py-3 sticker-sm transition-transform hover:-translate-y-1">
               <span class="group-jump w-2.5 h-2.5 rounded-full bg-accent mt-1.5 shrink-0"></span>
-              <span class="text-sm text-muted">得意分野：Claude Codeを活用したLaravel開発</span>
+              <span class="text-sm text-muted">{{ __('site.about.fact_strength') }}</span>
             </li>
             <li class="group flex items-start gap-3 bg-paper rounded-2xl px-5 py-3 sticker-sm transition-transform hover:-translate-y-1">
               <span class="group-jump w-2.5 h-2.5 rounded-full bg-sub mt-1.5 shrink-0"></span>
-              <span class="text-sm text-muted">趣味：英語学習 / 美味しいものを食べること</span>
+              <span class="text-sm text-muted">{{ __('site.about.fact_hobby') }}</span>
             </li>
             <li class="group sm:col-span-2 flex items-center gap-3 bg-paper rounded-2xl px-5 py-3 sticker-sm transition-transform hover:-translate-y-1">
               <span class="group-jump w-2.5 h-2.5 rounded-full bg-primary-dark shrink-0"></span>
               <span class="text-sm text-muted">
-                GitHub：
+                {{ __('site.about.fact_github_label') }}
                 <a href="https://github.com/kazukitooyama1998-svg" target="_blank" rel="noopener" class="text-primary-dark hover:text-accent underline underline-offset-2 transition-colors">
                   github.com/kazukitooyama1998-svg
                 </a>
@@ -345,11 +323,11 @@
 
     {{-- 森のなかまタップで表示する、自己紹介の話題データ（JSが参照） --}}
     <div id="about-notes-data" hidden>
-      <article data-topic="personality" data-title="どんな性格か">人からは「落ち着いている」と言われることが多いです。これまで出会った人の中で「素敵だな」と感じた方の気遣いや行動を参考にし、自分自身も相手の立場を考えて行動することを心がけています。そのため、周囲から「気が利く」と言っていただくことも多いです。また、「やってみたい」と思ったことには、まず挑戦してみることを大切にしています。</article>
-      <article data-topic="engineer" data-title="どんなエンジニアになりたいか">AI時代においても必要とされるエンジニアであり続けるために、新しい技術や面白いと感じた技術を積極的に学び続けたいと考えています。また、AIを避けるのではなく、うまく活用・共存しながら、効率的かつスピード感を持って仕事ができるエンジニアを目指しています。将来的には、自分の英語力を活かしながら、開発した英語学習アプリをより多くの方に利用していただくことが目標です。</article>
-      <article data-topic="learning" data-title="最近学んだ新しい技術">Instagramで、実際のお菓子のパッケージデザインを参考に、プロンプトによる指示でWebサイトのデザインへ取り入れている投稿を見かけ、面白いと感じたことがきっかけで、自分のサイトでも試してみました。既存のデザインをベースにしながら、コアラのマーチの世界観を一部取り入れ、AIを活用したデザイン表現に挑戦しています。</article>
-      <article data-topic="stress" data-title="ストレスとの向き合い方">疲れを感じたときは、温泉やサウナでリフレッシュしたり、運動で汗を流したりすることを大切にしています。適度に身体を動かして気持ちを切り替えることで、リフレッシュした状態で物事に取り組めるよう心がけています。</article>
-      <article data-topic="challenge" data-title="今挑戦していること" data-link="https://www.instagram.com/lazy_english_toeic_jp/" data-link-label="@lazy_english_toeic_jp">自分で開発したアプリをより多くの方に知ってもらうためには、SNSを活用した情報発信も重要だと考えています。現在はTOEICに関する情報発信を継続し、投稿内容やユーザーの反応・閲覧数などを観察しながら、より多くの方に興味を持ってもらえる発信方法を試行錯誤しています。今後、成果につながる方法を見つけることができれば、他のテーマでのアカウント運用にも挑戦していきたいと考えています。</article>
+      <article data-topic="personality" data-title="{{ __('site.about.critters.personality.label') }}">{{ __('site.about.critters.personality.body') }}</article>
+      <article data-topic="engineer" data-title="{{ __('site.about.critters.engineer.label') }}">{{ __('site.about.critters.engineer.body') }}</article>
+      <article data-topic="learning" data-title="{{ __('site.about.critters.learning.label') }}">{{ __('site.about.critters.learning.body') }}</article>
+      <article data-topic="stress" data-title="{{ __('site.about.critters.stress.label') }}">{{ __('site.about.critters.stress.body') }}</article>
+      <article data-topic="challenge" data-title="{{ __('site.about.critters.challenge.label') }}" data-link="https://www.instagram.com/lazy_english_toeic_jp/" data-link-label="{{ __('site.about.critters.challenge.link_label') }}">{{ __('site.about.critters.challenge.body') }}</article>
     </div>
   </section>
 
@@ -364,14 +342,14 @@
 
     <div class="relative z-10 max-w-6xl mx-auto px-6">
       <div class="reveal text-center mb-16">
-        <p class="mb-4"><span class="signboard signboard-swing font-heading font-bold tracking-widest text-sm">SKILLS</span></p>
-        <h2 class="font-heading text-3xl sm:text-4xl font-black heading-pop">使用技術</h2>
+        <p class="mb-4"><span class="signboard signboard-swing font-heading font-bold tracking-widest text-sm">{{ __('site.skills.eyebrow') }}</span></p>
+        <h2 class="font-heading text-3xl sm:text-4xl font-black heading-pop">{{ __('site.skills.heading') }}</h2>
         <p class="text-muted mt-4 max-w-2xl mx-auto leading-relaxed">
-          これまで学習してきた技術をまとめています。ITスクールではフロントエンドからバックエンドまで幅広い技術を学び、Web開発全体の基礎を身につけました。現在はJavaScriptやTailwind CSSを中心に学習を進めるとともに、Laravelを用いたWebアプリケーション開発にも継続的に取り組んでいます。
+          {{ __('site.skills.lead_1') }}
           <br /><br />
-          また、Claude Codeを活用したLaravel開発を実践しており、要件整理から実装までの開発工程を効率化しながら、より生産性の高い開発を意識しています。さらに、ChatGPTなどのAIツールについても、それぞれの特性を活かした活用方法を検証し、開発効率の向上やより良いアプリケーション開発につながるワークフローを日々模索しています。
+          {{ __('site.skills.lead_2') }}
           <br /><br />
-          今後もさまざまな技術やプログラミング言語への理解を深めるとともに、AIを効果的に活用した開発手法についても継続的に学習し、スキルアップに取り組んでいきます。また、幅広い知識を土台としつつ、将来的にはフロントエンドやバックエンドなど、それぞれの分野で専門性を高め、ユーザーにとって価値のあるサービスを開発できるエンジニアを目指しています。
+          {{ __('site.skills.lead_3') }}
         </p>
       </div>
 
@@ -391,7 +369,7 @@
             <span class="px-3.5 py-1.5 rounded-full tag-pop bg-primary-light text-primary-dark text-sm font-medium">Bootstrap</span>
           </div>
           <div class="mt-4 pt-4 border-t border-primary-light">
-            <p class="text-xs text-muted font-heading font-semibold mb-2">学習中</p>
+            <p class="text-xs text-muted font-heading font-semibold mb-2">{{ __('site.skills.learning_label') }}</p>
             <div class="flex flex-wrap gap-2">
               <span class="px-3.5 py-1.5 rounded-full border border-dashed border-primary/50 text-primary-dark/80 text-sm font-medium">JavaScript</span>
               <span class="px-3.5 py-1.5 rounded-full border border-dashed border-primary/50 text-primary-dark/80 text-sm font-medium">Tailwind CSS</span>
@@ -482,19 +460,19 @@
 
     <div class="relative z-10 max-w-6xl mx-auto px-6">
       <div class="reveal text-center mb-16">
-        <p class="mb-4"><span class="signboard signboard-swing font-heading font-bold tracking-widest text-sm">WORKS</span></p>
-        <h2 class="font-heading text-3xl sm:text-4xl font-black heading-pop">制作物</h2>
+        <p class="mb-4"><span class="signboard signboard-swing font-heading font-bold tracking-widest text-sm">{{ __('site.works.eyebrow') }}</span></p>
+        <h2 class="font-heading text-3xl sm:text-4xl font-black heading-pop">{{ __('site.works.heading') }}</h2>
       </div>
 
       <div class="reveal relative md:px-10">
 
         <!-- 前へ / 次へ ボタン -->
-        <button id="works-prev" aria-label="前の制作物へ" class="hidden md:flex absolute -left-5 top-[38%] -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white btn-pop items-center justify-center text-primary-dark hover:bg-primary-light">
+        <button id="works-prev" aria-label="{{ __('site.works.prev') }}" class="hidden md:flex absolute -left-5 top-[38%] -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white btn-pop items-center justify-center text-primary-dark hover:bg-primary-light">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        <button id="works-next" aria-label="次の制作物へ" class="hidden md:flex absolute -right-5 top-[38%] -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white btn-pop items-center justify-center text-primary-dark hover:bg-primary-light">
+        <button id="works-next" aria-label="{{ __('site.works.next') }}" class="hidden md:flex absolute -right-5 top-[38%] -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white btn-pop items-center justify-center text-primary-dark hover:bg-primary-light">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>
@@ -506,13 +484,13 @@
           <!-- Work Card 01: Coffee Shop Website -->
           <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group card-pop bg-white rounded-4xl overflow-hidden">
             <div class="aspect-[4/3] overflow-hidden bg-paper flex items-center justify-center">
-              <img src="{{ asset('images/works/coffee-shop/hero.png') }}" alt="Coffee Shop Website のトップページ" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
+              <img src="{{ asset('images/works/coffee-shop/hero.png') }}" alt="{{ __('site.alts.coffee-shop.hero') }}" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div class="p-6">
               <h3 class="font-heading font-bold text-lg mb-2">Coffee Shop Website</h3>
-              <p class="text-sm text-muted leading-relaxed mb-1">ITスクールの課題として制作した、HTML・CSSのみのランディングページです。</p>
+              <p class="text-sm text-muted leading-relaxed mb-1">{{ __('site.works.coffee_shop.card_summary') }}</p>
               <button type="button" class="work-modal-trigger text-sm font-heading font-semibold text-primary-dark hover:text-accent transition-colors mb-4" data-work="coffee-shop">
-                詳しくはクリック <span class="arrow-nudge">→</span>
+                {{ __('site.works.detail_link') }} <span class="arrow-nudge">→</span>
               </button>
               <div class="flex flex-wrap gap-2 mb-5">
                 <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">HTML</span>
@@ -527,13 +505,13 @@
           <!-- Work Card 02: Profile Site -->
           <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group card-pop bg-white rounded-4xl overflow-hidden">
             <div class="aspect-[4/3] overflow-hidden bg-paper flex items-center justify-center">
-              <img src="{{ asset('images/works/profile-site/hero.png') }}" alt="Profile Site のトップページ" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
+              <img src="{{ asset('images/works/profile-site/hero.png') }}" alt="{{ __('site.alts.profile-site.hero') }}" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div class="p-6">
               <h3 class="font-heading font-bold text-lg mb-2">Profile Site</h3>
-              <p class="text-sm text-muted leading-relaxed mb-1">経歴やスキルを知っていただくために制作した、自分自身のポートフォリオサイトです。</p>
+              <p class="text-sm text-muted leading-relaxed mb-1">{{ __('site.works.profile_site.card_summary') }}</p>
               <button type="button" class="work-modal-trigger text-sm font-heading font-semibold text-primary-dark hover:text-accent transition-colors mb-4" data-work="profile-site">
-                詳しくはクリック <span class="arrow-nudge">→</span>
+                {{ __('site.works.detail_link') }} <span class="arrow-nudge">→</span>
               </button>
               <div class="flex flex-wrap gap-2 mb-5">
                 <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">Laravel</span>
@@ -549,13 +527,13 @@
           <!-- Work Card 03: Learning English Site -->
           <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group card-pop bg-white rounded-4xl overflow-hidden">
             <div class="aspect-[4/3] overflow-hidden bg-paper flex items-center justify-center">
-              <img src="{{ asset('images/works/learning-english/home-dashboard.png') }}" alt="Learning English Site のホーム画面（学習ダッシュボード）" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
+              <img src="{{ asset('images/works/learning-english/home-dashboard.png') }}" alt="{{ __('site.alts.learning-english.home-dashboard') }}" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div class="p-6">
               <h3 class="font-heading font-bold text-lg mb-2">Learning English Site</h3>
-              <p class="text-sm text-muted leading-relaxed mb-1">「とにかく手を動かす」タイピング機能が特徴的な英語学習サイトです。</p>
+              <p class="text-sm text-muted leading-relaxed mb-1">{{ __('site.works.learning_english.card_summary') }}</p>
               <button type="button" class="work-modal-trigger text-sm font-heading font-semibold text-primary-dark hover:text-accent transition-colors mb-4" data-work="learning-english">
-                詳しくはクリック <span class="arrow-nudge">→</span>
+                {{ __('site.works.detail_link') }} <span class="arrow-nudge">→</span>
               </button>
               <div class="flex flex-wrap gap-2 mb-5">
                 <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">Laravel</span>
@@ -570,13 +548,13 @@
 
           <article class="works-slide snap-start shrink-0 w-full sm:w-[48%] lg:w-[31%] group card-pop bg-white rounded-4xl overflow-hidden">
             <div class="aspect-[4/3] overflow-hidden bg-paper flex items-center justify-center">
-              <img src="{{ asset('images/works/voca-review/home-dashboard.png') }}" alt="VocaReview のトップ画面（学習ダッシュボード）" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
+              <img src="{{ asset('images/works/voca-review/home-dashboard.png') }}" alt="{{ __('site.alts.voca-review.home-dashboard') }}" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div class="p-6">
               <h3 class="font-heading font-bold text-lg mb-2">VocaReview</h3>
-              <p class="text-sm text-muted leading-relaxed mb-1">スプレッドシートでの英単語・文法学習をWebアプリ化した、個人用の英語自己学習ツールです。</p>
+              <p class="text-sm text-muted leading-relaxed mb-1">{{ __('site.works.voca_review.card_summary') }}</p>
               <button type="button" class="work-modal-trigger text-sm font-heading font-semibold text-primary-dark hover:text-accent transition-colors mb-4" data-work="voca-review">
-                詳しくはクリック <span class="arrow-nudge">→</span>
+                {{ __('site.works.detail_link') }} <span class="arrow-nudge">→</span>
               </button>
               <div class="flex flex-wrap gap-2 mb-5">
                 <span class="text-xs px-3 py-1 rounded-full tag-pop bg-primary-light text-primary-dark">Laravel</span>
@@ -593,10 +571,9 @@
 
         <!-- 番号ページネーション -->
         <div id="works-dots" class="flex justify-center flex-wrap gap-3 mt-6">
-          <button type="button" data-index="0" class="works-dot w-9 h-9 rounded-full font-heading text-sm font-semibold transition-colors" aria-label="1番目の制作物へ">01</button>
-          <button type="button" data-index="1" class="works-dot w-9 h-9 rounded-full font-heading text-sm font-semibold transition-colors" aria-label="2番目の制作物へ">02</button>
-          <button type="button" data-index="2" class="works-dot w-9 h-9 rounded-full font-heading text-sm font-semibold transition-colors" aria-label="3番目の制作物へ">03</button>
-          <button type="button" data-index="3" class="works-dot w-9 h-9 rounded-full font-heading text-sm font-semibold transition-colors" aria-label="4番目の制作物へ">04</button>
+          @for ($i = 0; $i < count($worksMeta); $i++)
+            <button type="button" data-index="{{ $i }}" class="works-dot w-9 h-9 rounded-full font-heading text-sm font-semibold transition-colors" aria-label="{{ __('site.works.dot_aria', ['number' => $i + 1]) }}">{{ sprintf('%02d', $i + 1) }}</button>
+          @endfor
         </div>
       </div>
     </div>
@@ -626,30 +603,29 @@
 
     <div class="relative z-10 max-w-2xl mx-auto px-6">
       <div class="reveal text-center mb-14">
-        <p class="mb-4"><span class="signboard signboard-swing font-heading font-bold tracking-widest text-sm">CONTACT</span></p>
-        <h2 class="font-heading text-3xl sm:text-4xl font-black heading-pop mb-4">お問い合わせ</h2>
+        <p class="mb-4"><span class="signboard signboard-swing font-heading font-bold tracking-widest text-sm">{{ __('site.contact.eyebrow') }}</span></p>
+        <h2 class="font-heading text-3xl sm:text-4xl font-black heading-pop mb-4">{{ __('site.contact.heading') }}</h2>
         <p class="text-muted leading-relaxed">
-          ご質問等、お気軽にご連絡ください。
+          {{ __('site.contact.lead') }}
         </p>
       </div>
 
       @if (session('contact_success'))
         <div class="reveal bg-primary-light text-primary-dark rounded-3xl px-6 py-5 mb-6 text-center font-heading font-semibold leading-relaxed">
-          お問い合わせを受け付けました。ご連絡ありがとうございます。<br />
-          ご入力いただいたメールアドレス宛に確認メールをお送りしておりますので、ご確認ください。
+          {!! __('site.contact.success') !!}
         </div>
       @endif
 
       @if (session('contact_error'))
         <div class="reveal bg-accent-light text-accent rounded-3xl px-6 py-5 mb-6 text-center font-heading font-semibold leading-relaxed">
-          送信中にエラーが発生しました。お手数ですが、時間をおいて再度お試しください。
+          {{ __('site.contact.error') }}
         </div>
       @endif
 
       <form class="reveal sticker bg-white rounded-4xl p-8 sm:p-10 space-y-6" action="{{ route('contact.store') }}" method="POST">
         @csrf
         <div>
-          <label for="name" class="block font-heading text-sm font-semibold mb-2">お名前</label>
+          <label for="name" class="block font-heading text-sm font-semibold mb-2">{{ __('site.contact.label_name') }}</label>
           <input type="text" id="name" name="name" value="{{ old('name') }}" required
             class="w-full px-5 py-3 rounded-2xl border {{ $errors->has('name') ? 'border-accent' : 'border-primary-light' }} bg-paper focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
           @error('name')
@@ -657,7 +633,7 @@
           @enderror
         </div>
         <div>
-          <label for="email" class="block font-heading text-sm font-semibold mb-2">メールアドレス</label>
+          <label for="email" class="block font-heading text-sm font-semibold mb-2">{{ __('site.contact.label_email') }}</label>
           <input type="email" id="email" name="email" value="{{ old('email') }}" required
             class="w-full px-5 py-3 rounded-2xl border {{ $errors->has('email') ? 'border-accent' : 'border-primary-light' }} bg-paper focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
           @error('email')
@@ -665,7 +641,7 @@
           @enderror
         </div>
         <div>
-          <label for="subject" class="block font-heading text-sm font-semibold mb-2">件名</label>
+          <label for="subject" class="block font-heading text-sm font-semibold mb-2">{{ __('site.contact.label_subject') }}</label>
           <input type="text" id="subject" name="subject" value="{{ old('subject') }}" required
             class="w-full px-5 py-3 rounded-2xl border {{ $errors->has('subject') ? 'border-accent' : 'border-primary-light' }} bg-paper focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
           @error('subject')
@@ -673,7 +649,7 @@
           @enderror
         </div>
         <div>
-          <label for="message" class="block font-heading text-sm font-semibold mb-2">メッセージ</label>
+          <label for="message" class="block font-heading text-sm font-semibold mb-2">{{ __('site.contact.label_message') }}</label>
           <textarea id="message" name="message" rows="5" required
             class="w-full px-5 py-3 rounded-2xl border {{ $errors->has('message') ? 'border-accent' : 'border-primary-light' }} bg-paper focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none">{{ old('message') }}</textarea>
           @error('message')
@@ -682,7 +658,7 @@
         </div>
         <button type="submit"
           class="btn-pop group/link w-full bg-primary hover:bg-primary-dark text-white font-heading font-semibold py-3.5 rounded-full">
-          送信する <span class="arrow-nudge">→</span>
+          {{ __('site.contact.submit') }} <span class="arrow-nudge">→</span>
         </button>
       </form>
     </div>
@@ -694,12 +670,12 @@
 <footer id="site-footer" class="relative bg-primary-dark text-white/90 pt-16 pb-24 sm:pb-8">
   <div class="max-w-6xl mx-auto px-6">
     <div class="flex justify-center items-center pb-8 border-b border-white/15">
-      <p class="font-heading text-2xl sm:text-3xl font-black tracking-wide text-center">Thank you for reading until the end<span class="text-sub">.</span></p>
+      <p class="font-heading text-2xl sm:text-3xl font-black tracking-wide text-center">{{ __('site.footer.thanks') }}<span class="text-sub">.</span></p>
     </div>
     <p class="text-center text-sm text-white/60 pt-6">&copy; 2026 Kazuki Toyama. All Rights Reserved.</p>
   </div>
 
-  <button id="back-to-top" aria-label="ページ上部へ戻る"
+  <button id="back-to-top" aria-label="{{ __('site.footer.back_to_top') }}"
     class="group sticker-sm fixed bottom-8 right-8 w-12 h-12 rounded-full bg-accent hover:bg-accent/90 text-white flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 z-40">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
       <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
@@ -712,7 +688,7 @@
   <div id="work-modal-backdrop" class="absolute inset-0 bg-ink/60 backdrop-blur-sm"></div>
 
   <div class="relative bg-white rounded-4xl shadow-soft w-full max-w-6xl max-h-[95vh] overflow-y-auto overflow-x-hidden p-6 sm:p-10 pt-16 sm:pt-20">
-    <button type="button" id="work-modal-close" aria-label="閉じる"
+    <button type="button" id="work-modal-close" aria-label="{{ __('site.modal.close') }}"
       class="btn-pop absolute top-5 right-5 sm:top-6 sm:right-6 w-10 h-10 rounded-full bg-primary hover:bg-primary-dark text-white flex items-center justify-center z-20">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -724,20 +700,20 @@
         <h3 id="work-modal-title" class="font-heading text-xl sm:text-3xl font-black text-center md:text-left pb-4 mb-6 border-b border-primary-light"></h3>
         <p id="work-modal-description" class="text-sm sm:text-base leading-loose text-ink/90 whitespace-pre-line"></p>
 
-        <h4 class="font-heading text-lg font-bold text-center md:text-left mt-8 pb-3 mb-4 border-b border-primary-light">使用言語など</h4>
+        <h4 class="font-heading text-lg font-bold text-center md:text-left mt-8 pb-3 mb-4 border-b border-primary-light">{{ __('site.modal.tech_heading') }}</h4>
         <div id="work-modal-tech" class="flex flex-wrap gap-2"></div>
       </div>
 
       <div class="min-w-0">
         <div class="relative mb-4">
-          <button type="button" id="work-modal-thumbs-prev" aria-label="前のサムネイルへ"
+          <button type="button" id="work-modal-thumbs-prev" aria-label="{{ __('site.modal.thumbs_prev') }}"
             class="hidden absolute -left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white sticker-sm items-center justify-center text-primary-dark hover:bg-primary-light">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           <div id="work-modal-thumbs" class="flex gap-3 overflow-x-auto scroll-smooth"></div>
-          <button type="button" id="work-modal-thumbs-next" aria-label="次のサムネイルへ"
+          <button type="button" id="work-modal-thumbs-next" aria-label="{{ __('site.modal.thumbs_next') }}"
             class="hidden absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white sticker-sm items-center justify-center text-primary-dark hover:bg-primary-light">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
