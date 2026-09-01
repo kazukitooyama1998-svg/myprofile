@@ -6,7 +6,7 @@
   @foreach (['ja' => '日本語', 'en' => 'English'] as $code => $label)
     <a href="{{ route('lang.switch', $code) }}"
        @class([
-           'px-3.5 py-2 rounded-full transition-colors',
+           'inline-flex justify-center items-center min-w-20 px-3 py-2 rounded-full transition-colors',
            'bg-white text-primary-dark shadow-soft' => $currentLocale === $code,
            'text-muted hover:text-primary-dark' => $currentLocale !== $code,
        ])

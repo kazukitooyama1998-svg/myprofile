@@ -80,7 +80,7 @@
     <div class="hidden md:flex items-center gap-3 lg:gap-4">
       @include('partials.language-switcher')
 
-      <a href="#contact" class="btn-pop inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-base font-heading font-medium px-5 py-2.5 rounded-full">
+      <a href="#contact" class="btn-pop inline-flex items-center justify-center gap-2 min-w-36 bg-primary hover:bg-primary-dark text-white text-base font-heading font-medium px-5 py-2.5 rounded-full">
         {{ __('site.nav.contact_button') }}
       </a>
     </div>
