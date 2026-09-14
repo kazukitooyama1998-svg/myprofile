@@ -389,6 +389,12 @@
             <span class="px-3.5 py-1.5 rounded-full tag-pop bg-accent-light text-accent text-sm font-medium">PHP</span>
             <span class="px-3.5 py-1.5 rounded-full tag-pop bg-accent-light text-accent text-sm font-medium">Laravel</span>
           </div>
+          <div class="mt-4 pt-4 border-t border-accent-light">
+            <p class="text-xs text-muted font-heading font-semibold mb-2">{{ __('site.skills.learning_label') }}</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3.5 py-1.5 rounded-full border border-dashed border-accent/50 text-accent text-sm font-medium">Java</span>
+            </div>
+          </div>
         </div>
 
         <!-- Database -->
