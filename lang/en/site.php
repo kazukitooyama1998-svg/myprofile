@@ -75,10 +75,9 @@ return [
     'skills' => [
         'eyebrow' => 'SKILLS',
         'heading' => 'Skills',
-        'lead_1' => 'A summary of the technologies I have studied so far. At IT school I learned a wide range of technologies from frontend to backend and built a foundation across web development as a whole. I am currently focusing my studies on JavaScript and Tailwind CSS, while also continuously working on web application development with Laravel.',
-        'lead_2' => 'I also practise Laravel development using Claude Code, streamlining the process from organising requirements to implementation while aiming for more productive development. On top of that, for AI tools such as ChatGPT, I test ways of using each one to its strengths, exploring workflows that improve development efficiency and lead to better applications.',
-        'lead_3' => 'Going forward, I will keep deepening my understanding of various technologies and programming languages, while also continuously learning development methods that make effective use of AI, to keep improving my skills. Building on a broad base of knowledge, I aim to become an engineer who develops deeper expertise in areas such as frontend and backend, and who can build services that are valuable to users.',
-        'learning_label' => 'Learning',
+        'lead_1' => 'A summary of the technologies I learned at Kredo, an IT school, and the programming languages and technologies I am currently learning through my work.',
+        'lead_2' => 'At school I learned a wide range of technologies from frontend to backend, and I am now deepening my understanding of technologies such as Java through hands-on work. In my personal projects, I also build web applications using tools such as Laravel and Claude Code.',
+        'lead_3' => 'Going forward, I will keep deepening my understanding of various technologies and making effective use of AI tools, continuing to improve my skills as an engineer.',
     ],
 
     'works' => [

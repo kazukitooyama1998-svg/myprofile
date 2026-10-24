@@ -373,19 +373,8 @@
             <span class="px-3.5 py-1.5 rounded-full tag-pop bg-primary-light text-primary-dark text-sm font-medium">HTML</span>
             <span class="px-3.5 py-1.5 rounded-full tag-pop bg-primary-light text-primary-dark text-sm font-medium">CSS</span>
             <span class="px-3.5 py-1.5 rounded-full tag-pop bg-primary-light text-primary-dark text-sm font-medium">Bootstrap</span>
-            @if (app()->getLocale() === 'ja')
             <span class="px-3.5 py-1.5 rounded-full tag-pop bg-primary-light text-primary-dark text-sm font-medium">JavaScript</span>
-            @endif
           </div>
-          @if (app()->getLocale() !== 'ja')
-          <div class="mt-4 pt-4 border-t border-primary-light">
-            <p class="text-xs text-muted font-heading font-semibold mb-2">{{ __('site.skills.learning_label') }}</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3.5 py-1.5 rounded-full border border-dashed border-primary/50 text-primary-dark/80 text-sm font-medium">JavaScript</span>
-              <span class="px-3.5 py-1.5 rounded-full border border-dashed border-primary/50 text-primary-dark/80 text-sm font-medium">Tailwind CSS</span>
-            </div>
-          </div>
-          @endif
         </div>
 
         <!-- Backend -->
@@ -399,19 +388,9 @@
           <div class="flex flex-wrap gap-2">
             <span class="px-3.5 py-1.5 rounded-full tag-pop bg-accent-light text-accent text-sm font-medium">PHP</span>
             <span class="px-3.5 py-1.5 rounded-full tag-pop bg-accent-light text-accent text-sm font-medium">Laravel</span>
-            @if (app()->getLocale() === 'ja')
             <span class="px-3.5 py-1.5 rounded-full tag-pop bg-accent-light text-accent text-sm font-medium">Java</span>
             <span class="px-3.5 py-1.5 rounded-full tag-pop bg-accent-light text-accent text-sm font-medium">Spring Boot</span>
-            @endif
           </div>
-          @if (app()->getLocale() !== 'ja')
-          <div class="mt-4 pt-4 border-t border-accent-light">
-            <p class="text-xs text-muted font-heading font-semibold mb-2">{{ __('site.skills.learning_label') }}</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3.5 py-1.5 rounded-full border border-dashed border-accent/50 text-accent text-sm font-medium">Java</span>
-            </div>
-          </div>
-          @endif
         </div>
 
         <!-- Database -->
