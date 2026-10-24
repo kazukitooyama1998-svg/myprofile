@@ -291,6 +291,12 @@
           <p class="leading-loose text-ink/90">
             {{ __('site.about.bio_3') }}
           </p>
+          <p class="leading-loose text-ink/90">
+            {{ __('site.about.bio_4') }}
+          </p>
+          <p class="leading-loose text-ink/90">
+            {{ __('site.about.bio_5') }}
+          </p>
 
           <ul class="grid sm:grid-cols-2 gap-3.5 pt-4">
             <li class="group sm:col-span-2 flex items-start gap-3 bg-paper rounded-2xl px-5 py-4 sticker-sm transition-transform hover:-translate-y-1">
